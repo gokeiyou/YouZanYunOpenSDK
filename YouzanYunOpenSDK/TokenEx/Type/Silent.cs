@@ -8,9 +8,9 @@ namespace YouZan.Open.TokenEx
 {
     public class Silent : AbstractOauth
     {
-        private ulong _GrantId;
+        private string _GrantId;
 
-        public Silent(string clientId, string clientSecret, ulong grantId) : base(clientId, clientSecret)
+        public Silent(string clientId, string clientSecret, string grantId) : base(clientId, clientSecret)
         {
             this._GrantId = grantId;
         }
@@ -19,7 +19,7 @@ namespace YouZan.Open.TokenEx
         {
         }
 
-        public void SetKdtId(ulong grantId)
+        public void SetKdtId(string grantId)
         {
 
             this._GrantId = grantId;
@@ -54,7 +54,7 @@ namespace YouZan.Open.TokenEx
                     { "client_id", _ClientId },
                     { "client_secret", _ClientSecret },
                     { "authorize_type", "silent" },
-                    { "grant_id", _GrantId.ToString() }
+                    { "grant_id", _GrantId }
                 };
             DefaultHttpClient defaultHttpClient = new DefaultHttpClient();
             string result = defaultHttpClient.Send(this.GetTokenUrl(), tokenParams, null, null);

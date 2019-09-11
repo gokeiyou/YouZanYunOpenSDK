@@ -33,7 +33,7 @@ namespace YouZan.Open.Api
         /// <summary>
         /// 店铺ID
         /// </summary>
-        private ulong GrantId { get; set; }
+        private string GrantId { get; set; }
 
         IYouZanClient yzClient = null;
         TokenData oAuthToken = null;
@@ -44,12 +44,12 @@ namespace YouZan.Open.Api
         /// <param name="clientId"></param>
         /// <param name="clientSecret"></param>
         public ApiHelper(string clientId, string clientSecret)
-            : this(clientId, clientSecret, 0)
+            : this(clientId, clientSecret, null)
         {
             
         }
 
-        public ApiHelper(string clientId, string clientSecret, ulong grantId)
+        public ApiHelper(string clientId, string clientSecret, string grantId)
         {
             this.ClientId = clientId;
             this.ClientSecret = clientSecret;
