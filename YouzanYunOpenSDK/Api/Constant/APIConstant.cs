@@ -75,6 +75,32 @@ namespace YouZan.Open.Api.Constant
         /// 更新分销员信息,客户已经是分销员才可以更新
         /// </summary>
         internal const string SALESMAN_ACCOUNT_UPDATE = "youzan.salesman.account.update";
+        /// <summary>
+        /// 清退分销员，客户必须是分销员才能清退
+        /// </summary>
+        internal const string SALESMAN_ACCOUNT_FIRE = "youzan.salesman.account.fire";
+        /// <summary>
+        /// 获取推广订单列表
+        /// </summary>
+        internal const string SALESMAN_TRADES_GET = "youzan.salesman.trades.get";
+
+        #endregion
+
+        #region 优惠券/码API
+
+        /// <summary>
+        /// 发放优惠券优惠码
+        /// </summary>
+        internal const string UMP_COUPON_TAKE = "youzan.ump.coupon.take";
+
+        #endregion
+
+        #region 商品API
+
+        /// <summary>
+        /// 获取出售中的商品列表，可获取微商城全部商品信息
+        /// </summary>
+        internal const string ITEMS_ONSALE_GET = "youzan.items.onsale.get";
 
         #endregion
 

@@ -8,8 +8,10 @@ using YouZan.Open.Api.Entry.Request.Salesman;
 using YouZan.Open.Api.Entry.Request.Scrm;
 using YouZan.Open.Api.Entry.Request.Users;
 using YouZan.Open.Api.Entry.Response;
+using YouZan.Open.Api.Entry.Response.Items;
 using YouZan.Open.Api.Entry.Response.Salesman;
 using YouZan.Open.Api.Entry.Response.Scrm;
+using YouZan.Open.Api.Entry.Response.Ump;
 using YouZan.Open.Auth;
 using YouZan.Open.Common.Constant;
 using YouZan.Open.Core;
@@ -129,7 +131,7 @@ namespace YouZan.Open.Api
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public YouZanResponse<bool> UsersAccountCheck(UsersAccountCheckRequest request)
+        public YouZanResponse<bool> UsersAccountCheck(YouZanRequest request)
         {
             return ApiInvoke<bool>(
                 request,
@@ -148,7 +150,7 @@ namespace YouZan.Open.Api
         /// </summary>
         /// <param name="request">请求参数</param>
         /// <returns></returns>
-        public YouZanResponse<ScrmCustomerCreateResponse> ScrmCustomerCreate(ScrmCustomerCreateRequest request)
+        public YouZanResponse<ScrmCustomerCreateResponse> ScrmCustomerCreate(YouZanRequest request)
         {
             return ApiInvoke<ScrmCustomerCreateResponse>(
                 request,
@@ -167,7 +169,7 @@ namespace YouZan.Open.Api
         /// </summary>
         /// <param name="request">请求参数</param>
         /// <returns></returns>
-        public YouZanResponse<SalesmanAccountAddResponse> SalesmanAccountAdd(SalesmanAccountAddRequest request)
+        public YouZanResponse<SalesmanAccountAddResponse> SalesmanAccountAdd(YouZanRequest request)
         {
             return ApiInvoke<SalesmanAccountAddResponse>(
                 request,
@@ -181,11 +183,78 @@ namespace YouZan.Open.Api
         /// </summary>
         /// <param name="request">请求参数</param>
         /// <returns></returns>
-        public YouZanResponse<SalesmanAccountUpdateResponse> SalesmanAccountUpdate(SalesmanAccountUpdateRequest request)
+        public YouZanResponse<SalesmanAccountUpdateResponse> SalesmanAccountUpdate(YouZanRequest request)
         {
             return ApiInvoke<SalesmanAccountUpdateResponse>(
                 request,
                 API.SALESMAN_ACCOUNT_UPDATE,
+                API.VERSION_3_0_0,
+                API.METHOD_POST);
+        }
+
+        /// <summary>
+        /// 清退分销员，客户必须是分销员才能清退
+        /// </summary>
+        /// <param name="request">请求参数</param>
+        /// <returns></returns>
+        public YouZanResponse<bool> SalesmanAccountFire(YouZanRequest request)
+        {
+            return ApiInvoke<bool>(request,
+                API.SALESMAN_ACCOUNT_FIRE,
+                API.VERSION_3_0_0,
+                API.METHOD_POST);
+        }
+
+        /// <summary>
+        /// 获取推广订单列表
+        /// </summary>
+        /// <param name="request">请求参数</param>
+        /// <returns></returns>
+        public YouZanResponse<SalesmanTradeGetResponse> SalesTradeGet(YouZanRequest request)
+        {
+            return ApiInvoke<SalesmanTradeGetResponse>(request,
+                API.SALESMAN_TRADES_GET,
+                API.VERSION_3_0_1,
+                API.METHOD_POST);
+        }
+
+        #endregion
+
+        #region 优惠券/码API请求
+
+        /// <summary>
+        /// 发放优惠券优惠码
+        /// 用户身份标识（fans_id ，mobile，open_user_id，weixin_openid）设置一个即可。
+        /// 用户身份标识说明： fans_id
+        /// 仅支持微信服务号粉丝id mobile
+        /// 发券用户手机号（手机号需注册有赞账号）
+        /// open_user_id 三方App用户ID（仅App开店支持）
+        /// weixin_openid 微信服务号粉丝用户的openid。
+        /// 查询优先级：首先通过mobile查找，其次weixin_openid和fans_id，最后open_user_id
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public YouZanResponse<UmpCouponTakeResponse> UmpCouponTake(YouZanRequest request)
+        {
+            return ApiInvoke<UmpCouponTakeResponse>(request,
+               API.UMP_COUPON_TAKE,
+               API.VERSION_3_0_0,
+               API.METHOD_POST);
+        }
+
+        #endregion
+
+        #region 商品API请求
+
+        /// <summary>
+        /// 获取出售中的商品列表，可获取微商城全部商品信息
+        /// </summary>
+        /// <param name="request">请求参数</param>
+        /// <returns></returns>
+        public YouZanResponse<ItemsOnsaleGetResponse> ItemsOnsaleGet(YouZanRequest request)
+        {
+            return ApiInvoke<ItemsOnsaleGetResponse>(request,
+                API.ITEMS_ONSALE_GET,
                 API.VERSION_3_0_0,
                 API.METHOD_POST);
         }
