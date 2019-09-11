@@ -103,7 +103,7 @@ namespace YouZan.Open.Api
         private YouZanResponse<T> ApiInvoke<T>(YouZanRequest request,
             string apiName,
             string apiVersion,
-            string method,
+            string method = API.METHOD_POST,
             IDictionary<string, string> headers = null,
             List<KeyValuePair<string, string>> files = null)
         {
@@ -136,8 +136,7 @@ namespace YouZan.Open.Api
             return ApiInvoke<bool>(
                 request,
                 API.USERS_ACCOUNT_CHECK,
-                API.VERSION_1_0_0,
-                API.METHOD_GET);
+                API.VERSION_1_0_0);
         }
 
         #endregion
@@ -155,9 +154,7 @@ namespace YouZan.Open.Api
             return ApiInvoke<ScrmCustomerCreateResponse>(
                 request,
                 API.SCRM_CUSTOMER_CREATE,
-                API.VERSION_3_0_0,
-                API.METHOD_POST
-                );
+                API.VERSION_3_0_0);
         }
 
         #endregion
@@ -174,8 +171,7 @@ namespace YouZan.Open.Api
             return ApiInvoke<SalesmanAccountAddResponse>(
                 request,
                 API.SALESMAN_ACCOUNT_ADD,
-                API.VERSION_3_0_1,
-                API.METHOD_POST);
+                API.VERSION_3_0_1);
         }
 
         /// <summary>
@@ -188,8 +184,7 @@ namespace YouZan.Open.Api
             return ApiInvoke<SalesmanAccountUpdateResponse>(
                 request,
                 API.SALESMAN_ACCOUNT_UPDATE,
-                API.VERSION_3_0_0,
-                API.METHOD_POST);
+                API.VERSION_3_0_0);
         }
 
         /// <summary>
@@ -201,8 +196,7 @@ namespace YouZan.Open.Api
         {
             return ApiInvoke<bool>(request,
                 API.SALESMAN_ACCOUNT_FIRE,
-                API.VERSION_3_0_0,
-                API.METHOD_POST);
+                API.VERSION_3_0_0);
         }
 
         /// <summary>
@@ -214,8 +208,7 @@ namespace YouZan.Open.Api
         {
             return ApiInvoke<SalesmanTradeGetResponse>(request,
                 API.SALESMAN_TRADES_GET,
-                API.VERSION_3_0_1,
-                API.METHOD_POST);
+                API.VERSION_3_0_1);
         }
 
         #endregion
@@ -238,8 +231,7 @@ namespace YouZan.Open.Api
         {
             return ApiInvoke<UmpCouponTakeResponse>(request,
                API.UMP_COUPON_TAKE,
-               API.VERSION_3_0_0,
-               API.METHOD_POST);
+               API.VERSION_3_0_0);
         }
 
         #endregion
@@ -255,8 +247,7 @@ namespace YouZan.Open.Api
         {
             return ApiInvoke<ItemsOnsaleGetResponse>(request,
                 API.ITEMS_ONSALE_GET,
-                API.VERSION_3_0_0,
-                API.METHOD_POST);
+                API.VERSION_3_0_0);
         }
 
         #endregion
