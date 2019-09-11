@@ -2,7 +2,7 @@
 基于有赞云开放平台SDK源码封装的有赞云SDK
 
 # 平台版本
-![.NET Core 2.x][core20Y]
+.NET Standard 2.0+
 
 ## 1.正常调用
 
