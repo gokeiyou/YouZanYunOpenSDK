@@ -3,3 +3,5 @@
 ################################################################################
 
 /.vs/YouzanYunOpenSDK
+/YouzanYunOpenSDK/bin/Debug/netstandard2.0
+/YouzanYunOpenSDK/obj
