@@ -1,5 +1,9 @@
 # YouzanYunOpenSDK
 基于有赞云开放平台SDK源码封装的有赞云SDK
+
+# 平台版本
+![.NET Core 2.x][core20Y]
+
 ## 1.正常调用
 
 ```c#
@@ -19,3 +23,7 @@
 ```c#
 YouZanResponse<T>
 ```
+
+### NuGet程序包安装
+	
+	PM> Install-Package YouzanYunOpenSDK -Version 1.0.6
