@@ -100,7 +100,7 @@ namespace YouZan.Open.Api
         /// <param name="headers">http请求头信息</param>
         /// <param name="files">文件列表（暂不支持）</param>
         /// <returns></returns>
-        private YouZanResponse<T> ApiInvoke<T>(YouZanRequest request,
+        protected YouZanResponse<T> ApiInvoke<T>(YouZanRequest request,
             string apiName,
             string apiVersion,
             string method = API.METHOD_POST,

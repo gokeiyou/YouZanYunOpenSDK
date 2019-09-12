@@ -4,7 +4,7 @@ using System.Text;
 
 namespace YouZan.Open.Api.Constant
 {
-    internal class API
+    public class API
     {
 
         /// <summary>
@@ -17,11 +17,11 @@ namespace YouZan.Open.Api.Constant
         /// <summary>
         /// GET
         /// </summary>
-        internal const string METHOD_GET = "get";
+        public const string METHOD_GET = "get";
         /// <summary>
         /// POST
         /// </summary>
-        internal const string METHOD_POST = "post";
+        public const string METHOD_POST = "post";
 
         #endregion
 
@@ -30,17 +30,17 @@ namespace YouZan.Open.Api.Constant
         /// <summary>
         /// 版本号：1.0.0
         /// </summary>
-        internal const string VERSION_1_0_0 = "1.0.0";
+        public const string VERSION_1_0_0 = "1.0.0";
 
         /// <summary>
         /// 版本号：3.0.0
         /// </summary>
-        internal const string VERSION_3_0_0 = "3.0.0";
+        public const string VERSION_3_0_0 = "3.0.0";
 
         /// <summary>
         /// 版本号：3.0.1
         /// </summary>
-        internal const string VERSION_3_0_1 = "3.0.1";
+        public const string VERSION_3_0_1 = "3.0.1";
 
         #endregion
 

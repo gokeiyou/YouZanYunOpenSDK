@@ -54,14 +54,14 @@ namespace YouZan.Open.Api.Entry.Response.Items
         /// 商品编码，商家可以自定义参数，支持英文和数据组合
         /// </summary>
         [JsonProperty("item_no")]
-        public string item_no { get; set; }
+        public string ItemNo { get; set; }
 
         /// <summary>
         /// 商品价格
         /// 单位：分
         /// </summary>
         [JsonProperty("price")]
-        public long price { get; set; }
+        public long Price { get; set; }
 
         /// <summary>
         /// 最后更新时间
