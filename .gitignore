@@ -8,3 +8,4 @@
 /YouzanYunOpenSDK/nuget.exe
 /YouzanYunOpenSDK/YouzanYunOpenSDK.nuspec
 *.nupkg
+/YouzanYunOpenSDK/nuget.bat

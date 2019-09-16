@@ -3,6 +3,14 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>YouZan.Open</RootNamespace>
+    <AssemblyName>YouZanYunOpenSDK</AssemblyName>
+    <Version>1.0.1</Version>
+    <Authors>Jimmy Wu</Authors>
+    <Company>Jimmy Wu</Company>
+    <Product>YouZanYunOpenSDK</Product>
+    <Description>基于有赞云官方sdk修改的API库，封装了API列表以及请求实体以及响应实体，API列表、请求实体以及响应实体都可扩展</Description>
+    <Copyright>wjy307@qq.com</Copyright>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
 
   <ItemGroup>
