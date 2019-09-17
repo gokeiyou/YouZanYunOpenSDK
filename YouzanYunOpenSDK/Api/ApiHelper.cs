@@ -37,7 +37,7 @@ namespace YouZan.Open.Api
         /// </summary>
         private string GrantId { get; set; }
 
-        IYouZanClient yzClient = null;
+        IYouZanClient _YouZanClient = null;
         TokenData oAuthToken = null;
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace YouZan.Open.Api
             this.ClientSecret = clientSecret;
             this.GrantId = grantId;
 
-            yzClient = new DefaultYZClient();
+            _YouZanClient = new DefaultYZClient();
 
             Silent silent = new Silent(this.ClientId, this.ClientSecret, this.GrantId);
             oAuthToken = silent.GetToken();
@@ -118,7 +118,7 @@ namespace YouZan.Open.Api
 
             generalApi.SetAPIParams(apiParams);
 
-            string result = yzClient.Invoke(generalApi, new Token(oAuthToken.Token), headers, files);
+            string result = _YouZanClient.Invoke(generalApi, new Token(oAuthToken.Token), headers, files);
 
             return JsonConvert.DeserializeObject<YouZanResponse<T>>(result);
         }
