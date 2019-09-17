@@ -78,14 +78,14 @@
         }
       }
     },
-    "E:\\Work\\MyWork\\Person\\YouzanYunOpenSDK\\YouzanYunOpenSDK\\YouzanYunOpenSDK\\YouzanYunOpenSDK.csproj": {
+    "E:\\Work\\MyWork\\Person\\YouzanYunOpenSDK\\YouzanYunOpenSDK\\YouZanYunOpenSDK\\YouZanYunOpenSDK.csproj": {
       "version": "1.0.1",
       "restore": {
-        "projectUniqueName": "E:\\Work\\MyWork\\Person\\YouzanYunOpenSDK\\YouzanYunOpenSDK\\YouzanYunOpenSDK\\YouzanYunOpenSDK.csproj",
+        "projectUniqueName": "E:\\Work\\MyWork\\Person\\YouzanYunOpenSDK\\YouzanYunOpenSDK\\YouZanYunOpenSDK\\YouZanYunOpenSDK.csproj",
         "projectName": "YouZanYunOpenSDK",
-        "projectPath": "E:\\Work\\MyWork\\Person\\YouzanYunOpenSDK\\YouzanYunOpenSDK\\YouzanYunOpenSDK\\YouzanYunOpenSDK.csproj",
+        "projectPath": "E:\\Work\\MyWork\\Person\\YouzanYunOpenSDK\\YouzanYunOpenSDK\\YouZanYunOpenSDK\\YouZanYunOpenSDK.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "E:\\Work\\MyWork\\Person\\YouzanYunOpenSDK\\YouzanYunOpenSDK\\YouzanYunOpenSDK\\obj\\",
+        "outputPath": "E:\\Work\\MyWork\\Person\\YouzanYunOpenSDK\\YouzanYunOpenSDK\\YouZanYunOpenSDK\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

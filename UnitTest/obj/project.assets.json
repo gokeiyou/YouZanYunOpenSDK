@@ -5550,8 +5550,8 @@
     },
     "YouZanYunOpenSDK/1.0.1": {
       "type": "project",
-      "path": "../YouzanYunOpenSDK/YouzanYunOpenSDK.csproj",
-      "msbuildProject": "../YouzanYunOpenSDK/YouzanYunOpenSDK.csproj"
+      "path": "../YouZanYunOpenSDK/YouZanYunOpenSDK.csproj",
+      "msbuildProject": "../YouZanYunOpenSDK/YouZanYunOpenSDK.csproj"
     }
   },
   "projectFileDependencyGroups": {
