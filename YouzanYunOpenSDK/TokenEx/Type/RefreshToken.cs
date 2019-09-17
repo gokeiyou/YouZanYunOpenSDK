@@ -59,7 +59,7 @@ namespace YouZan.Open.TokenEx.Type
             // Token添加缓存
             if (cache.Contains(this._ClientId))
                 cache.Remove(this._ClientId);
-            cache.Add(this._ClientId, tokenData, tokenData.Expires / 60);
+            cache.Add(this._ClientId, tokenData, tokenData.ExpiresTime);
 
             return tokenData;
         }

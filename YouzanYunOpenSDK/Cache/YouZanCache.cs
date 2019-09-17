@@ -49,11 +49,17 @@ namespace YouZan.Open.Cache
         /// <param name="key"></param>
         /// <param name="data"></param>
         /// <param name="cacheTime">默认30分钟  单位分钟</param>
-        public void Add(string key, object data, int cacheTime = 30)
+        public void Add(string key, object data, int cacheTime = 9900)
         {
             if (_CustomerCacheDictionary.ContainsKey(key)) return;
-                //throw new Exception("相同的key");
-            _CustomerCacheDictionary.Add(key, new KeyValuePair<DateTime, object>(DateTime.Now.AddMinutes(cacheTime), data));
+            //throw new Exception("相同的key");
+            //_CustomerCacheDictionary.Add(key, new KeyValuePair<DateTime, object>(DateTime.Now.AddMinutes(cacheTime), data));
+            this.Add(key, data, DateTime.Now.AddMinutes(cacheTime));
+        }
+
+        public void Add(string key, object data, DateTime expires)
+        {
+            _CustomerCacheDictionary.Add(key, new KeyValuePair<DateTime, object>(expires, data));
         }
 
         /// <summary>

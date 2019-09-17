@@ -36,7 +36,7 @@ namespace YouZan.Open.Api.Entry.Response.Items
         /// 总库存
         /// </summary>
         [JsonProperty("quantity")]
-        public long quantity { get; set; }
+        public long Quantity { get; set; }
 
         /// <summary>
         /// 商品图片
@@ -248,13 +248,13 @@ namespace YouZan.Open.Api.Entry.Response.Items
         /// 3—体积计费
         /// </summary>
         [JsonProperty("delivery_template_valuation_type")]
-        public int DeliveryTemplateValuationType { get; set; }
+        public int? DeliveryTemplateValuationType { get; set; }
 
         /// <summary>
         /// 运费模板Id，可调用youzan.logistics.template.search接口获取运费模版详情
         /// </summary>
         [JsonProperty("delivery_template_id")]
-        public long DeliveryTemplateId { get; set; }
+        public long? DeliveryTemplateId { get; set; }
 
     }
 

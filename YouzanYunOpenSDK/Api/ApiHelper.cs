@@ -82,7 +82,7 @@ namespace YouZan.Open.Api
                 }
                 else
                 {
-                    dict.Add(item.GetApiField(), item.GetValue(type));
+                    dict.Add(item.GetApiField(), item.GetValue(t));
                 }
             }
             return dict;

@@ -24,7 +24,7 @@ namespace YouZan.Open.TokenEx
         public class TokenData
         {
             [JsonProperty("expires")]
-            public int Expires { get; set; }
+            public long Expires { get; set; }
 
             [JsonProperty("access_token")]
             public string Token { get; set; }
@@ -36,6 +36,15 @@ namespace YouZan.Open.TokenEx
             public string RefRefreshToken { get; set; }
 
             public string Message { get; set; }
+
+            public DateTime ExpiresTime
+            {
+                get {
+                    DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
+                    TimeSpan ts = new TimeSpan(this.Expires * 10000);
+                    return startTime.Add(ts);
+                }
+            }
         }
     }
 
