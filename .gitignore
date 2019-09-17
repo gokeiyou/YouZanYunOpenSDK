@@ -9,3 +9,5 @@
 /YouzanYunOpenSDK/YouzanYunOpenSDK.nuspec
 *.nupkg
 /YouzanYunOpenSDK/nuget.bat
+/UnitTest/obj
+/UnitTest/bin/Debug/netcoreapp2.2
