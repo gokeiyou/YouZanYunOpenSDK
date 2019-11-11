@@ -5,7 +5,7 @@ using YouZan.Open.Common.Extensions.Attributes;
 
 namespace YouZan.Open.Api.Entry.Request.Salesman
 {
-    public class SalesmanTradeGetRequest : YouZanRequest
+    public class SalesmanTradesGetRequest : YouZanRequest
     {
 
         /// <summary>

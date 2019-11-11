@@ -162,6 +162,19 @@ namespace YouZan.Open.Api
         #region 分销员API请求
 
         /// <summary>
+        /// 获取分销员账户信息，不支持返回分销员等级
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public YouZanResponse<SalesmanAccountGetResponse> SalesmanAccountGet(YouZanRequest request)
+        {
+            return ApiInvoke<SalesmanAccountGetResponse>(
+                request,
+                API.SALESMAN_ACCOUNT_GET,
+                API.VERSION_3_0_0);
+        }
+
+        /// <summary>
         /// 设置用户为分销员
         /// </summary>
         /// <param name="request">请求参数</param>
@@ -204,11 +217,47 @@ namespace YouZan.Open.Api
         /// </summary>
         /// <param name="request">请求参数</param>
         /// <returns></returns>
-        public YouZanResponse<SalesmanTradeGetResponse> SalesTradeGet(YouZanRequest request)
+        public YouZanResponse<SalesmanTradesGetResponse> SalesmanTradesGet(YouZanRequest request)
         {
-            return ApiInvoke<SalesmanTradeGetResponse>(request,
+            return ApiInvoke<SalesmanTradesGetResponse>(request,
                 API.SALESMAN_TRADES_GET,
                 API.VERSION_3_0_1);
+        }
+
+        /// <summary>
+        /// 获取商品推广链接
+        /// </summary>
+        /// <param name="request">请求参数</param>
+        /// <returns></returns>
+        public YouZanResponse<SalesmanItemShareGetResponse> SalesmanItemShareGet(YouZanRequest request)
+        {
+            return ApiInvoke<SalesmanItemShareGetResponse>(request,
+                API.SALESMAN_ITEM_SHARE_GET,
+                API.VERSION_3_0_0);
+        }
+
+        /// <summary>
+        /// 获取分销员业绩统计
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public YouZanResponse<SalesmanAccountScoreSearchResponse> SalesmanAccountScoreSearch(YouZanRequest request)
+        {
+            return ApiInvoke<SalesmanAccountScoreSearchResponse>(request,
+                API.SALESMAN_ACCOUNT_SCORE_SEARCH,
+                API.VERSION_3_0_0);
+        }
+
+        /// <summary>
+        /// 批量获取商品提成比例信息
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public YouZanResponse<SalesmanItemsGetResponse> SalesmanItemsGet(YouZanRequest request)
+        {
+            return ApiInvoke<SalesmanItemsGetResponse>(request,
+                API.SALESMAN_ITEMS_GET,
+                API.VERSION_3_0_0);
         }
 
         #endregion

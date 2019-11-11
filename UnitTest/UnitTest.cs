@@ -11,9 +11,15 @@ namespace UnitTest
     [TestClass]
     public class UnitTest
     {
-        private static string clientId = "client_id";
-        private static string clientSecret = "client_secret";
-        private static string grantId = "grant_id";
+        //private static string clientId = "client_id";
+        //private static string clientSecret = "client_secret";
+        //private static string grantId = "grant_id";
+        //private static string clientId = "5a0785eda8c9d7ca05";
+        //private static string clientSecret = "f2e9916e21b4c2cd8e349868b31a3ee6";
+        //private static string grantId = "43389635";
+        private static string clientId = "f6f29421eefd042be5";
+        private static string clientSecret = "b3af16efee2058c28bb982f6d0c8a8c4";
+        private static string grantId = "43704621";
         private static ApiHelper api = null;
 
         static UnitTest()
@@ -47,10 +53,11 @@ namespace UnitTest
             Debug.WriteLine(JsonConvert.SerializeObject(response));
         }
 
+        [TestMethod]
         public void TestSalesmanAccountAdd()
         {
             var request = new SalesmanAccountAddRequest();
-            request.Mobile = "13333333333";
+            request.Mobile = "13588028599";
             request.FansType = 0;
             request.FansId = 0;
             var response = api.SalesmanAccountAdd(request);

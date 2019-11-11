@@ -5,7 +5,7 @@ using System.Text;
 
 namespace YouZan.Open.Api.Entry.Response.Salesman
 {
-    public class SalesmanTradeGetResponse
+    public class SalesmanTradesGetResponse
     {
         /// <summary>
         /// 订单列表

@@ -68,6 +68,10 @@ namespace YouZan.Open.Api.Constant
         #region 分销员API
 
         /// <summary>
+        /// 获取分销员账户信息，不支持返回分销员等级
+        /// </summary>
+        internal const string SALESMAN_ACCOUNT_GET = "youzan.salesman.account.get";
+        /// <summary>
         /// 设置用户成为分销员
         /// </summary>
         internal const string SALESMAN_ACCOUNT_ADD = "youzan.salesman.account.add";
@@ -83,6 +87,18 @@ namespace YouZan.Open.Api.Constant
         /// 获取推广订单列表
         /// </summary>
         internal const string SALESMAN_TRADES_GET = "youzan.salesman.trades.get";
+        /// <summary>
+        /// 获取商品推广链接
+        /// </summary>
+        internal const string SALESMAN_ITEM_SHARE_GET = "youzan.salesman.item.share.get";
+        /// <summary>
+        /// 获取分销员业绩统计
+        /// </summary>
+        internal const string SALESMAN_ACCOUNT_SCORE_SEARCH = "youzan.salesman.account.score.search";
+        /// <summary>
+        /// 批量获取商品提成比例信息
+        /// </summary>
+        internal const string SALESMAN_ITEMS_GET = "youzan.salesman.items.get";
 
         #endregion
 
