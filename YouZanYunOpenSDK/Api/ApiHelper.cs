@@ -264,6 +264,13 @@ namespace YouZan.Open.Api
 
         #region 优惠券/码API请求
 
+        public YouZanResponse<UmpCouponSearchResponse> UmpCouponSearch(YouZanRequest request)
+        {
+            return ApiInvoke<UmpCouponSearchResponse>(request,
+               API.UMP_COUPON_SEARCH,
+               API.VERSION_3_0_0);
+        }
+
         /// <summary>
         /// 发放优惠券优惠码
         /// 用户身份标识（fans_id ，mobile，open_user_id，weixin_openid）设置一个即可。

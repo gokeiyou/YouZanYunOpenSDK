@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 using YouZan.Open.Api;
 using YouZan.Open.Auth;
 using YouZan.Open.Common.Constant;
 using YouZan.Open.Http;
+using YouZan.Open.Log;
 using YouZan.Open.TokenEx;
 
 namespace YouZan.Open.Core
@@ -42,6 +45,21 @@ namespace YouZan.Open.Core
                     IDictionary<string, object> requestParams = apiParams.ToParams();
                     IDictionary<string, string> header = api.GetHeaders();
                     string result = defaultHttpClient.Send(url, requestParams, header, files);
+                    if (YouZanLogConfig.IsDBLog)
+                    {
+                        YouZanLogger log = new YouZanLogger
+                        {
+                            ApiName = api.GetName(),
+                            ApiVersion = api.GetVersion(),
+                            ApiMethod = api.GetHttpMethod(),
+                            AuthType = oAuth.ToString(),
+                            RequestUrl = url,
+                            PostData = JsonConvert.SerializeObject(requestParams),
+                            Header = JsonConvert.SerializeObject(header),
+                            ResponseData = result
+                        };
+                        Task.Run(log.Save);
+                    }
                     return result;
                 }
                 return null;

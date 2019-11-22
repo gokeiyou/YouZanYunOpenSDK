@@ -105,6 +105,11 @@ namespace YouZan.Open.Api.Constant
         #region 优惠券/码API
 
         /// <summary>
+        /// （分页查询）查询优惠券/码列表
+        /// </summary>
+        internal const string UMP_COUPON_SEARCH = "youzan.ump.coupon.search";
+
+        /// <summary>
         /// 发放优惠券优惠码
         /// </summary>
         internal const string UMP_COUPON_TAKE = "youzan.ump.coupon.take";
