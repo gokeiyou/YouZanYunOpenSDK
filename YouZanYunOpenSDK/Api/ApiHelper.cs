@@ -12,6 +12,7 @@ using YouZan.Open.Api.Entry.Response.Items;
 using YouZan.Open.Api.Entry.Response.Salesman;
 using YouZan.Open.Api.Entry.Response.Scrm;
 using YouZan.Open.Api.Entry.Response.Ump;
+using YouZan.Open.Api.Entry.Response.Users;
 using YouZan.Open.Auth;
 using YouZan.Open.Common.Constant;
 using YouZan.Open.Core;
@@ -137,6 +138,19 @@ namespace YouZan.Open.Api
                 request,
                 API.USERS_ACCOUNT_CHECK,
                 API.VERSION_1_0_0);
+        }
+
+        /// <summary>
+        /// 使用手机号获取用户微信openId
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public YouZanResponse<UserWeiXinOpenIdGetResponse> UserWeiXinOpenIdGet(YouZanRequest request)
+        {
+            return ApiInvoke<UserWeiXinOpenIdGetResponse>(
+                request,
+                API.USER_WEIXIN_OPENID_GET,
+                API.VERSION_3_0_0);
         }
 
         #endregion

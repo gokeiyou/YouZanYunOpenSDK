@@ -30,7 +30,7 @@ namespace YouZan.Open.Log
                 }
                 catch (Exception ex)
                 {
-                    throw;
+                    return default;
                 }
                 finally
                 {
@@ -67,7 +67,7 @@ namespace YouZan.Open.Log
                         tran.Rollback();
                         tran.Dispose();
                     }
-                    throw;
+                    return default;
                 }
                 finally
                 {

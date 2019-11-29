@@ -4,7 +4,9 @@ using System.Diagnostics;
 using YouZan.Open.Api;
 using YouZan.Open.Api.Entry.Request;
 using YouZan.Open.Api.Entry.Request.Salesman;
+using YouZan.Open.Api.Entry.Request.Ump;
 using YouZan.Open.Api.Entry.Request.Users;
+using YouZan.Open.Log;
 
 namespace UnitTest
 {
@@ -56,6 +58,34 @@ namespace UnitTest
             request.FansId = 0;
             var response = api.SalesmanAccountAdd(request);
             Debug.WriteLine(JsonConvert.SerializeObject(response));
+        }
+
+        [TestMethod]
+        public void TestUmpCouponSearch()
+        {
+            YouZanLogConfig.IsDBLog = false;
+            var request = new UmpCouponSearchRequest();
+            request.PageNo = 1;
+            request.PageSize = 50;
+            var respponse = api.UmpCouponSearch(request);
+        }
+        [TestMethod]
+        public void TestUmpCouponTake()
+        {
+            YouZanLogConfig.IsDBLog = false;
+            var request = new UmpCouponTakeRequest();
+            request.Mobile = 15068135451;
+            request.CouponGroupId = 6264402;
+            var respponse = api.UmpCouponTake(request);
+        }
+
+        [TestMethod]
+        public void TestUserWeiXinOpenIdGet()
+        {
+            var request = new UserWeiXinOpenIdGetRequest();
+            request.Mobile = "15068135451";
+            request.WechatType = 2;
+            var response = api.UserWeiXinOpenIdGet(request);
         }
     }
 }

@@ -1,0 +1,1650 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>YouZanYunOpenSDK</name>
+    </assembly>
+    <members>
+        <member name="P:YouZan.Open.Api.ApiHelper.ClientId">
+            <summary>
+            客户端ID
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.ApiHelper.ClientSecret">
+            <summary>
+            客户端密码
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.ApiHelper.GrantId">
+            <summary>
+            店铺ID
+            </summary>
+        </member>
+        <member name="M:YouZan.Open.Api.ApiHelper.#ctor(System.String,System.String)">
+            <summary>
+            初始化API工具类
+            </summary>
+            <param name="clientId"></param>
+            <param name="clientSecret"></param>
+        </member>
+        <member name="M:YouZan.Open.Api.ApiHelper.GenericParameter``1(``0)">
+            <summary>
+            生成请求参数
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:YouZan.Open.Api.ApiHelper.ApiInvoke``1(YouZan.Open.Api.Entry.Request.YouZanRequest,System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <summary>
+            执行API请求
+            </summary>
+            <typeparam name="TIn">请求参数</typeparam>
+            <typeparam name="T">响应参数</typeparam>
+            <param name="request">请求参数值</param>
+            <param name="apiName">api名称</param>
+            <param name="apiVersion">api版本</param>
+            <param name="method">api版本</param>
+            <param name="headers">http请求头信息</param>
+            <param name="files">文件列表（暂不支持）</param>
+            <returns></returns>
+        </member>
+        <member name="M:YouZan.Open.Api.ApiHelper.UsersAccountCheck(YouZan.Open.Api.Entry.Request.YouZanRequest)">
+            <summary>
+            查询是否存在有赞帐号
+            传入参数参考{"account_type":"Mobile", "account_id":"1385716120"}
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:YouZan.Open.Api.ApiHelper.UserWeiXinOpenIdGet(YouZan.Open.Api.Entry.Request.YouZanRequest)">
+            <summary>
+            使用手机号获取用户微信openId
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:YouZan.Open.Api.ApiHelper.ScrmCustomerCreate(YouZan.Open.Api.Entry.Request.YouZanRequest)">
+            <summary>
+            创建客户
+            手机号和{"name":"丽丽"}必填
+            </summary>
+            <param name="request">请求参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:YouZan.Open.Api.ApiHelper.SalesmanAccountGet(YouZan.Open.Api.Entry.Request.YouZanRequest)">
+            <summary>
+            获取分销员账户信息，不支持返回分销员等级
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:YouZan.Open.Api.ApiHelper.SalesmanAccountAdd(YouZan.Open.Api.Entry.Request.YouZanRequest)">
+            <summary>
+            设置用户为分销员
+            </summary>
+            <param name="request">请求参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:YouZan.Open.Api.ApiHelper.SalesmanAccountUpdate(YouZan.Open.Api.Entry.Request.YouZanRequest)">
+            <summary>
+            更新分销员信息,客户已经是分销员才可以更新
+            </summary>
+            <param name="request">请求参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:YouZan.Open.Api.ApiHelper.SalesmanAccountFire(YouZan.Open.Api.Entry.Request.YouZanRequest)">
+            <summary>
+            清退分销员，客户必须是分销员才能清退
+            </summary>
+            <param name="request">请求参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:YouZan.Open.Api.ApiHelper.SalesmanTradesGet(YouZan.Open.Api.Entry.Request.YouZanRequest)">
+            <summary>
+            获取推广订单列表
+            </summary>
+            <param name="request">请求参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:YouZan.Open.Api.ApiHelper.SalesmanItemShareGet(YouZan.Open.Api.Entry.Request.YouZanRequest)">
+            <summary>
+            获取商品推广链接
+            </summary>
+            <param name="request">请求参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:YouZan.Open.Api.ApiHelper.SalesmanAccountScoreSearch(YouZan.Open.Api.Entry.Request.YouZanRequest)">
+            <summary>
+            获取分销员业绩统计
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:YouZan.Open.Api.ApiHelper.SalesmanItemsGet(YouZan.Open.Api.Entry.Request.YouZanRequest)">
+            <summary>
+            批量获取商品提成比例信息
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:YouZan.Open.Api.ApiHelper.UmpCouponTake(YouZan.Open.Api.Entry.Request.YouZanRequest)">
+            <summary>
+            发放优惠券优惠码
+            用户身份标识（fans_id ，mobile，open_user_id，weixin_openid）设置一个即可。
+            用户身份标识说明： fans_id
+            仅支持微信服务号粉丝id mobile
+            发券用户手机号（手机号需注册有赞账号）
+            open_user_id 三方App用户ID（仅App开店支持）
+            weixin_openid 微信服务号粉丝用户的openid。
+            查询优先级：首先通过mobile查找，其次weixin_openid和fans_id，最后open_user_id
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:YouZan.Open.Api.ApiHelper.ItemsOnsaleGet(YouZan.Open.Api.Entry.Request.YouZanRequest)">
+            <summary>
+            获取出售中的商品列表，可获取微商城全部商品信息
+            </summary>
+            <param name="request">请求参数</param>
+            <returns></returns>
+        </member>
+        <member name="F:YouZan.Open.Api.Constant.API.GATEWAY">
+            <summary>
+            API请求域名
+            </summary>
+        </member>
+        <member name="F:YouZan.Open.Api.Constant.API.METHOD_GET">
+            <summary>
+            GET
+            </summary>
+        </member>
+        <member name="F:YouZan.Open.Api.Constant.API.METHOD_POST">
+            <summary>
+            POST
+            </summary>
+        </member>
+        <member name="F:YouZan.Open.Api.Constant.API.VERSION_1_0_0">
+            <summary>
+            版本号：1.0.0
+            </summary>
+        </member>
+        <member name="F:YouZan.Open.Api.Constant.API.VERSION_3_0_0">
+            <summary>
+            版本号：3.0.0
+            </summary>
+        </member>
+        <member name="F:YouZan.Open.Api.Constant.API.VERSION_3_0_1">
+            <summary>
+            版本号：3.0.1
+            </summary>
+        </member>
+        <member name="F:YouZan.Open.Api.Constant.API.USERS_ACCOUNT_CHECK">
+            <summary>
+            查询是否存在有赞帐号
+            </summary>
+        </member>
+        <member name="F:YouZan.Open.Api.Constant.API.USER_WEIXIN_OPENID_GET">
+            <summary>
+            使用手机号获取用户微信openId
+            </summary>
+        </member>
+        <member name="F:YouZan.Open.Api.Constant.API.SCRM_CUSTOMER_CREATE">
+            <summary>
+            创建客户
+            手机号和{"name":"丽丽"}必填
+            </summary>
+        </member>
+        <member name="F:YouZan.Open.Api.Constant.API.SALESMAN_ACCOUNT_GET">
+            <summary>
+            获取分销员账户信息，不支持返回分销员等级
+            </summary>
+        </member>
+        <member name="F:YouZan.Open.Api.Constant.API.SALESMAN_ACCOUNT_ADD">
+            <summary>
+            设置用户成为分销员
+            </summary>
+        </member>
+        <member name="F:YouZan.Open.Api.Constant.API.SALESMAN_ACCOUNT_UPDATE">
+            <summary>
+            更新分销员信息,客户已经是分销员才可以更新
+            </summary>
+        </member>
+        <member name="F:YouZan.Open.Api.Constant.API.SALESMAN_ACCOUNT_FIRE">
+            <summary>
+            清退分销员，客户必须是分销员才能清退
+            </summary>
+        </member>
+        <member name="F:YouZan.Open.Api.Constant.API.SALESMAN_TRADES_GET">
+            <summary>
+            获取推广订单列表
+            </summary>
+        </member>
+        <member name="F:YouZan.Open.Api.Constant.API.SALESMAN_ITEM_SHARE_GET">
+            <summary>
+            获取商品推广链接
+            </summary>
+        </member>
+        <member name="F:YouZan.Open.Api.Constant.API.SALESMAN_ACCOUNT_SCORE_SEARCH">
+            <summary>
+            获取分销员业绩统计
+            </summary>
+        </member>
+        <member name="F:YouZan.Open.Api.Constant.API.SALESMAN_ITEMS_GET">
+            <summary>
+            批量获取商品提成比例信息
+            </summary>
+        </member>
+        <member name="F:YouZan.Open.Api.Constant.API.UMP_COUPON_SEARCH">
+            <summary>
+            （分页查询）查询优惠券/码列表
+            </summary>
+        </member>
+        <member name="F:YouZan.Open.Api.Constant.API.UMP_COUPON_TAKE">
+            <summary>
+            发放优惠券优惠码
+            </summary>
+        </member>
+        <member name="F:YouZan.Open.Api.Constant.API.ITEMS_ONSALE_GET">
+            <summary>
+            获取出售中的商品列表，可获取微商城全部商品信息
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Items.ItemsOnsaleGetRequest.Query">
+            <summary>
+            搜索字段，搜索商品名称
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Items.ItemsOnsaleGetRequest.TagId">
+            <summary>
+            商品分组Id，通过youzan.itemcategories.tags.get接口获取商品Id进行筛选
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Items.ItemsOnsaleGetRequest.OrderBy">
+            <summary>
+            排序方式，格式为column:asc/desc
+            目前排序字段：
+            1—创建时间：created_time
+            2—更新时间：update_time
+            3—价格：price
+            4—销量：sold_num
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Items.ItemsOnsaleGetRequest.PageNo">
+            <summary>
+            页码，不传或为0时默认设置为1
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Items.ItemsOnsaleGetRequest.UpdateTimeStart">
+            <summary>
+            更新时间起始，Unix时间戳请求 时间单位:ms 
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Items.ItemsOnsaleGetRequest.PageSize">
+            <summary>
+            每页条数，最大300个，不传或为0时默认设置为20
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Items.ItemsOnsaleGetRequest.UpdateTimeEnd">
+            <summary>
+            更新时间止，Unix时间戳请求 时间单位:ms
+            </summary>
+        </member>
+        <member name="T:YouZan.Open.Api.Entry.Request.Salesman.SalesmanAccountAddRequest">
+            <summary>
+            设置用户成为分销员API请求参数实体
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanAccountAddRequest.Level">
+            <summary>
+            需要设置的等级
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanAccountAddRequest.GroupId">
+            <summary>
+            所属分组id
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanAccountAddRequest.Mobile">
+            <summary>
+            分销员手机号
+            mobile或fans_id选其一，另者置为0
+            当fans_id和mobile都传时，优先按mobile查询
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanAccountAddRequest.FansType">
+            <summary>
+            粉丝类型
+            自有粉丝: fans_type = 1
+            当传mobile时，和fans_id一样传0）
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanAccountAddRequest.FromType">
+            <summary>
+            上级分销员的手机号
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanAccountAddRequest.FansId">
+            <summary>
+            粉丝id
+            mobile或fans_id选其一，另者置为0
+            当fans_id和mobile都传时，优先按mobile查询
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanAccountFireRequest.TargetMobile">
+            <summary>
+            转移邀请关系到目标分销员手机号
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanAccountFireRequest.mobile">
+            <summary>
+            分销员手机号当fans和mobile都传时,优先按mobile查询
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanAccountFireRequest.fans_type">
+            <summary>
+            粉丝类型（自有粉丝: fans_type = 1；当传mobile时，和fans_id一样传0)
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanAccountFireRequest.fans_id">
+            <summary>
+            粉丝id（mobile或fans_id选其一，另者置为0，当fans_id和mobile都传时，优先按mobile查询）粉丝id
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanAccountGetRequest.Mobile">
+            <summary>
+            分销员手机号
+            mobile或fans_id选其一，另者置为0
+            当fans_id和mobile都传时，优先按mobile查询
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanAccountGetRequest.FansType">
+            <summary>
+            粉丝类型
+            自有粉丝: fans_type = 1
+            当传mobile时，和fans_id一样传0）
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanAccountGetRequest.FansId">
+            <summary>
+            粉丝id
+            mobile或fans_id选其一，另者置为0
+            当fans_id和mobile都传时，优先按mobile查询
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanAccountScoreSearchRequest.StartTime">
+            <summary>
+            查询开始时间（时间戳，单位秒）
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanAccountScoreSearchRequest.EndTime">
+            <summary>
+            查询结束时间（时间戳，单位秒）
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanAccountScoreSearchRequest.Mobile">
+            <summary>
+            手机号（mobile或fans_id选其一，另者置为0，当fans_id和mobile都传时，优先按mobile查询）
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanAccountScoreSearchRequest.FansType">
+            <summary>
+            粉丝类型（自有粉丝: fans_type = 1；当传mobile时，和fans_id一样传0）
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanAccountScoreSearchRequest.FansId">
+            <summary>
+            粉丝id（mobile或fans_id选其一，另者置为0，当fans_id和mobile都传时，优先按mobile查询）
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanAccountScoreSearchRequest.PageNo">
+            <summary>
+            页码
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanAccountScoreSearchRequest.PageSize">
+            <summary>
+            每页记录数（最大100）
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanAccountUpdateRequest.Level">
+            <summary>
+            需要设置的等级
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanAccountUpdateRequest.GroupId">
+            <summary>
+            所属分组id
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanAccountUpdateRequest.Mobile">
+            <summary>
+            分销员手机号
+            mobile或fans_id选其一，另者置为0
+            当fans_id和mobile都传时，优先按mobile查询
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanAccountUpdateRequest.FansType">
+            <summary>
+            粉丝类型
+            自有粉丝: fans_type = 1
+            当传mobile时，和fans_id一样传0）
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanAccountUpdateRequest.FromType">
+            <summary>
+            上级分销员的手机号
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanAccountUpdateRequest.FansId">
+            <summary>
+            粉丝id
+            mobile或fans_id选其一，另者置为0
+            当fans_id和mobile都传时，优先按mobile查询
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanItemsGetRequest.ItemIds">
+            <summary>
+            商品id列表，逗号分隔
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanItemShareGetRequest.ItemAlias">
+            <summary>
+            商品别名
+            item_id或item_alias选其一，另者置为0，都填以item_alias为准
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanItemShareGetRequest.ItemId">
+            <summary>
+            商品id
+            item_id或item_alias选其一，另者置为0，都填以item_alias为准
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanItemShareGetRequest.Mobile">
+            <summary>
+            手机号
+            mobile或fans_id选其一，另者置为0，当fans_id和mobile都传时，优先按mobile查询
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanItemShareGetRequest.FansType">
+            <summary>
+            粉丝类型
+            自有粉丝: fans_type = 1
+            当传mobile时，和fans_id一样传0
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanItemShareGetRequest.FansId">
+            <summary>
+            粉丝id
+            mobile或fans_id选其一，另者置为0，当fans_id和mobile都传时，优先按mobile查询
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanTradesGetRequest.OrderNo">
+            <summary>
+            订单号
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanTradesGetRequest.StartTime">
+            <summary>
+            查询开始时间（时间戳，单位秒）
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanTradesGetRequest.EndTime">
+            <summary>
+            查询结束时间（时间戳，单位秒）
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanTradesGetRequest.Mobile">
+            <summary>
+            手机号（mobile或fans_id选其一，另者置为0，当fans_id和mobile都传时，优先按mobile查询）
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanTradesGetRequest.FansType">
+            <summary>
+            粉丝类型（自有粉丝: fans_type = 1；当传mobile时，和fans_id一样传0）
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanTradesGetRequest.FansId">
+            <summary>
+            粉丝id（mobile或fans_id选其一，另者置为0，当fans_id和mobile都传时，优先按mobile查询）
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanTradesGetRequest.PageNo">
+            <summary>
+            页码
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Salesman.SalesmanTradesGetRequest.PageSize">
+            <summary>
+            每页记录数（最大100）
+            </summary>
+        </member>
+        <member name="T:YouZan.Open.Api.Entry.Request.Scrm.ScrmCustomerCreateRequest">
+            <summary>
+            创建客户请求参数
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Scrm.ScrmCustomerCreateRequest.CustomerInfo">
+            <summary>
+            客户信息
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Scrm.ScrmCustomerCreateRequest.Mobile">
+            <summary>
+            客户手机号
+            </summary>
+        </member>
+        <member name="T:YouZan.Open.Api.Entry.Request.Scrm.CustomerInfo">
+            <summary>
+            客户信息类
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Scrm.CustomerInfo.Remark">
+            <summary>
+            客户信息备注
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Scrm.CustomerInfo.Birthday">
+            <summary>
+            生日
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Scrm.CustomerInfo.Name">
+            <summary>
+            姓名
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Scrm.CustomerInfo.Address">
+            <summary>
+            客户地址信息
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Scrm.CustomerInfo.Gender">
+            <summary>
+            性别
+            0：未知
+            1：男
+            2：女
+            </summary>
+        </member>
+        <member name="T:YouZan.Open.Api.Entry.Request.Scrm.ContactAddress">
+            <summary>
+            客户地址信息类
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Scrm.ContactAddress.Address">
+            <summary>
+            详细地址
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Scrm.ContactAddress.AreaCode">
+            <summary>
+            地域编码
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Ump.UmpCouponSearchRequest.PageNo">
+            <summary>
+            第几页
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Ump.UmpCouponSearchRequest.PageSize">
+            <summary>
+            每页数量，建议传值20，最大支持50.
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Ump.UmpCouponSearchRequest.Status">
+            <summary>
+            活动状态。
+            FUTURE：未开始
+            END：已结束
+            ON：进行中 （默认查所有状态）
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Ump.UmpCouponSearchRequest.GroupType">
+            <summary>
+            活动类型
+            PROMOCARD：优惠券
+            PROMOCODE：优惠码
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Ump.UmpCouponTakeRequest.Mobile">
+            <summary>
+            用户手机号
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Ump.UmpCouponTakeRequest.OpenUserId">
+            <summary>
+            三方用户id（App开店）
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Ump.UmpCouponTakeRequest.WeiXinOpenId">
+            <summary>
+            微信用户对应的openid
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Ump.UmpCouponTakeRequest.CouponGroupId">
+            <summary>
+            优惠券/码活动ID
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Ump.UmpCouponTakeRequest.FansId">
+            <summary>
+            粉丝id，fans_id与weixin_openid存在一个即可
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Users.UsersAccountCheckRequest.AccountType">
+            <summary>
+            帐号类型
+            目前支持以下选项（只支持传一种）
+            Mobile：手机号
+            UnionId：微信 UnionId
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Users.UsersAccountCheckRequest.AccountId">
+            <summary>
+            账号ID
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Users.UserWeiXinOpenIdGetRequest.CountryCode">
+            <summary>
+            手机号国际码，当前仅支持国内手机号
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Users.UserWeiXinOpenIdGetRequest.Mobile">
+            <summary>
+            手机号
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Request.Users.UserWeiXinOpenIdGetRequest.WechatType">
+            <summary>
+            类型
+            1、表示公众号
+            2、表示小程序
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Items.ItemsOnsaleGetResponse.CommodityList">
+            <summary>
+            商品列表
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Items.ItemsOnsaleGetResponse.Count">
+            <summary>
+            搜索到的商品数量
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Items.Commodity.CreatedTime">
+            <summary>
+            创建时间
+            格式"yyyy-MM-dd HH:mm:ss"
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Items.Commodity.Quantity">
+            <summary>
+            总库存
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Items.Commodity.Images">
+            <summary>
+            商品图片
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Items.Commodity.DeliveryTemplate">
+            <summary>
+            运费模版
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Items.Commodity.ItemNo">
+            <summary>
+            商品编码，商家可以自定义参数，支持英文和数据组合
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Items.Commodity.Price">
+            <summary>
+            商品价格
+            单位：分
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Items.Commodity.UpdateTime">
+            <summary>
+            最后更新时间
+            格式"yyyy-MM-dd HH:mm:ss"
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Items.Commodity.ClassId">
+            <summary>
+            默认值"youzan_goods_selling"
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Items.Commodity.PostType">
+            <summary>
+            运费类型
+            1—统一运费
+            2—运费模板
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Items.Commodity.Image">
+            <summary>
+            商品图片链接
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Items.Commodity.Origin">
+            <summary>
+            划线价
+            单位：元
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Items.Commodity.SubTitle">
+            <summary>
+            分享描述
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Items.Commodity.Alias">
+            <summary>
+            商品别名，可通过接口youzan.items.onsale.get或youzan.items.inventory.get获取
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Items.Commodity.PageUrl">
+            <summary>
+            商品小程序访问地址
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Items.Commodity.Title">
+            <summary>
+            商品名称
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Items.Commodity.PostFee">
+            <summary>
+            运费，单位：分
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Items.Commodity.ItemId">
+            <summary>
+            商品Id，微商城店铺下商品唯一标识
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Items.Commodity.ShareDetail">
+            <summary>
+            商品价格，与price值一致，单位：分
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Items.Commodity.ItemType">
+            <summary>
+            商品类型：
+            0—普通商品
+            3—UMP降价拍
+            5—外卖商品
+            10—分销商品
+            20—会员卡商品
+            21—礼品卡商品
+            22—团购券
+            25—批发商品
+            30—收银台商品
+            31—知识付费商品
+            35—酒店商品
+            40—美业商品
+            60—虚拟商品
+            61—电子卡券
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Items.Commodity.ShareTitle">
+            <summary>
+            商品名称
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Items.Commodity.ShareIcon">
+            <summary>
+            商品图片链接，与image字段内容一致
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Items.Commodity.DetailUrl">
+            <summary>
+            商品详情链接
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Items.Commodity.Num">
+            <summary>
+            商家排序字段
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Items.CommodityImage.Thumbnail">
+            <summary>
+            图片缩略图链接地址
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Items.CommodityImage.Combine">
+            <summary>
+            组合图片链接地址
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Items.CommodityImage.CreatedTime">
+            <summary>
+            图片创建时间 格式"yyyy-MM-dd HH:mm:ss"
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Items.CommodityImage.Url">
+            <summary>
+            图片链接地址
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Items.CommodityImage.Id">
+            <summary>
+            图片Id
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Items.CommodityImage.Medium">
+            <summary>
+            中号大小图片链接地址
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Items.DeliveryTemplate.DeliveryTemplateFee">
+            <summary>
+            运费范围，单位：元
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Items.DeliveryTemplate.DeliveryTemplateName">
+            <summary>
+            运费模板名称
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Items.DeliveryTemplate.DeliveryTemplateValuationType">
+            <summary>
+            运费计费类型
+            1—按件计费
+            2—按重量计费
+            3—体积计费
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Items.DeliveryTemplate.DeliveryTemplateId">
+            <summary>
+            运费模板Id，可调用youzan.logistics.template.search接口获取运费模版详情
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.SalesmanAccountGetResponse.FromBuyerMobile">
+            <summary>
+            邀请方手机号
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.SalesmanAccountGetResponse.Mobile">
+            <summary>
+            手机号
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.SalesmanAccountGetResponse.NickName">
+            <summary>
+            昵称
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.SalesmanAccountGetResponse.CreatedTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.SalesmanAccountGetResponse.Seller">
+            <summary>
+            标识码
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.SalesmanAccountGetResponse.Money">
+            <summary>
+            累计成交金额
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.SalesmanAccountGetResponse.FansId">
+            <summary>
+            自有粉丝Id
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.SalesmanAccountGetResponse.OrderNum">
+            <summary>
+            累计成交笔数
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.AccumulationItem.SettleMoney">
+            <summary>
+            已结算佣金
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.AccumulationItem.AutoSettleOrderAmount">
+            <summary>
+            自动结算推广订单金额
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.AccumulationItem.auto_settle_order_num">
+            <summary>
+            自动结算推广订单数
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.AccumulationItem.NickName">
+            <summary>
+            昵称
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.AccumulationItem.ManualSettleOrderAmount">
+            <summary>
+            人工结算推广订单金额
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.AccumulationItem.WaitSettleMoney">
+            <summary>
+            待结算佣金
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.AccumulationItem.Mobile">
+            <summary>
+            手机号
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.AccumulationItem.ManualSettleOrderNum">
+            <summary>
+            人工结算推广订单数
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.SalesmanItem.IRate">
+            <summary>
+            商品提成比例(%)
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.SalesmanItem.IIRate">
+            <summary>
+            商品邀请奖励提成比例(%)
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.SalesmanItem.IsJoin">
+            <summary>
+            商品是否参与推广，0：不参与，1：参与
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.SalesmanItem.ItemId">
+            <summary>
+            商品id
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.SalesmanTradesGetResponse.OrderList">
+            <summary>
+            订单列表
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.SalesmanTradesGetResponse.Total">
+            <summary>
+            记录总数
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.YouZanOrderInfo.OrderItems">
+            <summary>
+            订单明细列表
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.YouZanOrderInfo.AutoSettle">
+            <summary>
+            是否自动结算，0是FALSE 1是TRUE
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.YouZanOrderInfo.SettledTime">
+            <summary>
+            结算时间
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.YouZanOrderInfo.OrderNo">
+            <summary>
+            推广订单号
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.YouZanOrderInfo.Money">
+            <summary>
+            订单总额(元),扣除运费
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.YouZanOrderInfo.SettleState">
+            <summary>
+            结算状态描述
+            1 待结算
+            2 已结算
+            3 余额不足
+            4 结算异常，等待重试
+            5 货到付款
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.YouZanOrderInfo.YZOpenId">
+            <summary>
+            有赞对外openId
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.YouZanOrderInfo.CreatedTime">
+            <summary>
+            下单时间
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.YouZanOrderInfo.Phone">
+            <summary>
+            分销员手机号
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.YouZanOrderInfo.State">
+            <summary>
+            订单状态：3：待付款，5：已付款，6：已发货，100：交易完成
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.YouZanOrderInfo.Seller">
+            <summary>
+            分销员标识符
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.YouZanOrderInfo.CpsMoney">
+            <summary>
+            提成金额(元)
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.YouZanOrderItem.Title">
+            <summary>
+            商品名称
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.YouZanOrderItem.ItemKey">
+            <summary>
+            订单号:商品id
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.YouZanOrderItem.IRate">
+            <summary>
+            商品提成比例(%)
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.YouZanOrderItem.Price">
+            <summary>
+            商品价格（元）
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.YouZanOrderItem.ICpsMoney">
+            <summary>
+            商品提成奖励(元)
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.YouZanOrderItem.IIRate">
+            <summary>
+            商品邀请奖励提成比例(%)
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.YouZanOrderItem.NumIId">
+            <summary>
+            商品id
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.YouZanOrderItem.IICpsMoney">
+            <summary>
+            商品邀请奖励提成奖励(元)
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.YouZanOrderItem.IsJoin">
+            <summary>
+            是否参与推广，0：不参与，1：参与
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Salesman.YouZanOrderItem.Amount">
+            <summary>
+            商品数量
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Scrm.ScrmCustomerCreateResponse.AccountId">
+            <summary>
+            账号ID
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Scrm.ScrmCustomerCreateResponse.AccountType">
+            <summary>
+            帐号类型
+            目前支持以下选项（只支持传一种）
+            FansID：自有粉丝
+            Mobile：手机号
+            YouZanAccount：有赞账号
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponSearchResponse.Coupons">
+            <summary>
+            优惠券/优惠码列表
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponSearchResponse.Total">
+            <summary>
+            总数
+            </summary>
+        </member>
+        <member name="T:YouZan.Open.Api.Entry.Response.Ump.UmpCouponInfo">
+            <summary>
+            优惠券/优惠码实体
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponInfo.ValueRandomTo">
+            <summary>
+            面额随机值上限，不随机为0
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponInfo.Condition">
+            <summary>
+             满额条件（即使用门槛中订单满多少元）单位：分
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponInfo.RangeValue">
+            <summary>
+            使用范围值
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponInfo.CouponRanges">
+            <summary>
+            使用范围值
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponInfo.Url">
+            <summary>
+            券或码链接
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponInfo.CreatedAt">
+            <summary>
+            创建时间戳，单位：ms
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponInfo.KdtId">
+            <summary>
+            店铺ID
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponInfo.GroupType">
+            <summary>
+            优惠券类型
+            7：优惠券
+            9：优惠码-一卡一码
+            10：优惠码-通用码
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponInfo.StockQty">
+            <summary>
+            库存数量
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponInfo.IsForbidPreference">
+            <summary>
+            是否仅原价购买商品时可用
+            1：是
+            0：否
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponInfo.ExpireNotice">
+            <summary>
+            到期是否提醒
+            1：是
+            0：否
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponInfo.TotalQty">
+            <summary>
+            总发放量
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponInfo.DateType">
+            <summary>
+            优惠使用时间类型
+            1：表示固定活动时间
+            2：表示延迟类型，几天后几天内有效
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponInfo.IsShare">
+            <summary>
+            是否允许分享优惠券。0：否；1：是
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponInfo.UserLevel">
+            <summary>
+            会员等级
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponInfo.FixedBeginTerm">
+            <summary>
+            从领券日期开始算起，延迟开始的天数(目前支持0和1，表示当日和次日)
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponInfo.IsLimit" -->
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponInfo.Description">
+            <summary>
+            使用说明
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponInfo.TotalUsed">
+            <summary>
+            总使用数
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponInfo.Title">
+            <summary>
+            优惠券名称
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponInfo.IsInvalid">
+            <summary>
+            是否失效
+            0：未失效
+            1：已失效
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponInfo.TotalFansTaked">
+            <summary>
+            粉丝领取总人数（去重）
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponInfo.IsSyncWeixin">
+            <summary>
+            是否同步微信卡包
+            1：是
+            0：否
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponInfo.ValidEndTime">
+            <summary>
+            有效结束时间戳，单位：ms
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponInfo.Id">
+            <summary>
+            优惠活动ID
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponInfo.TotalTake">
+            <summary>
+            总领取数
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponInfo.RangeType">
+            <summary>
+            使用范围类型
+            part：部分商品可用
+            all：全部商品可用
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponInfo.FixedTerm">
+            <summary>
+            从领券日期开始算起，固定延时N天开始
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponInfo.ValidStartTime">
+            <summary>
+            有效开始时间戳，单位：ms
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponInfo.Denominations">
+            <summary>
+            面额（单位：分）
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponInfo.PreferentialType">
+            <summary>
+            优惠属性
+            1：优惠
+            2：折扣
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponInfo.Discount">
+            <summary>
+            折扣（88，8.8折）
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponInfo.UpdatedAt">
+            <summary>
+            更新时间戳，单位：ms
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.PromoCard.StartTime">
+            <summary>
+            优惠券生效时间，时间戳
+            单位：ms
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.PromoCard.IsUsed">
+            <summary>
+            优惠券是否已使用
+            0：未使用
+            1 ：已使用
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.PromoCard.PreferentialType">
+            <summary>
+            优惠属性
+            1：优惠
+            2：折扣
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.PromoCard.Value">
+            <summary>
+            优惠券面额（单位：元）
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.PromoCard.IsInvalid">
+            <summary>
+            优惠券是否已失效
+            0：未失效
+            1：已失效
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.PromoCard.Discount">
+            <summary>
+            折扣（例88表示8.8折）
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.PromoCard.DetailUrl">
+            <summary>
+            优惠券详情链接
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.PromoCard.Id">
+            <summary>
+            优惠券 id
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.PromoCard.Condition">
+            <summary>
+            优惠券满额条件
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.PromoCard.Title">
+            <summary>
+            优惠券标题
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.PromoCard.BackgroundColor">
+            <summary>
+            优惠券背景颜色
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.PromoCard.EndTime">
+            <summary>
+            优惠券过期时间，时间戳
+            单位：ms
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.PromoCard.IsExpired">
+            <summary>
+            优惠券是否已过期
+            0：未过期
+            1：已过期
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.PromoCard.VerifyCode">
+            <summary>
+            核销码
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.PromoCode.VerifyCode">
+            <summary>
+            核销码
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.PromoCode.StartTime">
+            <summary>
+            优惠券生效时间，时间戳
+            单位：ms
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.PromoCode.BackgroundColor">
+            <summary>
+            优惠券背景颜色
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.PromoCode.DetailUrl">
+            <summary>
+            优惠券详情链接
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.PromoCode.Condition">
+            <summary>
+            优惠券满额条件
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.PromoCode.IsExpired">
+            <summary>
+            优惠券是否已过期
+            0：未过期
+            1：已过期
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.PromoCode.Code">
+            <summary>
+            优惠码编号
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.PromoCode.Title">
+            <summary>
+            优惠券标题
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.PromoCode.Value">
+            <summary>
+            优惠券面额（单位：元）
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.PromoCode.IsUsed">
+            <summary>
+            优惠券是否已使用
+            0：未使用
+            1 ：已使用
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.PromoCode.EndTime">
+            <summary>
+            优惠券过期时间，时间戳
+            单位：ms
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.PromoCode.IsInvalid">
+            <summary>
+            优惠券是否已失效
+            0：未失效
+            1：已失效
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.PromoCode.Id">
+            <summary>
+            优惠券 id
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Users.UserWeiXinOpenIdGetResponse.OpenId">
+            <summary>
+            微信open_id
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.Users.UserWeiXinOpenIdGetResponse.UnionId">
+            <summary>
+            微信union_id
+            </summary>
+        </member>
+        <member name="T:YouZan.Open.Api.Entry.Response.YouZanResponse`1">
+            <summary>
+            API响应参数
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.YouZanResponse`1.Code">
+            <summary>
+            成功失败码
+            200 表示成功
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.YouZanResponse`1.Message">
+            <summary>
+            成功错误消息
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.YouZanResponse`1.Success">
+            <summary>
+            是否成功
+            true表示成功
+            false表示失败
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.YouZanResponse`1.Data">
+            <summary>
+            响应数据
+            </summary>
+        </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.YouZanResponse`1.Response">
+            <summary>
+            响应数据
+            </summary>
+        </member>
+        <member name="F:YouZan.Open.Api.GeneralApi.httpMethod">
+            请求方法
+        </member>
+        <member name="F:YouZan.Open.Api.GeneralApi.serviceName">
+            请求接口名
+            
+        </member>
+        <member name="M:YouZan.Open.Api.IAPI.GetGateway">
+            获取网关域名
+        </member>
+        <member name="M:YouZan.Open.Api.IAPI.SetGateway(System.String)">
+            自定义网关域名
+        </member>
+        <member name="M:YouZan.Open.Api.IAPI.GetOAuthType">
+            获取授权类型
+        </member>
+        <member name="M:YouZan.Open.Api.IAPI.AddHeader(System.String,System.String)">
+            添加请求头
+        </member>
+        <member name="M:YouZan.Open.Api.IAPI.GetHttpMethod">
+            获取API对应的请求方法，GET、POST、PUT、DELETE
+        </member>
+        <member name="M:YouZan.Open.Api.IAPI.GetVersion">
+            获取API版本号
+        </member>
+        <member name="M:YouZan.Open.Api.IAPI.GetName">
+            获取API名称
+        </member>
+        <member name="M:YouZan.Open.Api.IAPI.GetAPIParams">
+            获取API参数
+        </member>
+        <member name="M:YouZan.Open.Api.IAPI.SetAPIParams(YouZan.Open.Api.IApiParams)">
+            设置API参数
+        </member>
+        <member name="M:YouZan.Open.Api.IAPI.GetHeaders">
+            获取API携带头部信息
+        </member>
+        <member name="F:YouZan.Open.Auth.Sign.identify">
+            身份凭证
+        </member>
+        <member name="F:YouZan.Open.Auth.Sign.clientPrivateKey">
+            应用私钥
+        </member>
+        <member name="F:YouZan.Open.Auth.Sign.youzanPublicKey">
+            youzan公钥
+        </member>
+        <member name="F:YouZan.Open.Auth.Sign.publicKeyId">
+            对应查询公钥的查询Id
+        </member>
+        <member name="F:YouZan.Open.Auth.Sign.signature">
+            签名
+        </member>
+        <member name="M:YouZan.Open.Cache.ICache.Get``1(System.String)">
+            <summary>
+            Gets or sets the value associated with the specified key.
+            </summary>
+            <typeparam name="T">Type</typeparam>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value associated with the specified key.</returns>
+        </member>
+        <member name="M:YouZan.Open.Cache.ICache.Add(System.String,System.Object,System.Int32)">
+            <summary>
+            Adds the specified key and object to the cache.
+            </summary>
+            <param name="key">key</param>
+            <param name="data">Data</param>
+            <param name="cacheTime">Cache time</param>
+        </member>
+        <member name="M:YouZan.Open.Cache.ICache.Contains(System.String)">
+            <summary>
+            Gets a value indicating whether the value associated with the specified key is cached
+            </summary>
+            <param name="key">key</param>
+            <returns>Result</returns>
+        </member>
+        <member name="M:YouZan.Open.Cache.ICache.Remove(System.String)">
+            <summary>
+            Removes the value with the specified key from the cache
+            </summary>
+            <param name="key">/key</param>
+        </member>
+        <member name="M:YouZan.Open.Cache.ICache.RemoveAll">
+            <summary>
+            Clear all cache data
+            </summary>
+        </member>
+        <member name="T:YouZan.Open.Cache.YouZanCache">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:YouZan.Open.Cache.YouZanCache.Add(System.String,System.Object,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <param name="data"></param>
+            <param name="cacheTime">默认30分钟  单位分钟</param>
+        </member>
+        <member name="M:YouZan.Open.Cache.YouZanCache.Get``1(System.String)">
+            <summary>
+            应该先检查，再get
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:YouZan.Open.Cache.YouZanCache.Contains(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:YouZan.Open.Cache.YouZanCache.GetT``1(System.String,System.Func{``0})">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="key"></param>
+            <param name="func">真实查询数据源的方法</param>
+            <returns></returns>
+        </member>
+        <member name="P:YouZan.Open.Common.Extensions.Attributes.ApiFieldAttribute.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="M:YouZan.Open.Core.DefaultYZClient.BuildUrl(YouZan.Open.Api.IAPI,YouZan.Open.Auth.IAuth)">
+            构建请求URL
+            
+        </member>
+        <member name="M:YouZan.Open.Http.IHttpClient.Send(System.String,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            发送请求接口
+        </member>
+        <member name="M:YouZan.Open.Log.DbHelper.ExecuteSql``1(System.String,System.Func{System.Data.SqlClient.SqlCommand,``0})">
+            <summary>
+            执行SQL语句
+            </summary>
+            <typeparam name="T">返回值类型</typeparam>
+            <param name="sql">需要执行的SQL语句</param>
+            <param name="func">执行过程的委托</param>
+            <returns></returns>
+        </member>
+        <member name="M:YouZan.Open.TokenEx.Silent.GetToken(System.Boolean)">
+            <summary>
+            获取Token
+            </summary>
+            <param name="getNew">获取最新</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.CustomExtend.GetApiField(System.Reflection.MemberInfo)">
+            <summary>
+            读取属性特性名称
+            </summary>
+            <param name="member"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

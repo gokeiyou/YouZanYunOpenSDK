@@ -43,7 +43,19 @@ namespace YouZan.Open.Api.Entry.Response.Ump
         /// 使用范围值
         /// </summary>
         [JsonProperty("range_value")]
-        public List<CouponRange> RangeValue { get; set; }
+        public string RangeValue { get; set; }
+
+        /// <summary>
+        /// 使用范围值
+        /// </summary>
+        public List<CouponRange> CouponRanges
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(RangeValue)) return null;
+                return JsonConvert.DeserializeObject<List<CouponRange>>(RangeValue);
+            }
+        }
 
         /// <summary>
         /// 券或码链接
@@ -128,7 +140,7 @@ namespace YouZan.Open.Api.Entry.Response.Ump
 
         /// <summary>
         /// 是否限制
-        /// n：1个人限领n次(n<=10)
+        /// n：1个人限领n次(n小于或等于10)
         /// 0：不限制
         /// </summary>
         [JsonProperty("is_limit")]
@@ -236,14 +248,14 @@ namespace YouZan.Open.Api.Entry.Response.Ump
         /// 更新时间戳，单位：ms
         /// </summary>
         [JsonProperty("updated_at")]
-        public long UpdatedAt { get; set; }
+        public long? UpdatedAt { get; set; }
     }
 
     public class CouponRange
     {
-        [JsonProperty("goods_id")]
+        [JsonProperty("goodsId")]
         public long GoodsId { get; set; }
-        [JsonProperty("goods_type")]
+        [JsonProperty("goodsType")]
         public int GoodsType { get; set; }
     }
 

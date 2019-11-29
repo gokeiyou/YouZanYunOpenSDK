@@ -35,9 +35,7 @@ namespace YouZan.Open.Log
 
             DbHelper.ExecuteSql(SQL, cmd =>
             {
-
                 cmd.Parameters.AddRange(parameters);
-
                 return cmd.ExecuteScalar();
             });
 

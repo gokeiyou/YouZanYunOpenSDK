@@ -34,7 +34,7 @@ namespace YouZan.Open.Api.Entry.Response.Ump
         /// 1 ：已使用
         /// </summary>
         [JsonProperty("is_used")]
-        public int IsUsed { get; set; }
+        public bool IsUsed { get; set; }
 
         /// <summary>
         /// 优惠属性
@@ -56,7 +56,7 @@ namespace YouZan.Open.Api.Entry.Response.Ump
         /// 1：已失效
         /// </summary>
         [JsonProperty("is_invalid")]
-        public int IsInvalid { get; set; }
+        public bool IsInvalid { get; set; }
 
         /// <summary>
         /// 折扣（例88表示8.8折）
@@ -74,7 +74,7 @@ namespace YouZan.Open.Api.Entry.Response.Ump
         /// 优惠券 id
         /// </summary>
         [JsonProperty("promocard_id")]
-        public long PromocardId { get; set; }
+        public long Id { get; set; }
 
         /// <summary>
         /// 优惠券满额条件
@@ -107,7 +107,7 @@ namespace YouZan.Open.Api.Entry.Response.Ump
         /// 1：已过期
         /// </summary>
         [JsonProperty("is_expired")]
-        public int IsExpired { get; set; }
+        public bool IsExpired { get; set; }
 
         /// <summary>
         /// 核销码
@@ -157,7 +157,13 @@ namespace YouZan.Open.Api.Entry.Response.Ump
         /// 1：已过期
         /// </summary>
         [JsonProperty("is_expired")]
-        public int IsExpired { get; set; }
+        public bool IsExpired { get; set; }
+
+        /// <summary>
+        /// 优惠码编号
+        /// </summary>
+        [JsonProperty("code")]
+        public string Code { get; set; }
 
         /// <summary>
         /// 优惠券标题
@@ -177,7 +183,7 @@ namespace YouZan.Open.Api.Entry.Response.Ump
         /// 1 ：已使用
         /// </summary>
         [JsonProperty("is_used")]
-        public int IsUsed { get; set; }
+        public bool IsUsed { get; set; }
 
         /// <summary>
         /// 优惠券过期时间，时间戳
@@ -192,13 +198,13 @@ namespace YouZan.Open.Api.Entry.Response.Ump
         /// 1：已失效
         /// </summary>
         [JsonProperty("is_invalid")]
-        public int IsInvalid { get; set; }
+        public bool IsInvalid { get; set; }
 
         /// <summary>
         /// 优惠券 id
         /// </summary>
         [JsonProperty("promocode_id")]
-        public long PromocodeId { get; set; }
+        public long Id { get; set; }
 
     }
 }

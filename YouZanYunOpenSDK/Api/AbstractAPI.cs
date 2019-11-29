@@ -5,6 +5,9 @@ using YouZan.Open.Common.Constant;
 
 namespace YouZan.Open.Api
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public abstract class AbstractAPI : IAPI
     {
         protected IApiParams apiParams;

@@ -18,13 +18,13 @@ namespace YouZan.Open.Api.Entry.Request.Ump
         /// 三方用户id（App开店）
         /// </summary>
         [ApiField("open_user_id")]
-        public long OpenUserId { get; set; }
+        public string OpenUserId { get; set; }
 
         /// <summary>
         /// 微信用户对应的openid
         /// </summary>
         [ApiField("weixin_openid")]
-        public long WeiXinOpenId { get; set; }
+        public string WeiXinOpenId { get; set; }
 
         /// <summary>
         /// 优惠券/码活动ID

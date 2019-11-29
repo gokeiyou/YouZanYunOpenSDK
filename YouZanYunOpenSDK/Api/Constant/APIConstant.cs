@@ -53,6 +53,11 @@ namespace YouZan.Open.Api.Constant
         /// </summary>
         internal const string USERS_ACCOUNT_CHECK = "youzan.users.account.check";
 
+        /// <summary>
+        /// 使用手机号获取用户微信openId
+        /// </summary>
+        internal const string USER_WEIXIN_OPENID_GET = "youzan.user.weixin.openid.get";
+
         #endregion
 
         #region 客户API
