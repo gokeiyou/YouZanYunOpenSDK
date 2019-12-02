@@ -1,4 +1,4 @@
-# YouZanYunOpenSDK
+# YouZanYunOpenSDK（持续更新中...）
 基于有赞云开放平台SDK源码封装的有赞云SDK
 
 # 平台版本

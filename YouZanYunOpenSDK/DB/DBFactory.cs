@@ -15,12 +15,11 @@ namespace YouZan.Open.DB
         {
             switch (YouZanLogConfig.DBType)
             {
-                case YouZanLogDBType.SqlServer:
-                    return new SqlDBHelper();
                 case YouZanLogDBType.Oracle:
                     return new OracleDBHelper();
                 case YouZanLogDBType.MySql:
                     return new MySqlDBHelper();
+                case YouZanLogDBType.SqlServer:
                 default:
                     return new SqlDBHelper();
             }
