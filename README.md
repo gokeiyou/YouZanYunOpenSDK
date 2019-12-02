@@ -136,4 +136,4 @@ YouZanResponse<T>
 
 ### NuGet程序包安装
 
-	PM> Install-Package YouzanYunOpenSDK -Version 1.0.9
+	PM> Install-Package YouzanYunOpenSDK -Version 1.1.0
