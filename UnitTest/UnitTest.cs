@@ -74,7 +74,7 @@ namespace UnitTest
         {
             YouZanLogConfig.IsDBLog = false;
             var request = new UmpCouponTakeRequest();
-            request.Mobile = 15068135451;
+            request.Mobile = 13333333333;
             request.CouponGroupId = 6264402;
             var respponse = api.UmpCouponTake(request);
         }
@@ -83,8 +83,7 @@ namespace UnitTest
         public void TestUserWeiXinOpenIdGet()
         {
             var request = new UserWeiXinOpenIdGetRequest();
-            request.Mobile = "15068135451";
-            request.WechatType = 2;
+            request.Mobile = "13333333333";
             var response = api.UserWeiXinOpenIdGet(request);
         }
     }

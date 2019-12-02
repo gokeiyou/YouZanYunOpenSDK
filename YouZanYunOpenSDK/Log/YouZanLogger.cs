@@ -1,15 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using MySql.Data.MySqlClient;
+using Oracle.ManagedDataAccess.Client;
 using YouZan.Open.Common.Constant;
+using YouZan.Open.DB;
 
 namespace YouZan.Open.Log
 {
     public class YouZanLogger
     {
+
         private string Guid { get; set; }
         private DateTime LogTime { get; set; }
         public string ApiName { get; set; }
@@ -27,13 +32,39 @@ namespace YouZan.Open.Log
             this.LogTime = DateTime.Now;
             Type type = this.GetType();
             var properties = type.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
-            string[] fields = properties.Select(t => $"[{t.Name}]").ToArray();
-            string[] @params = properties.Select(t => $"@{t.Name}").ToArray();
-            SqlParameter[] parameters = properties.Select(t => new SqlParameter($"@{t.Name}", t.GetValue(this))).ToArray();
+            string tableName;
+            string[] fields = default;
+            string[] @params = default;
+            DbParameter[] parameters = default;
 
-            string SQL = $"INSERT INTO {YouZanLogConfig.LogTableName}({string.Join(",", fields)}) VALUES ({string.Join(",", @params)});";
+            switch (YouZanLogConfig.DBType)
+            {
+                case YouZanLogDBType.Oracle:
+                    tableName = $"\"{YouZanLogConfig.LogTableName}\"";
+                    fields = properties.Select(t => $"{t.Name}").ToArray();
+                    @params = properties.Select(t => $":{t.Name}").ToArray();
+                    parameters = properties.Select(t => new OracleParameter($":{t.Name}", t.GetValue(this))).ToArray();
+                    break;
+                case YouZanLogDBType.MySql:
+                    tableName = $"`{YouZanLogConfig.LogTableName}`";
+                    fields = properties.Select(t => $"`{t.Name}`").ToArray();
+                    @params = properties.Select(t => $"?{t.Name}").ToArray();
+                    parameters = properties.Select(t => new MySqlParameter($"?{t.Name}", t.GetValue(this))).ToArray();
+                    break;
+                case YouZanLogDBType.SqlServer:
+                default:
+                    tableName = $"[{YouZanLogConfig.LogTableName}]";
+                    fields = properties.Select(t => $"[{t.Name}]").ToArray();
+                    @params = properties.Select(t => $"@{t.Name}").ToArray();
+                    parameters = properties.Select(t => new SqlParameter($"@{t.Name}", t.GetValue(this))).ToArray();
+                    break;
+            }
 
-            DbHelper.ExecuteSql(SQL, cmd =>
+            string SQL = $"INSERT INTO {tableName}({string.Join(",", fields)}) VALUES ({string.Join(",", @params)});";
+
+            IDBHelper db = DBFactory.CreateInstance();
+
+            db.ExecuteSql(SQL, cmd =>
             {
                 cmd.Parameters.AddRange(parameters);
                 return cmd.ExecuteScalar();

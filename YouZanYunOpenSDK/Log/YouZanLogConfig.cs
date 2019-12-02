@@ -9,5 +9,13 @@ namespace YouZan.Open.Log
         public static bool IsDBLog = false;
         public static string DBConnectionString = "";
         public static string LogTableName = "YouZanApiLogs";
+        public static YouZanLogDBType DBType = YouZanLogDBType.SqlServer;
+    }
+
+    public enum YouZanLogDBType
+    {
+        SqlServer,
+        Oracle,
+        MySql,
     }
 }

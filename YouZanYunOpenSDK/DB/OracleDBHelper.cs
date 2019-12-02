@@ -1,28 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.Common;
 using System.Text;
+using Oracle.ManagedDataAccess.Client;
+using YouZan.Open.Log;
 
-namespace YouZan.Open.Log
+namespace YouZan.Open.DB
 {
-    internal class DbHelper
+    public class OracleDBHelper : IDBHelper
     {
-        /// <summary>
-        /// 执行SQL语句
-        /// </summary>
-        /// <typeparam name="T">返回值类型</typeparam>
-        /// <param name="sql">需要执行的SQL语句</param>
-        /// <param name="func">执行过程的委托</param>
-        /// <returns></returns>
-        public static T ExecuteSql<T>(string sql, Func<SqlCommand, T> func)
+        public T ExecuteSql<T>(string sql, Func<DbCommand, T> func)
         {
-            using (SqlConnection conn = new SqlConnection(YouZanLogConfig.DBConnectionString))
+            using (OracleConnection conn = new OracleConnection(YouZanLogConfig.DBConnectionString))
             {
                 try
                 {
                     conn.Open();
-                    SqlCommand cmd = conn.CreateCommand();
+                    OracleCommand cmd = conn.CreateCommand();
                     cmd.CommandText = sql;
                     cmd.CommandType = CommandType.Text;
 
@@ -43,15 +38,15 @@ namespace YouZan.Open.Log
             }
         }
 
-        public static T ExecuteSqlWithTran<T>(string sql, Func<SqlCommand, T> func)
+        public T ExecuteSqlWithTran<T>(string sql, Func<DbCommand, T> func)
         {
-            using (SqlConnection conn = new SqlConnection(YouZanLogConfig.DBConnectionString))
+            using (OracleConnection conn = new OracleConnection(YouZanLogConfig.DBConnectionString))
             {
-                SqlTransaction tran = null;
+                OracleTransaction tran = null;
                 try
                 {
                     conn.Open();
-                    SqlCommand cmd = conn.CreateCommand();
+                    OracleCommand cmd = conn.CreateCommand();
                     tran = conn.BeginTransaction();
                     cmd.CommandText = sql;
                     cmd.CommandType = CommandType.Text;
@@ -78,6 +73,10 @@ namespace YouZan.Open.Log
                     }
                 }
             }
+        }
+        public void Dispose()
+        {
+            throw new NotImplementedException();
         }
     }
 }

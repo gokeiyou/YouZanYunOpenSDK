@@ -14,10 +14,10 @@
 		YouZanResponse<bool> result = apiHelper.UsersAccountCheck(request);
 ```
 
-## 2.数据库日志记录（目前仅支持Sql Server）
+## 2.数据库日志记录（支持Sql Server、Oracle、MySql）
 
 ```sql
-需提前在数据库中创建日志表，表名自定义，默认为YouZanApiLogs，如下：
+需提前在数据库中创建日志表，表名自定义，默认为YouZanApiLogs，以SqlServer为例：
 
 CREATE TABLE [dbo].[YouZanApiLogs] (
   [Guid] varchar(50) NOT NULL,
@@ -116,9 +116,12 @@ EXEC sp_addextendedproperty
 	在程序启动的位置添加以下代码
 
 ```c#
-		YouZanLogConfig.IsDBLog = true;
-		YouZanLogConfig.DBConnectionString = "xxxxxxx";
-		YouZanLogConfig.LogTableName = "YouZanApiLogs";
+		YouZanLogConfig.IsDBLog = true; // 默认为false
+		YouZanLogConfig.DBConnectionString = "xxxxxxx"; // 默认为空
+		YouZanLogConfig.LogTableName = "YouZanApiLogs"; // 默认
+		YouZanLogConfig.DBType = YouZanLogDBType.SqlServer; // 默认
+		//YouZanLogConfig.DBType = YouZanLogDBType.Oracle;
+		//YouZanLogConfig.DBType = YouZanLogDBType.MySql;
 ```
 
 ### 请求参数
