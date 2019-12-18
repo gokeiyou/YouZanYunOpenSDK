@@ -4,7 +4,7 @@ using System.Text;
 
 namespace YouZan.Open.Api.Constant
 {
-    public class API
+    public struct API
     {
 
         /// <summary>
