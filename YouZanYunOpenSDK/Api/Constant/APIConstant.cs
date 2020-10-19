@@ -128,6 +128,17 @@ namespace YouZan.Open.Api.Constant
         /// </summary>
         internal const string ITEMS_ONSALE_GET = "youzan.items.onsale.get";
 
+        /// <summary>
+        /// 该接口用于查询单个商品详细信息，需使用对应店铺下的item_id。
+        /// 该接口支持微商城零售连锁总部，微商城零售连锁分店，微商城零售连锁单店调用。
+        /// </summary>
+        internal const string ITEM_GET = "youzan.item.get";
+
+        /// <summary>
+        /// 根据编码和商品类型查询查询商品标准
+        /// </summary>
+        internal const string ITEM_STANDARD_GET = "youzan.item.standard.get";
+
         #endregion
 
         #endregion

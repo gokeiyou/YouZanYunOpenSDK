@@ -320,6 +320,27 @@ namespace YouZan.Open.Api
                 API.VERSION_3_0_0);
         }
 
+
+        
+        public YouZanResponse<ItemGetResponse> ItemGet(YouZanRequest request)
+        {
+            return ApiInvoke<ItemGetResponse>(request,
+                API.ITEM_GET,
+                API.VERSION_3_0_0);
+        }
+
+        /// <summary>
+        /// 根据编码和商品类型查询查询商品标准
+        /// </summary>
+        /// <param name="request">请求参数</param>
+        /// <returns></returns>
+        public YouZanResponse<ItemStandardGetResponse> ItemStandardGet(YouZanRequest request)
+        {
+            return ApiInvoke<ItemStandardGetResponse>(request,
+                API.ITEM_STANDARD_GET,
+                API.VERSION_3_0_0);
+        }
+
         #endregion
 
     }
