@@ -119,6 +119,15 @@ namespace UnitTest
         }
 
         [TestMethod]
+        public void TestUmpCouponConsumeGet()
+        {
+            YouZanLogConfig.IsDBLog = false;
+            var request = new UmpCouponConsumeGetRequest();
+            request.Code = "YOUZAN_CODE";
+            var response = api.UmpCouponConsumeGet(request);
+        }
+
+        [TestMethod]
         public void TestUserWeiXinOpenIdGet()
         {
             var request = new UserWeiXinOpenIdGetRequest();

@@ -304,6 +304,13 @@ namespace YouZan.Open.Api
                API.VERSION_3_0_0);
         }
 
+        public YouZanResponse<UmpCouponConsumeGetResponse> UmpCouponConsumeGet(YouZanRequest request)
+        {
+            return ApiInvoke<UmpCouponConsumeGetResponse>(request,
+                API.UMP_COUPON_CONSUME_GET,
+                API.VERSION_3_0_0);
+        }
+
         #endregion
 
         #region 商品API请求
