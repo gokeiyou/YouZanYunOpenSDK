@@ -23,9 +23,7 @@ namespace UnitTest
 
         static UnitTest()
         {
-            // api = new ApiHelper(clientId, clientSecret, grantId);
-            api = new ApiHelper("5a0785eda8c9d7ca05", "f2e9916e21b4c2cd8e349868b31a3ee6", "91365098");
-            // 5a0785eda8c9d7ca05 f2e9916e21b4c2cd8e349868b31a3ee6    91365098
+            api = new ApiHelper(clientId, clientSecret, grantId);
         }
 
         [TestMethod]
@@ -41,7 +39,7 @@ namespace UnitTest
         public void TestPromocardBuyerSearch()
         {
             UmpPromocardBuyerSearchRequest request = new UmpPromocardBuyerSearchRequest();
-            request.Mobile = 15336581293;
+            request.Mobile = 13333333333;
             request.Status = "VALID";
             // request.Status = "USED";
             var response = api.UmpPromocardBuyerSearch(request);
