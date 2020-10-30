@@ -39,7 +39,7 @@ namespace YouZan.Open.Api
         private string GrantId { get; set; }
 
         IYouZanClient _YouZanClient = null;
-        TokenData oAuthToken = null;
+        public TokenData oAuthToken = null;
 
         /// <summary>
         /// 初始化API工具类
@@ -308,6 +308,13 @@ namespace YouZan.Open.Api
         {
             return ApiInvoke<UmpCouponConsumeGetResponse>(request,
                 API.UMP_COUPON_CONSUME_GET,
+                API.VERSION_3_0_0);
+        }
+
+        public YouZanResponse<List<UmpPromocardBuyerSearchResponse>> UmpPromocardBuyerSearch(YouZanRequest request)
+        {
+            return ApiInvoke<List<UmpPromocardBuyerSearchResponse>>(request,
+                API.UMP_PROMOCRAD_BUYER_SEARCH,
                 API.VERSION_3_0_0);
         }
 

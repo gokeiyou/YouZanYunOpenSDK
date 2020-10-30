@@ -123,6 +123,20 @@ namespace YouZan.Open.Api.Constant
         /// 根据核销码获取优惠券/优惠码
         /// </summary>
         internal const string UMP_COUPON_CONSUME_GET = "youzan.ump.coupon.consume.get";
+
+        /// <summary>
+        /// 查询买家优惠券列表 查询条件优先级 1. mobile 2. open_user_id 3. fans_id fans_type
+        /// </summary>
+        internal const string UMP_PROMOCRAD_BUYER_SEARCH = "youzan.ump.promocard.buyer.search";
+
+        /// <summary>
+        /// 根据凭证状态查询用户凭证列表，
+        /// 凭证状态：0.全部1.生效=未使用and未过期2.已使用3.已过期=未使用and已过期4.已失效=已使用or已过期
+        /// 其中 1、yz_open_id；2、mobile；3、fans_id和fans_type三组参数中必须要传一个。
+        /// （fans_id和fans_type组成一个唯一的有赞用户标识。）
+        /// </summary>
+        internal const string UMP_VOUCHER_QUERY = "youzan.ump.voucher.query";
+        
         #endregion
 
         #region 商品API

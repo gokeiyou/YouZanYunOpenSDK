@@ -23,7 +23,9 @@ namespace UnitTest
 
         static UnitTest()
         {
-            api = new ApiHelper(clientId, clientSecret, grantId);
+            // api = new ApiHelper(clientId, clientSecret, grantId);
+            api = new ApiHelper("5a0785eda8c9d7ca05", "f2e9916e21b4c2cd8e349868b31a3ee6", "91365098");
+            // 5a0785eda8c9d7ca05 f2e9916e21b4c2cd8e349868b31a3ee6    91365098
         }
 
         [TestMethod]
@@ -33,6 +35,19 @@ namespace UnitTest
             this.TestItemsOnsaleGet();
             this.TestSalesmanAccountAdd();
         }
+
+
+        [TestMethod]
+        public void TestPromocardBuyerSearch()
+        {
+            UmpPromocardBuyerSearchRequest request = new UmpPromocardBuyerSearchRequest();
+            request.Mobile = 15336581293;
+            request.Status = "VALID";
+            // request.Status = "USED";
+            var response = api.UmpPromocardBuyerSearch(request);
+            Debug.WriteLine(JsonConvert.SerializeObject(response));
+        }
+
 
         [TestMethod]
         public void TestUserCheck()
