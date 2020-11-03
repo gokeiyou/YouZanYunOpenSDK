@@ -17,17 +17,13 @@ namespace UnitTest
     [TestClass]
     public class UnitTest
     {
-        private static string clientId = "5a0785eda8c9d7ca05"; //"client_id";
-        private static string clientSecret = "f2e9916e21b4c2cd8e349868b31a3ee6"; //"client_secret";
-        private static string grantId = "91365098"; //"grant_id";
+        private static string clientId = "client_id";
+        private static string clientSecret = "client_secret";
+        private static string grantId = "grant_id";
         private static ApiHelper api = null;
 
         static UnitTest()
         {
-            YouZanLogConfig.IsDBLog = true;
-            YouZanLogConfig.DBConnectionString = "Data Source=10.100.108.183;Initial Catalog=bymAdmin;User ID=sa;Password=beingmate2016";
-            YouZanTokenConfig.SaveToDb = true;
-            YouZanTokenConfig.DBConnectionString = "Data Source=10.100.108.183;Initial Catalog=bymAdmin;User ID=sa;Password=beingmate2016";
             api = new ApiHelper(clientId, clientSecret, grantId);
         }
 
