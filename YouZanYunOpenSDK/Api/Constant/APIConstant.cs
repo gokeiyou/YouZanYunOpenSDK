@@ -33,6 +33,11 @@ namespace YouZan.Open.Api.Constant
         public const string VERSION_1_0_0 = "1.0.0";
 
         /// <summary>
+        /// 版本号：2.0.0
+        /// </summary>
+        public const string VERSION_2_0_0 = "2.0.0";
+
+        /// <summary>
         /// 版本号：3.0.0
         /// </summary>
         public const string VERSION_3_0_0 = "3.0.0";
@@ -41,6 +46,12 @@ namespace YouZan.Open.Api.Constant
         /// 版本号：3.0.1
         /// </summary>
         public const string VERSION_3_0_1 = "3.0.1";
+
+        /// <summary>
+        /// 版本号：4.0.0
+        /// </summary>
+        public const string VERSION_4_0_0 = "4.0.0";
+
 
         #endregion
 
@@ -57,6 +68,11 @@ namespace YouZan.Open.Api.Constant
         /// 使用手机号获取用户微信openId
         /// </summary>
         internal const string USER_WEIXIN_OPENID_GET = "youzan.user.weixin.openid.get";
+
+        /// <summary>
+        /// 依据有赞openid 或者手机号 获取用户简要信息
+        /// </summary>
+        internal const string USER_BASIC_GET = "youzan.user.basic.get";
 
         #endregion
 
@@ -158,6 +174,17 @@ namespace YouZan.Open.Api.Constant
         internal const string ITEM_STANDARD_GET = "youzan.item.standard.get";
 
         #endregion
+
+
+        /// <summary>
+        /// 给用户加积分，帐号类型(与帐户ID配合使用: 1:粉丝(原fansId),2:手机号,3:三方帐号(原open_user_id),4:UnionID,5:OpenID
+        /// </summary>
+        internal const string CRM_CUSTOMER_POINTS_INCREASE = "youzan.crm.customer.points.increase";
+
+        /// <summary>
+        /// 给用户加成长值，帐号类型(与帐户ID配合使用: 1:粉丝(原fansId),2:手机号,3:三方帐号(原open_user_id),4:UnionID,5:OpenID
+        /// </summary>
+        internal const string CRM_CUSTOMER_GROWTH_INCREASE = "youzan.crm.customer.growth.increase";
 
         #endregion
     }
