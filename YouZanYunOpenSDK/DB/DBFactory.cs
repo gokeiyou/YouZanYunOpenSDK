@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using YouZan.Open.Common.Constant;
 using YouZan.Open.Log;
+using YouZan.Open.TokenEx;
 
 namespace YouZan.Open.DB
 {
@@ -20,6 +22,20 @@ namespace YouZan.Open.DB
                 case YouZanLogDBType.MySql:
                     return new MySqlDBHelper();
                 case YouZanLogDBType.SqlServer:
+                default:
+                    return new SqlDBHelper();
+            }
+        }
+
+        public static IDBHelper CreateInstanceForToken()
+        {
+            switch (YouZanTokenConfig.DBType)
+            {
+                case DBType.Oracle:
+                    return new OracleDBHelper();
+                case DBType.MySql:
+                    return new MySqlDBHelper();
+                case DBType.SqlServer:
                 default:
                     return new SqlDBHelper();
             }

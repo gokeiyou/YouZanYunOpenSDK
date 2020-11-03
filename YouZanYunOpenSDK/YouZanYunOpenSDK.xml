@@ -4,6 +4,11 @@
         <name>YouZanYunOpenSDK</name>
     </assembly>
     <members>
+        <member name="T:YouZan.Open.Api.AbstractAPI">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="P:YouZan.Open.Api.ApiHelper.ClientId">
             <summary>
             客户端ID
@@ -1202,7 +1207,13 @@
             从领券日期开始算起，延迟开始的天数(目前支持0和1，表示当日和次日)
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponInfo.IsLimit" -->
+        <member name="P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponInfo.IsLimit">
+            <summary>
+            是否限制
+            n：1个人限领n次(n小于或等于10)
+            0：不限制
+            </summary>
+        </member>
         <member name="P:YouZan.Open.Api.Entry.Response.Ump.UmpCouponInfo.Description">
             <summary>
             使用说明
@@ -1620,17 +1631,34 @@
             构建请求URL
             
         </member>
-        <member name="M:YouZan.Open.Http.IHttpClient.Send(System.String,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
-            发送请求接口
+        <member name="M:YouZan.Open.DB.DBFactory.CreateInstance">
+            <summary>
+            创建DBHelper
+            </summary>
+            <returns></returns>
         </member>
-        <member name="M:YouZan.Open.Log.DbHelper.ExecuteSql``1(System.String,System.Func{System.Data.SqlClient.SqlCommand,``0})">
+        <member name="M:YouZan.Open.DB.IDBHelper.ExecuteSql``1(System.String,System.Func{System.Data.Common.DbCommand,``0})">
             <summary>
             执行SQL语句
             </summary>
+            <typeparam name="TCommand">DB执行命令</typeparam>
             <typeparam name="T">返回值类型</typeparam>
             <param name="sql">需要执行的SQL语句</param>
             <param name="func">执行过程的委托</param>
             <returns></returns>
+        </member>
+        <member name="M:YouZan.Open.DB.IDBHelper.ExecuteSqlWithTran``1(System.String,System.Func{System.Data.Common.DbCommand,``0})">
+            <summary>
+            执行SQL语句，事务
+            </summary>
+            <typeparam name="TCommand">DB执行命令</typeparam>
+            <typeparam name="T">返回值类型</typeparam>
+            <param name="sql">需要执行的SQL语句</param>
+            <param name="func">执行过程的委托</param>
+            <returns></returns>
+        </member>
+        <member name="M:YouZan.Open.Http.IHttpClient.Send(System.String,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            发送请求接口
         </member>
         <member name="M:YouZan.Open.TokenEx.Silent.GetToken(System.Boolean)">
             <summary>
