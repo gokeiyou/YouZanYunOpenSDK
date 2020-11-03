@@ -39,7 +39,7 @@ namespace YouZan.Open.Api
         private string GrantId { get; set; }
 
         IYouZanClient _YouZanClient = null;
-        TokenData oAuthToken = null;
+        public TokenData oAuthToken = null;
 
         /// <summary>
         /// 初始化API工具类
@@ -304,6 +304,20 @@ namespace YouZan.Open.Api
                API.VERSION_3_0_0);
         }
 
+        public YouZanResponse<UmpCouponConsumeGetResponse> UmpCouponConsumeGet(YouZanRequest request)
+        {
+            return ApiInvoke<UmpCouponConsumeGetResponse>(request,
+                API.UMP_COUPON_CONSUME_GET,
+                API.VERSION_3_0_0);
+        }
+
+        public YouZanResponse<List<UmpPromocardBuyerSearchResponse>> UmpPromocardBuyerSearch(YouZanRequest request)
+        {
+            return ApiInvoke<List<UmpPromocardBuyerSearchResponse>>(request,
+                API.UMP_PROMOCRAD_BUYER_SEARCH,
+                API.VERSION_3_0_0);
+        }
+
         #endregion
 
         #region 商品API请求
@@ -317,6 +331,27 @@ namespace YouZan.Open.Api
         {
             return ApiInvoke<ItemsOnsaleGetResponse>(request,
                 API.ITEMS_ONSALE_GET,
+                API.VERSION_3_0_0);
+        }
+
+
+        
+        public YouZanResponse<ItemGetResponse> ItemGet(YouZanRequest request)
+        {
+            return ApiInvoke<ItemGetResponse>(request,
+                API.ITEM_GET,
+                API.VERSION_3_0_0);
+        }
+
+        /// <summary>
+        /// 根据编码和商品类型查询查询商品标准
+        /// </summary>
+        /// <param name="request">请求参数</param>
+        /// <returns></returns>
+        public YouZanResponse<ItemStandardGetResponse> ItemStandardGet(YouZanRequest request)
+        {
+            return ApiInvoke<ItemStandardGetResponse>(request,
+                API.ITEM_STANDARD_GET,
                 API.VERSION_3_0_0);
         }
 
