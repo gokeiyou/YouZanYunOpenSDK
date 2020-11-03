@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Text;
 using YouZan.Open.Api.Constant;
@@ -73,7 +74,7 @@ namespace YouZan.Open.Api
         /// <returns></returns>
         private IDictionary<string, object> GenericParameter<T>(T t) where T : YouZanRequest
         {
-            IDictionary<string, object> dict = new Dictionary<string, object>();
+            IDictionary<string, object> dict = new ConcurrentDictionary<string, object>();
             Type type = t.GetType();
             foreach (var item in type.GetProperties())
             {

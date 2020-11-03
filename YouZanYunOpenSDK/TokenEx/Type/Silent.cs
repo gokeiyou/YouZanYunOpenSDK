@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using YouZan.Open.Http;
 using Newtonsoft.Json;
 using static YouZan.Open.TokenEx.OauthToken;
+using System.Collections.Concurrent;
+using System.Threading.Tasks;
 
 namespace YouZan.Open.TokenEx
 {
@@ -10,9 +12,12 @@ namespace YouZan.Open.TokenEx
     {
         private string _GrantId;
 
+        private string _CacheKey = null;
+
         public Silent(string clientId, string clientSecret, string grantId) : base(clientId, clientSecret)
         {
             this._GrantId = grantId;
+            _CacheKey = $"{clientId}_{grantId}";
         }
 
         public Silent(string clientId, string clientSecret) : base(clientId, clientSecret)
@@ -39,7 +44,12 @@ namespace YouZan.Open.TokenEx
             }
             else
             {
-                tokenData = cache.GetT(this._ClientId + "_" + this._GrantId, this.GetNewTokenData);
+                if (YouZanTokenConfig.SaveToDb)
+                {
+                    tokenData = YouZanAccessToken.GetData(this._CacheKey, this.GetNewTokenData);
+                }
+                else
+                    tokenData = cache.GetT(this._CacheKey, this.GetNewTokenData);
             }
 
 
@@ -49,13 +59,11 @@ namespace YouZan.Open.TokenEx
         private TokenData GetNewTokenData()
         {
             TokenData tokenData = null;
-            IDictionary<string, object> tokenParams = new Dictionary<string, object>
-                {
-                    { "client_id", _ClientId },
-                    { "client_secret", _ClientSecret },
-                    { "authorize_type", "silent" },
-                    { "grant_id", _GrantId }
-                };
+            IDictionary<string, object> tokenParams = new ConcurrentDictionary<string, object>();
+            tokenParams.Add("client_id", _ClientId);
+            tokenParams.Add("client_secret", _ClientSecret);
+            tokenParams.Add("authorize_type", "silent");
+            tokenParams.Add("grant_id", _GrantId);
             DefaultHttpClient defaultHttpClient = new DefaultHttpClient();
             string result = defaultHttpClient.Send(this.GetTokenUrl(), tokenParams, null, null);
             OauthToken oAuthToken = JsonConvert.DeserializeObject<OauthToken>(result);
@@ -73,9 +81,24 @@ namespace YouZan.Open.TokenEx
             // Token添加缓存
             if (cache.Contains(this._ClientId + "_" + this._GrantId))
                 cache.Remove(this._ClientId + "_" + this._GrantId);
-            cache.Add(this._ClientId+"_"+this._GrantId, tokenData, tokenData.ExpiresTime.AddMinutes(-5));
+            cache.Add(this._ClientId + "_" + this._GrantId, tokenData, tokenData.ExpiresTime.AddMinutes(-5));
 
             return tokenData;
+        }
+
+        private TokenData GetNewTokenData(bool create = true)
+        {
+            var token = this.GetNewTokenData();
+            Task.Run(() =>
+            {
+                var yzToken = new YouZanAccessToken
+                {
+                    Key = this._CacheKey,
+                    TokenData = JsonConvert.SerializeObject(token)
+                };
+                yzToken.Save(create);
+            });
+            return token;
         }
     }
 }

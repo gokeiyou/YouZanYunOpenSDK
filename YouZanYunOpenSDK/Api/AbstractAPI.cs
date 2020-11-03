@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using YouZan.Open.Api.Constant;
 using YouZan.Open.Common.Constant;
@@ -16,7 +17,7 @@ namespace YouZan.Open.Api
 
         protected string _Version;
 
-        protected Dictionary<string, string> headers = new Dictionary<string, string>();
+        protected IDictionary<string, string> headers = new ConcurrentDictionary<string, string>();
 
         public void AddHeader(string headerName, string headerValue)
         {
