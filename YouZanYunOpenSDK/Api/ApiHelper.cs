@@ -8,6 +8,7 @@ using YouZan.Open.Api.Entry.Request.Salesman;
 using YouZan.Open.Api.Entry.Request.Scrm;
 using YouZan.Open.Api.Entry.Request.Users;
 using YouZan.Open.Api.Entry.Response;
+using YouZan.Open.Api.Entry.Response.Crm;
 using YouZan.Open.Api.Entry.Response.Items;
 using YouZan.Open.Api.Entry.Response.Salesman;
 using YouZan.Open.Api.Entry.Response.Scrm;
@@ -151,6 +152,19 @@ namespace YouZan.Open.Api
                 request,
                 API.USER_WEIXIN_OPENID_GET,
                 API.VERSION_3_0_0);
+        }
+
+        /// <summary>
+        /// 依据有赞openid 或者手机号 获取用户简要信息
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public YouZanResponse<UserBasicGetResponse> UserBasicGet(YouZanRequest request)
+        {
+            return ApiInvoke<UserBasicGetResponse>(
+                request,
+                API.USER_BASIC_GET,
+                API.VERSION_3_0_1);
         }
 
         #endregion
@@ -352,10 +366,29 @@ namespace YouZan.Open.Api
         {
             return ApiInvoke<ItemStandardGetResponse>(request,
                 API.ITEM_STANDARD_GET,
-                API.VERSION_3_0_0);
+                API.VERSION_1_0_0);
         }
 
         #endregion
+
+        #region 积分API请求
+
+        public YouZanResponse<CrmCustomerPointsIncreaseResponse> CrmCustomerPointsIncrease(YouZanRequest request)
+        {
+            return ApiInvoke<CrmCustomerPointsIncreaseResponse>(request,
+                API.CRM_CUSTOMER_POINTS_INCREASE,
+                API.VERSION_4_0_0);
+        }
+
+        public YouZanResponse<CrmCustomerGrowthIncreaseResponse> CrmCustomerGrowthIncrease(YouZanRequest request)
+        {
+            return ApiInvoke<CrmCustomerGrowthIncreaseResponse>(request,
+                API.CRM_CUSTOMER_GROWTH_INCREASE,
+                API.VERSION_2_0_0);
+        }
+        #endregion
+
+
 
     }
 }
