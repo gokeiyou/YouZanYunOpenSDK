@@ -23,7 +23,6 @@ namespace YouZan.Open.TokenEx
 
         public class TokenData
         {
-            public string Key { get; set; }
             [JsonProperty("expires")]
             public long Expires { get; set; }
 
@@ -45,17 +44,6 @@ namespace YouZan.Open.TokenEx
                     TimeSpan ts = new TimeSpan(this.Expires * 10000);
                     return startTime.Add(ts);
                 }
-            }
-
-            public static TokenData GetData(string key, Func<TokenData> func)
-            {
-
-                return null;
-            }
-
-            public void Save(string key)
-            {
-                this.Key = key;
             }
         }
     }

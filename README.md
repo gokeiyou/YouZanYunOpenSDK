@@ -109,8 +109,6 @@ EXEC sp_addextendedproperty
 'MS_Description', N'有赞云API日志表',
 'SCHEMA', N'dbo',
 'TABLE', N'YouZanApiLogs'
-GO
-
 ```
 
 
@@ -124,52 +122,6 @@ GO
 		YouZanLogConfig.DBType = YouZanLogDBType.SqlServer; // 默认
 		//YouZanLogConfig.DBType = YouZanLogDBType.Oracle;
 		//YouZanLogConfig.DBType = YouZanLogDBType.MySql;
-```
-
-## 3.Api调用凭证AccessToken记录（支持Sql Server、Oracle、MySql）
-```sql
-需提前在数据库中创建日志表，表名自定义，默认为YouZanAccessToken，以SqlServer为例：
-
-CREATE TABLE [dbo].[YouZanAccessToken] (
-  [Key] varchar(255) COLLATE Chinese_PRC_CI_AS  NOT NULL,
-  [TokenData] text COLLATE Chinese_PRC_CI_AS  NOT NULL
-)
-GO
-
-ALTER TABLE [dbo].[YouZanAccessToken] SET (LOCK_ESCALATION = TABLE)
-GO
-
-EXEC sp_addextendedproperty
-'MS_Description', N'主键',
-'SCHEMA', N'dbo',
-'TABLE', N'YouZanAccessToken',
-'COLUMN', N'Key'
-GO
-
-EXEC sp_addextendedproperty
-'MS_Description', N'AccessToken数据',
-'SCHEMA', N'dbo',
-'TABLE', N'YouZanAccessToken',
-'COLUMN', N'TokenData'
-GO
-
-EXEC sp_addextendedproperty
-'MS_Description', N'有赞AccessToken信息表',
-'SCHEMA', N'dbo',
-'TABLE', N'YouZanAccessToken'
-GO
-
-```
-
-	在程序启动的位置添加以下代码
-
-```c#
-		YouZanTokenConfig.SaveToDb = true; // 默认为false
-		YouZanTokenConfig.DBConnectionString = "xxxxxxx"; // 默认为空
-		YouZanTokenConfig.TableName = "YouZanAccessToken"; // 默认
-		YouZanTokenConfig.DBType = DBType.SqlServer; // 默认
-		//YouZanTokenConfig.DBType = DBType.Oracle;
-		//YouZanTokenConfig.DBType = DBType.MySql;
 ```
 
 ### 请求参数
