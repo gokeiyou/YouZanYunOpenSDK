@@ -14,7 +14,7 @@ namespace YouZan.Open.Cache
     public class YouZanCache : ICache
     {
 
-        private static Dictionary<string, KeyValuePair<DateTime, object>> _CustomerCacheDictionary = new Dictionary<string, KeyValuePair<DateTime, object>>();
+        private static IDictionary<string, KeyValuePair<DateTime, object>> _CustomerCacheDictionary = new ConcurrentDictionary<string, KeyValuePair<DateTime, object>>();
 
         static YouZanCache()
         {
