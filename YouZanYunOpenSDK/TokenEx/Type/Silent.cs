@@ -39,7 +39,7 @@ namespace YouZan.Open.TokenEx
             }
             else
             {
-                tokenData = cache.GetT(this._ClientId, this.GetNewTokenData);
+                tokenData = cache.GetT(this._ClientId + "_" + this._GrantId, this.GetNewTokenData);
             }
 
 
@@ -71,9 +71,9 @@ namespace YouZan.Open.TokenEx
             tokenData = JsonConvert.DeserializeObject<TokenData>(data);
 
             // Token添加缓存
-            if (cache.Contains(this._ClientId))
-                cache.Remove(this._ClientId);
-            cache.Add(this._ClientId, tokenData, tokenData.ExpiresTime.AddMinutes(-5));
+            if (cache.Contains(this._ClientId + "_" + this._GrantId))
+                cache.Remove(this._ClientId + "_" + this._GrantId);
+            cache.Add(this._ClientId+"_"+this._GrantId, tokenData, tokenData.ExpiresTime.AddMinutes(-5));
 
             return tokenData;
         }

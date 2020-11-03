@@ -1,0 +1,14 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1cbca58a_002D60f6_002D4583_002Dbb7d_002D335f215c85d7/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="TestItemsOnsaleGet" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;MSTest::D92359AE-EB35-4616-B160-30CBCFED6FED::.NETCoreApp,Version=v2.2::UnitTest.UnitTest.TestItemsOnsaleGet&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::D92359AE-EB35-4616-B160-30CBCFED6FED::.NETCoreApp,Version=v2.2::UnitTest.UnitTest.TestUmpCouponSearch&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::D92359AE-EB35-4616-B160-30CBCFED6FED::.NETCoreApp,Version=v2.2::UnitTest.UnitTest.TestUserCheck&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::D92359AE-EB35-4616-B160-30CBCFED6FED::.NETCoreApp,Version=v2.2::UnitTest.UnitTest.TestUserCreate&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::D92359AE-EB35-4616-B160-30CBCFED6FED::.NETCoreApp,Version=v2.2::UnitTest.UnitTest.TestUmpCouponTake&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::D92359AE-EB35-4616-B160-30CBCFED6FED::.NETCoreApp,Version=v2.2::UnitTest.UnitTest.ItemStandardGet&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::D92359AE-EB35-4616-B160-30CBCFED6FED::.NETCoreApp,Version=v2.2::UnitTest.UnitTest.ItemGet&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::D92359AE-EB35-4616-B160-30CBCFED6FED::.NETCoreApp,Version=v2.2::UnitTest.UnitTest.TestUmpCouponConsumeGet&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::D92359AE-EB35-4616-B160-30CBCFED6FED::.NETCoreApp,Version=v2.2::UnitTest.UnitTest.TestPromocardBuyerSearch&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

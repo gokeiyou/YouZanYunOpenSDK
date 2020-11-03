@@ -119,6 +119,24 @@ namespace YouZan.Open.Api.Constant
         /// </summary>
         internal const string UMP_COUPON_TAKE = "youzan.ump.coupon.take";
 
+        /// <summary>
+        /// 根据核销码获取优惠券/优惠码
+        /// </summary>
+        internal const string UMP_COUPON_CONSUME_GET = "youzan.ump.coupon.consume.get";
+
+        /// <summary>
+        /// 查询买家优惠券列表 查询条件优先级 1. mobile 2. open_user_id 3. fans_id fans_type
+        /// </summary>
+        internal const string UMP_PROMOCRAD_BUYER_SEARCH = "youzan.ump.promocard.buyer.search";
+
+        /// <summary>
+        /// 根据凭证状态查询用户凭证列表，
+        /// 凭证状态：0.全部1.生效=未使用and未过期2.已使用3.已过期=未使用and已过期4.已失效=已使用or已过期
+        /// 其中 1、yz_open_id；2、mobile；3、fans_id和fans_type三组参数中必须要传一个。
+        /// （fans_id和fans_type组成一个唯一的有赞用户标识。）
+        /// </summary>
+        internal const string UMP_VOUCHER_QUERY = "youzan.ump.voucher.query";
+        
         #endregion
 
         #region 商品API
@@ -127,6 +145,17 @@ namespace YouZan.Open.Api.Constant
         /// 获取出售中的商品列表，可获取微商城全部商品信息
         /// </summary>
         internal const string ITEMS_ONSALE_GET = "youzan.items.onsale.get";
+
+        /// <summary>
+        /// 该接口用于查询单个商品详细信息，需使用对应店铺下的item_id。
+        /// 该接口支持微商城零售连锁总部，微商城零售连锁分店，微商城零售连锁单店调用。
+        /// </summary>
+        internal const string ITEM_GET = "youzan.item.get";
+
+        /// <summary>
+        /// 根据编码和商品类型查询查询商品标准
+        /// </summary>
+        internal const string ITEM_STANDARD_GET = "youzan.item.standard.get";
 
         #endregion
 

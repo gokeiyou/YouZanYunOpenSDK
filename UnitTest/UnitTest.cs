@@ -1,9 +1,12 @@
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using System.Diagnostics;
 using YouZan.Open.Api;
 using YouZan.Open.Api.Entry.Request;
+using YouZan.Open.Api.Entry.Request.Items;
 using YouZan.Open.Api.Entry.Request.Salesman;
+using YouZan.Open.Api.Entry.Request.Scrm;
 using YouZan.Open.Api.Entry.Request.Ump;
 using YouZan.Open.Api.Entry.Request.Users;
 using YouZan.Open.Log;
@@ -36,6 +39,19 @@ namespace UnitTest
             this.TestSalesmanAccountAdd();
         }
 
+
+        [TestMethod]
+        public void TestPromocardBuyerSearch()
+        {
+            UmpPromocardBuyerSearchRequest request = new UmpPromocardBuyerSearchRequest();
+            request.Mobile = 13333333333;
+            request.Status = "VALID";
+            // request.Status = "USED";
+            var response = api.UmpPromocardBuyerSearch(request);
+            Debug.WriteLine(JsonConvert.SerializeObject(response));
+        }
+
+
         [TestMethod]
         public void TestUserCheck()
         {
@@ -45,12 +61,47 @@ namespace UnitTest
             var response = api.UsersAccountCheck(request);
             Debug.WriteLine(JsonConvert.SerializeObject(response));
         }
+        [TestMethod]
+        public void TestUserCreate()
+        {
+            ScrmCustomerCreateRequest request = new ScrmCustomerCreateRequest();
+            request.Mobile = "13333333333";
+            request.CustomerInfo = new CustomerInfo
+            {
+                Name = "name",
+                Gender = 0,
+            };
+
+            var response = api.ScrmCustomerCreate(request);
+            Debug.WriteLine(JsonConvert.SerializeObject(response));
+        }
 
         [TestMethod]
         public void TestItemsOnsaleGet()
         {
             var request = new YouZanRequest();
             var response = api.ItemsOnsaleGet(request);
+            Debug.WriteLine(JsonConvert.SerializeObject(response));
+        }
+
+        [TestMethod]
+        public void ItemStandardGet()
+        {
+            var request = new ItemStandardGetRequest();
+            request.Code = "123123123123";
+            var response = api.ItemStandardGet(request);
+            Debug.WriteLine(JsonConvert.SerializeObject(response));
+        }
+
+        [TestMethod]
+        public void ItemGet()
+        {
+            var request = new ItemGetRequest();
+            // request.NodeKdtId = "123123123123";
+            request.ItemId = "123123123123";
+            // request.Alias = "123123123123";
+            // request.NodeItemId = "123123123123";
+            var response = api.ItemGet(request);
             Debug.WriteLine(JsonConvert.SerializeObject(response));
         }
 
@@ -72,7 +123,8 @@ namespace UnitTest
             var request = new UmpCouponSearchRequest();
             request.PageNo = 1;
             request.PageSize = 50;
-            var respponse = api.UmpCouponSearch(request);
+            var response = api.UmpCouponSearch(request);
+            Debug.WriteLine(JsonConvert.SerializeObject(response));
         }
         [TestMethod]
         public void TestUmpCouponTake()
@@ -81,7 +133,16 @@ namespace UnitTest
             var request = new UmpCouponTakeRequest();
             request.Mobile = 13333333333;
             request.CouponGroupId = 6264402;
-            var respponse = api.UmpCouponTake(request);
+            var response = api.UmpCouponTake(request);
+        }
+
+        [TestMethod]
+        public void TestUmpCouponConsumeGet()
+        {
+            YouZanLogConfig.IsDBLog = false;
+            var request = new UmpCouponConsumeGetRequest();
+            request.Code = "YOUZAN_CODE";
+            var response = api.UmpCouponConsumeGet(request);
         }
 
         [TestMethod]
