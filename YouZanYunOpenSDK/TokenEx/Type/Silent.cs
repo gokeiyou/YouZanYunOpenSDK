@@ -79,9 +79,11 @@ namespace YouZan.Open.TokenEx
             tokenData = JsonConvert.DeserializeObject<TokenData>(data);
 
             // Token添加缓存
-            if (cache.Contains(this._ClientId + "_" + this._GrantId))
-                cache.Remove(this._ClientId + "_" + this._GrantId);
-            cache.Add(this._ClientId + "_" + this._GrantId, tokenData, tokenData.ExpiresTime.AddMinutes(-5));
+            if (!YouZanTokenConfig.SaveToDb) {
+                if (cache.Contains(this._CacheKey))
+                    cache.Remove(this._CacheKey);
+                cache.Add(this._CacheKey, tokenData, tokenData.ExpiresTime.AddMinutes(-5));
+            }
 
             return tokenData;
         }
