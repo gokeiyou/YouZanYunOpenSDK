@@ -4,7 +4,7 @@
 # 平台版本
 .NET Standard 2.0+
 
-## 1.正常调用
+## 1.正常调用(AccessToken会自动刷新，无须手动刷新)
 
 ```c#
 		ApiHelper apiHelper = new ApiHelper("clientId", "clientSecret", grantId);
@@ -114,18 +114,6 @@ GO
 ```
 
 
-
-	在程序启动的位置添加以下代码
-
-```c#
-		YouZanLogConfig.IsDBLog = true; // 默认为false
-		YouZanLogConfig.DBConnectionString = "xxxxxxx"; // 默认为空
-		YouZanLogConfig.LogTableName = "YouZanApiLogs"; // 默认
-		YouZanLogConfig.DBType = YouZanLogDBType.SqlServer; // 默认
-		//YouZanLogConfig.DBType = YouZanLogDBType.Oracle;
-		//YouZanLogConfig.DBType = YouZanLogDBType.MySql;
-```
-
 ## 3.Api调用凭证AccessToken记录（支持Sql Server、Oracle、MySql）
 ```sql
 需提前在数据库中创建日志表，表名自定义，默认为YouZanAccessToken，以SqlServer为例：
@@ -161,15 +149,15 @@ GO
 
 ```
 
-	在程序启动的位置添加以下代码
+## 4、如若开启日志保存和AccessToken保存，在程序启动的位置添加以下代码
 
 ```c#
-		YouZanTokenConfig.SaveToDb = true; // 默认为false
-		YouZanTokenConfig.DBConnectionString = "xxxxxxx"; // 默认为空
-		YouZanTokenConfig.TableName = "YouZanAccessToken"; // 默认
-		YouZanTokenConfig.DBType = DBType.SqlServer; // 默认
-		//YouZanTokenConfig.DBType = DBType.Oracle;
-		//YouZanTokenConfig.DBType = DBType.MySql;
+		YouZanConfig.DBConnectionString = "xxxxxxx"; // 默认为空
+		YouZanConfig.DBType = DBType.SqlServer; // 默认
+		YouZanConfig.SaveApiLogToDB = true; // 默认为false
+		YouZanConfig.ApiLogTableName = "YouZanApiLogs"; // 默认
+		YouZanConfig.SaveAccessTokenToDB = true; // 默认为false
+		YouZanConfig.AccessTokenTableName = "YouZanAccessToken";
 ```
 
 ### 请求参数
@@ -184,4 +172,4 @@ YouZanResponse<T>
 
 ### NuGet程序包安装
 
-	PM> Install-Package YouzanYunOpenSDK -Version 1.1.3 
+	PM> Install-Package YouzanYunOpenSDK -Version 1.1.4 

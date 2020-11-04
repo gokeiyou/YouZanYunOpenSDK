@@ -2331,6 +2331,11 @@
             响应数据
             </summary>
         </member>
+        <member name="P:YouZan.Open.Api.Entry.Response.YouZanResponse`1.ErrorResponse">
+            <summary>
+            错误响应
+            </summary>
+        </member>
         <member name="F:YouZan.Open.Api.GeneralApi.httpMethod">
             请求方法
         </member>
@@ -2462,6 +2467,36 @@
         <member name="M:YouZan.Open.Core.DefaultYZClient.BuildUrl(YouZan.Open.Api.IAPI,YouZan.Open.Auth.IAuth)">
             构建请求URL
             
+        </member>
+        <member name="F:YouZan.Open.Core.YouZanConfig.DBConnectionString">
+            <summary>
+            数据库连接字符串
+            </summary>
+        </member>
+        <member name="F:YouZan.Open.Core.YouZanConfig.DBType">
+            <summary>
+            数据库类型
+            </summary>
+        </member>
+        <member name="F:YouZan.Open.Core.YouZanConfig.SaveApiLogToDB">
+            <summary>
+            是否保存API日志到数据库
+            </summary>
+        </member>
+        <member name="F:YouZan.Open.Core.YouZanConfig.ApiLogTableName">
+            <summary>
+            API日志表名
+            </summary>
+        </member>
+        <member name="F:YouZan.Open.Core.YouZanConfig.SaveAccessTokenToDB">
+            <summary>
+            是否保存AccessToken到数据库
+            </summary>
+        </member>
+        <member name="F:YouZan.Open.Core.YouZanConfig.AccessTokenTableName">
+            <summary>
+            AccessToken表名
+            </summary>
         </member>
         <member name="M:YouZan.Open.DB.DBFactory.CreateInstance">
             <summary>

@@ -43,5 +43,19 @@ namespace YouZan.Open.Api.Entry.Response
         /// </summary>
         [JsonProperty("response")]
         public T Response { get; set; }
+
+        /// <summary>
+        /// 错误响应
+        /// </summary>
+        [JsonProperty("gw_err_resp")]
+        public ErrorResponse ErrorResponse { get; set; }
+    }
+
+    public class ErrorResponse
+    {
+        [JsonProperty("err_msg")]
+        public string ErrorMessage { get; set; }
+        [JsonProperty("err_code")]
+        public int ErrorCode { get; set; }
     }
 }

@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Common;
 using System.Text;
 using Oracle.ManagedDataAccess.Client;
+using YouZan.Open.Core;
 using YouZan.Open.Log;
 
 namespace YouZan.Open.DB
@@ -12,7 +13,7 @@ namespace YouZan.Open.DB
     {
         public T ExecuteSql<T>(string sql, Func<DbCommand, T> func)
         {
-            using (OracleConnection conn = new OracleConnection(YouZanLogConfig.DBConnectionString))
+            using (OracleConnection conn = new OracleConnection(YouZanConfig.DBConnectionString))
             {
                 try
                 {
@@ -40,7 +41,7 @@ namespace YouZan.Open.DB
 
         public T ExecuteSqlWithTran<T>(string sql, Func<DbCommand, T> func)
         {
-            using (OracleConnection conn = new OracleConnection(YouZanLogConfig.DBConnectionString))
+            using (OracleConnection conn = new OracleConnection(YouZanConfig.DBConnectionString))
             {
                 OracleTransaction tran = null;
                 try

@@ -8,13 +8,13 @@ using System.Text;
 using MySql.Data.MySqlClient;
 using Oracle.ManagedDataAccess.Client;
 using YouZan.Open.Common.Constant;
+using YouZan.Open.Core;
 using YouZan.Open.DB;
 
 namespace YouZan.Open.Log
 {
     public class YouZanLogger
     {
-
         private string Guid { get; set; }
         private DateTime LogTime { get; set; }
         public string ApiName { get; set; }
@@ -37,23 +37,23 @@ namespace YouZan.Open.Log
             string[] @params = default;
             DbParameter[] parameters = default;
 
-            switch (YouZanLogConfig.DBType)
+            switch (YouZanConfig.DBType)
             {
-                case YouZanLogDBType.Oracle:
-                    tableName = $"\"{YouZanLogConfig.LogTableName}\"";
+                case DBType.Oracle:
+                    tableName = $"\"{YouZanConfig.ApiLogTableName}\"";
                     fields = properties.Select(t => $"{t.Name}").ToArray();
                     @params = properties.Select(t => $":{t.Name}").ToArray();
                     parameters = properties.Select(t => new OracleParameter($":{t.Name}", t.GetValue(this))).ToArray();
                     break;
-                case YouZanLogDBType.MySql:
-                    tableName = $"`{YouZanLogConfig.LogTableName}`";
+                case DBType.MySql:
+                    tableName = $"`{YouZanConfig.ApiLogTableName}`";
                     fields = properties.Select(t => $"`{t.Name}`").ToArray();
                     @params = properties.Select(t => $"?{t.Name}").ToArray();
                     parameters = properties.Select(t => new MySqlParameter($"?{t.Name}", t.GetValue(this))).ToArray();
                     break;
-                case YouZanLogDBType.SqlServer:
+                case DBType.SqlServer:
                 default:
-                    tableName = $"[{YouZanLogConfig.LogTableName}]";
+                    tableName = $"[{YouZanConfig.ApiLogTableName}]";
                     fields = properties.Select(t => $"[{t.Name}]").ToArray();
                     @params = properties.Select(t => $"@{t.Name}").ToArray();
                     parameters = properties.Select(t => new SqlParameter($"@{t.Name}", t.GetValue(this))).ToArray();

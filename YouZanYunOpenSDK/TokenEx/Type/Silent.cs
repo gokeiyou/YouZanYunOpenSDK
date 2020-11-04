@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using static YouZan.Open.TokenEx.OauthToken;
 using System.Collections.Concurrent;
 using System.Threading.Tasks;
+using YouZan.Open.Core;
 
 namespace YouZan.Open.TokenEx
 {
@@ -44,7 +45,7 @@ namespace YouZan.Open.TokenEx
             }
             else
             {
-                if (YouZanTokenConfig.SaveToDb)
+                if (YouZanConfig.SaveAccessTokenToDB)
                 {
                     tokenData = YouZanAccessToken.GetData(this._CacheKey, this.GetNewTokenData);
                 }
@@ -56,7 +57,7 @@ namespace YouZan.Open.TokenEx
             return tokenData;
         }
 
-        private TokenData GetNewTokenData()
+        internal TokenData GetNewTokenData()
         {
             TokenData tokenData = null;
             IDictionary<string, object> tokenParams = new ConcurrentDictionary<string, object>();
@@ -79,7 +80,7 @@ namespace YouZan.Open.TokenEx
             tokenData = JsonConvert.DeserializeObject<TokenData>(data);
 
             // Token添加缓存
-            if (!YouZanTokenConfig.SaveToDb) {
+            if (!YouZanConfig.SaveAccessTokenToDB) {
                 if (cache.Contains(this._CacheKey))
                     cache.Remove(this._CacheKey);
                 cache.Add(this._CacheKey, tokenData, tokenData.ExpiresTime.AddMinutes(-5));
@@ -88,7 +89,7 @@ namespace YouZan.Open.TokenEx
             return tokenData;
         }
 
-        private TokenData GetNewTokenData(bool create = true)
+        internal TokenData GetNewTokenData(bool create = true)
         {
             var token = this.GetNewTokenData();
             Task.Run(() =>

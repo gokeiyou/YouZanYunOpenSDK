@@ -1,28 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
 using Oracle.ManagedDataAccess.Client;
 using YouZan.Open.Common.Constant;
+using YouZan.Open.Core;
 using YouZan.Open.DB;
 using static YouZan.Open.TokenEx.OauthToken;
 
 namespace YouZan.Open.TokenEx
 {
-    public class YouZanTokenConfig
-    {
-        public static bool SaveToDb = false;
-        public static string DBConnectionString = "";
-        public static string TableName = "YouZanAccessToken";
-        public static DBType DBType = DBType.SqlServer;
-    }
-
-
     public class YouZanAccessToken
     {
         public string Key { get; set; }
@@ -33,21 +23,21 @@ namespace YouZan.Open.TokenEx
             string tableName;
             string field;
             string condition;
-            switch (YouZanTokenConfig.DBType)
+            switch (YouZanConfig.DBType)
             {
                 case DBType.Oracle:
-                    tableName = $"\"{YouZanTokenConfig.TableName}\"";
+                    tableName = $"\"{YouZanConfig.AccessTokenTableName}\"";
                     field = "\"TokenData\"";
                     condition = $"\"Key\" = '{key}'";
                     break;
                 case DBType.MySql:
-                    tableName = $"`{YouZanTokenConfig.TableName}`";
+                    tableName = $"`{YouZanConfig.AccessTokenTableName}`";
                     field = "`TokenData`";
                     condition = $"`Key` = '{key}'";
                     break;
                 case DBType.SqlServer:
                 default:
-                    tableName = $"[{YouZanTokenConfig.TableName}]";
+                    tableName = $"[{YouZanConfig.AccessTokenTableName}]";
                     field = "[TokenData]";
                     condition = $"[Key] = '{key}'";
                     break;
@@ -55,14 +45,14 @@ namespace YouZan.Open.TokenEx
 
             string SQL = $"SELECT {field} FROM {tableName} WHERE {condition};";
 
-            IDBHelper db = DBFactory.CreateInstanceForToken();
+            IDBHelper db = DBFactory.CreateInstance();
             string tokenData = db.ExecuteSql(SQL, cmd => cmd.ExecuteScalar()?.ToString());
             if (string.IsNullOrEmpty(tokenData))
                 return func(true);
 
             var token = JsonConvert.DeserializeObject<TokenData>(tokenData);
 
-            if (token.ExpiresTime.AddMinutes(-5) <= DateTime.Now)
+            if (token.ExpiresTime <= DateTime.Now)
                 return func(false);
 
             return JsonConvert.DeserializeObject<TokenData>(tokenData);
@@ -78,10 +68,10 @@ namespace YouZan.Open.TokenEx
             DbParameter[] parameters = default;
             string updateField;
             string condition;
-            switch (YouZanTokenConfig.DBType)
+            switch (YouZanConfig.DBType)
             {
                 case DBType.Oracle:
-                    tableName = $"\"{YouZanTokenConfig.TableName}\"";
+                    tableName = $"\"{YouZanConfig.AccessTokenTableName}\"";
                     fields = properties.Select(p => $"{p.Name}").ToArray();
                     @params = properties.Select(p => $":{p.Name}").ToArray();
                     updateField = $"TokenData = :TokenData";
@@ -89,7 +79,7 @@ namespace YouZan.Open.TokenEx
                     parameters = properties.Select(t => new OracleParameter($":{t.Name}", t.GetValue(this))).ToArray();
                     break;
                 case DBType.MySql:
-                    tableName = $"`{YouZanTokenConfig.TableName}`";
+                    tableName = $"`{YouZanConfig.AccessTokenTableName}`";
                     fields = properties.Select(t => $"`{t.Name}`").ToArray();
                     @params = properties.Select(t => $"?{t.Name}").ToArray();
                     updateField = $"`TokenData` = ?TokenData";
@@ -98,7 +88,7 @@ namespace YouZan.Open.TokenEx
                     break;
                 case DBType.SqlServer:
                 default:
-                    tableName = $"[{YouZanTokenConfig.TableName}]";
+                    tableName = $"[{YouZanConfig.AccessTokenTableName}]";
                     fields = properties.Select(t => $"[{t.Name}]").ToArray();
                     @params = properties.Select(t => $"@{t.Name}").ToArray();
                     updateField = $"[TokenData] = @TokenData";
@@ -110,7 +100,7 @@ namespace YouZan.Open.TokenEx
             if (create)
                 SQL = $"INSERT INTO {tableName}({string.Join(",", fields)}) VALUES ({string.Join(",", @params)});";
 
-            IDBHelper db = DBFactory.CreateInstanceForToken();
+            IDBHelper db = DBFactory.CreateInstance();
 
             db.ExecuteSql(SQL, cmd => {
                 cmd.Parameters.AddRange(parameters);

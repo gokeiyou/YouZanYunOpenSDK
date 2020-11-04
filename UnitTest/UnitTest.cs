@@ -115,7 +115,6 @@ namespace UnitTest
         [TestMethod]
         public void TestUmpCouponSearch()
         {
-            YouZanLogConfig.IsDBLog = false;
             var request = new UmpCouponSearchRequest();
             request.PageNo = 1;
             request.PageSize = 50;
@@ -125,7 +124,6 @@ namespace UnitTest
         [TestMethod]
         public void TestUmpCouponTake()
         {
-            YouZanLogConfig.IsDBLog = false;
             var request = new UmpCouponTakeRequest();
             request.Mobile = 13333333333;
             request.CouponGroupId = 6264402;
@@ -135,7 +133,6 @@ namespace UnitTest
         [TestMethod]
         public void TestUmpCouponConsumeGet()
         {
-            YouZanLogConfig.IsDBLog = false;
             var request = new UmpCouponConsumeGetRequest();
             request.Code = "YOUZAN_CODE";
             var response = api.UmpCouponConsumeGet(request);

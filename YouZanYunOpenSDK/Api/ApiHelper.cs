@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using YouZan.Open.Api.Constant;
 using YouZan.Open.Api.Entry.Request;
@@ -62,8 +63,21 @@ namespace YouZan.Open.Api
 
             _YouZanClient = new DefaultYZClient();
 
+            this.GetAccessToken();
+        }
+
+        private void GetAccessToken(bool refresh = false)
+        {
             Silent silent = new Silent(this.ClientId, this.ClientSecret, this.GrantId);
-            oAuthToken = silent.GetToken();
+            if (refresh)
+            {
+                if (YouZanConfig.SaveAccessTokenToDB)
+                    oAuthToken = silent.GetNewTokenData(false);
+                else
+                    oAuthToken = silent.GetToken(refresh);
+            }
+            else
+                oAuthToken = silent.GetToken();
         }
 
         /// <summary>
@@ -121,9 +135,22 @@ namespace YouZan.Open.Api
 
             generalApi.SetAPIParams(apiParams);
 
-            string result = _YouZanClient.Invoke(generalApi, new Token(oAuthToken.Token), headers, files);
+            Func<YouZanResponse<T>> func = () => {
+                string result = _YouZanClient.Invoke(generalApi, new Token(oAuthToken.Token), headers, files);
+                return JsonConvert.DeserializeObject<YouZanResponse<T>>(result);
+            };
 
-            return JsonConvert.DeserializeObject<YouZanResponse<T>>(result);
+            var resp = func();
+
+            // 当Token失效或Token不存在时，强制刷新AccessToken并且重新请求
+            var errCodes = new[] { 4201, 4202, 4203 };
+            if (resp.ErrorResponse != null && errCodes.Contains(resp.ErrorResponse.ErrorCode))
+            {
+                this.GetAccessToken(true);
+                resp = func();
+            }
+
+            return resp;
         }
 
         #region 用户API请求

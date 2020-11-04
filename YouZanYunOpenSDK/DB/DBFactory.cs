@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using YouZan.Open.Common.Constant;
+using YouZan.Open.Core;
 using YouZan.Open.Log;
 using YouZan.Open.TokenEx;
 
@@ -15,21 +16,7 @@ namespace YouZan.Open.DB
         /// <returns></returns>
         public static IDBHelper CreateInstance()
         {
-            switch (YouZanLogConfig.DBType)
-            {
-                case YouZanLogDBType.Oracle:
-                    return new OracleDBHelper();
-                case YouZanLogDBType.MySql:
-                    return new MySqlDBHelper();
-                case YouZanLogDBType.SqlServer:
-                default:
-                    return new SqlDBHelper();
-            }
-        }
-
-        public static IDBHelper CreateInstanceForToken()
-        {
-            switch (YouZanTokenConfig.DBType)
+            switch (YouZanConfig.DBType)
             {
                 case DBType.Oracle:
                     return new OracleDBHelper();
@@ -40,6 +27,5 @@ namespace YouZan.Open.DB
                     return new SqlDBHelper();
             }
         }
-
     }
 }

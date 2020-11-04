@@ -23,47 +23,45 @@ namespace YouZan.Open.Core
 
         string IYouZanClient.Invoke(IAPI api, IAuth auth, IDictionary<string, string> headers, List<KeyValuePair<string, string>> files)
         {
+            string url = null;
+            if (api != null)
             {
-                string url = null;
-                if (api != null)
+                OAuthEnum oAuth = api.GetOAuthType();
+                switch (oAuth)
                 {
-                    OAuthEnum oAuth = api.GetOAuthType();
-                    switch (oAuth)
-                    {
-                        case OAuthEnum.TOKEN:
-                            url = BuildUrl(api, auth);
-                            break;
-                        case OAuthEnum.SIGN:
-                            break;
-                        case OAuthEnum.DIRECT:
-                            url = BuildUrl(api, auth);
-                            break;
+                    case OAuthEnum.TOKEN:
+                        url = BuildUrl(api, auth);
+                        break;
+                    case OAuthEnum.SIGN:
+                        break;
+                    case OAuthEnum.DIRECT:
+                        url = BuildUrl(api, auth);
+                        break;
 
-                    }
-                    var method = api.GetHttpMethod();
-                    IApiParams apiParams = api.GetAPIParams();
-                    IDictionary<string, object> requestParams = apiParams.ToParams();
-                    IDictionary<string, string> header = api.GetHeaders();
-                    string result = defaultHttpClient.Send(url, requestParams, header, files);
-                    if (YouZanLogConfig.IsDBLog)
-                    {
-                        YouZanLogger log = new YouZanLogger
-                        {
-                            ApiName = api.GetName(),
-                            ApiVersion = api.GetVersion(),
-                            ApiMethod = api.GetHttpMethod(),
-                            AuthType = oAuth.ToString(),
-                            RequestUrl = url,
-                            PostData = JsonConvert.SerializeObject(requestParams),
-                            Header = JsonConvert.SerializeObject(header),
-                            ResponseData = result
-                        };
-                        Task.Run(log.Save);
-                    }
-                    return result;
                 }
-                return null;
+                var method = api.GetHttpMethod();
+                IApiParams apiParams = api.GetAPIParams();
+                IDictionary<string, object> requestParams = apiParams.ToParams();
+                IDictionary<string, string> header = api.GetHeaders();
+                string result = defaultHttpClient.Send(url, requestParams, header, files);
+                if (YouZanConfig.SaveApiLogToDB)
+                {
+                    YouZanLogger log = new YouZanLogger
+                    {
+                        ApiName = api.GetName(),
+                        ApiVersion = api.GetVersion(),
+                        ApiMethod = api.GetHttpMethod(),
+                        AuthType = oAuth.ToString(),
+                        RequestUrl = url,
+                        PostData = JsonConvert.SerializeObject(requestParams),
+                        Header = JsonConvert.SerializeObject(header),
+                        ResponseData = result
+                    };
+                    Task.Run(log.Save);
+                }
+                return result;
             }
+            return null;
         }
 
         /**
