@@ -24,10 +24,7 @@ namespace UnitTest
 
         static UnitTest()
         {
-            api = new ApiHelper("5a0785eda8c9d7ca05", "f2e9916e21b4c2cd8e349868b31a3ee6", "91365098");
-            //api = new ApiHelper(clientId, clientSecret, grantId);
-            //5a0785eda8c9d7ca05 f2e9916e21b4c2cd8e349868b31a3ee6    91365098
-
+            api = new ApiHelper(clientId, clientSecret, grantId);
         }
 
         [TestMethod]

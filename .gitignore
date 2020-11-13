@@ -9,6 +9,7 @@
 /YouzanYunOpenSDK/YouzanYunOpenSDK.nuspec
 *.nupkg
 /YouzanYunOpenSDK/nuget.bat
+/UnitTest
 /UnitTest/obj
 /UnitTest/bin/Debug/netcoreapp2.2
 /.vs/slnx.sqlite
