@@ -7,6 +7,7 @@ using YouZan.Open.Api.Entry.Request;
 using YouZan.Open.Api.Entry.Request.Items;
 using YouZan.Open.Api.Entry.Request.Salesman;
 using YouZan.Open.Api.Entry.Request.Scrm;
+using YouZan.Open.Api.Entry.Request.Trade;
 using YouZan.Open.Api.Entry.Request.Ump;
 using YouZan.Open.Api.Entry.Request.Users;
 using YouZan.Open.Log;
@@ -23,7 +24,10 @@ namespace UnitTest
 
         static UnitTest()
         {
-            api = new ApiHelper(clientId, clientSecret, grantId);
+            api = new ApiHelper("5a0785eda8c9d7ca05", "f2e9916e21b4c2cd8e349868b31a3ee6", "91365098");
+            //api = new ApiHelper(clientId, clientSecret, grantId);
+            //5a0785eda8c9d7ca05 f2e9916e21b4c2cd8e349868b31a3ee6    91365098
+
         }
 
         [TestMethod]
@@ -34,6 +38,27 @@ namespace UnitTest
             this.TestSalesmanAccountAdd();
         }
 
+        [TestMethod]
+        public void TestTradeGet()
+        {
+            
+        }
+
+        [TestMethod]
+        public void TestTradeMemoUpdate()
+        {
+            string OrderId = "E20201101194419014004139";
+            var request = new TradeGetRequest();
+            request.Tid = OrderId;
+            var response = api.TradesGet(request);
+            var tradeMemo = response.Data;
+
+            var updateRequest = new TradeMemoUpdateRequest();
+            updateRequest.Tid = OrderId;
+            updateRequest.Memo = tradeMemo + "测试更新备注-审核通过";
+            var updateResponse = api.TradeMemoUpdate(updateRequest);
+            var success = updateResponse.Response.IsSuccess;
+        }
 
         [TestMethod]
         public void TestPromocardBuyerSearch()
