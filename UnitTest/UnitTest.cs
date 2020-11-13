@@ -7,7 +7,6 @@ using YouZan.Open.Api.Entry.Request;
 using YouZan.Open.Api.Entry.Request.Items;
 using YouZan.Open.Api.Entry.Request.Salesman;
 using YouZan.Open.Api.Entry.Request.Scrm;
-using YouZan.Open.Api.Entry.Request.Trade;
 using YouZan.Open.Api.Entry.Request.Ump;
 using YouZan.Open.Api.Entry.Request.Users;
 using YouZan.Open.Log;
@@ -35,27 +34,6 @@ namespace UnitTest
             this.TestSalesmanAccountAdd();
         }
 
-        [TestMethod]
-        public void TestTradeGet()
-        {
-            
-        }
-
-        [TestMethod]
-        public void TestTradeMemoUpdate()
-        {
-            string OrderId = "E20201101194419014004139";
-            var request = new TradeGetRequest();
-            request.Tid = OrderId;
-            var response = api.TradesGet(request);
-            var tradeMemo = response.Data;
-
-            var updateRequest = new TradeMemoUpdateRequest();
-            updateRequest.Tid = OrderId;
-            updateRequest.Memo = tradeMemo + "测试更新备注-审核通过";
-            var updateResponse = api.TradeMemoUpdate(updateRequest);
-            var success = updateResponse.Response.IsSuccess;
-        }
 
         [TestMethod]
         public void TestPromocardBuyerSearch()
