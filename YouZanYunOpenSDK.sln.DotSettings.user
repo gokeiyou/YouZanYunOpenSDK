@@ -13,5 +13,7 @@
     &lt;TestId&gt;MSTest::D92359AE-EB35-4616-B160-30CBCFED6FED::.NETCoreApp,Version=v2.2::UnitTest.UnitTest.TestUserBasicGet&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;MSTest::D92359AE-EB35-4616-B160-30CBCFED6FED::.NETCoreApp,Version=v2.2::UnitTest.UnitTest.Test&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;MSTest::D92359AE-EB35-4616-B160-30CBCFED6FED::.NETCoreApp,Version=v2.2::UnitTest.UnitTest.TestCrmCustomerPointsIncrease&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::D92359AE-EB35-4616-B160-30CBCFED6FED::.NETCoreApp,Version=v2.2::UnitTest.UnitTest.TestTradeGet&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::D92359AE-EB35-4616-B160-30CBCFED6FED::.NETCoreApp,Version=v2.2::UnitTest.UnitTest.TestTradeMemoUpdate&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
