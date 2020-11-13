@@ -175,6 +175,37 @@ namespace YouZan.Open.Api.Constant
 
         #endregion
 
+        #region 交易API
+
+        /// <summary>
+        /// youzan.trades.sold.get 订单搜索接口
+        /// </summary>
+        internal const string TRADES_SOLD_GET = "youzan.trades.sold.get";
+
+        /// <summary>
+        /// youzan.trade.memo.update    增加/修改订单备注
+        /// </summary>
+        internal const string TRADE_MEMO_UPDATE = "youzan.trade.memo.update";
+
+        /// <summary>
+        /// youzan.trade.star.update 订单标星接口
+        /// </summary>
+        internal const string TRADE_STAR_UPDATE = "youzan.trade.star.update";
+
+        /// <summary>
+        /// youzan.trade.order.out.create 外部订单开单接口
+        /// </summary>
+        internal const string TRADE_ORDER_OUT_CREATE = "youzan.trade.order.out.create";
+
+        /// <summary>
+        /// youzan.trade.get 交易订单详情4.0接口
+        /// </summary>
+        internal const string TRADE_GET = "youzan.trade.get";
+
+
+
+        #endregion
+
 
         /// <summary>
         /// 给用户加积分，帐号类型(与帐户ID配合使用: 1:粉丝(原fansId),2:手机号,3:三方帐号(原open_user_id),4:UnionID,5:OpenID

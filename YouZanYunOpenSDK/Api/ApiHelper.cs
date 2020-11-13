@@ -14,6 +14,7 @@ using YouZan.Open.Api.Entry.Response.Crm;
 using YouZan.Open.Api.Entry.Response.Items;
 using YouZan.Open.Api.Entry.Response.Salesman;
 using YouZan.Open.Api.Entry.Response.Scrm;
+using YouZan.Open.Api.Entry.Response.Trade;
 using YouZan.Open.Api.Entry.Response.Ump;
 using YouZan.Open.Api.Entry.Response.Users;
 using YouZan.Open.Auth;
@@ -416,7 +417,35 @@ namespace YouZan.Open.Api
         }
         #endregion
 
+        #region 交易API请求
 
+        /// <summary>
+        /// 更新备注
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public YouZanResponse<TradeMemoUpdateResponse> TradeMemoUpdate(YouZanRequest request)
+        {
+            return ApiInvoke<TradeMemoUpdateResponse>(request,
+                API.TRADE_MEMO_UPDATE,
+                API.VERSION_3_0_0);
+        }
+
+        public YouZanResponse<TradeGetResponse> TradesGet(YouZanRequest request)
+        {
+            return ApiInvoke<TradeGetResponse>(request,
+                API.TRADE_GET,
+                API.VERSION_4_0_0);
+        }
+
+        public YouZanResponse<string> TradesGetString(YouZanRequest request)
+        {
+            return ApiInvoke<string>(request,
+                API.TRADE_GET,
+                API.VERSION_4_0_0);
+        }
+
+        #endregion
 
     }
 }
