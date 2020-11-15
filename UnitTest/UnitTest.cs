@@ -7,8 +7,11 @@ using YouZan.Open.Api.Entry.Request;
 using YouZan.Open.Api.Entry.Request.Items;
 using YouZan.Open.Api.Entry.Request.Salesman;
 using YouZan.Open.Api.Entry.Request.Scrm;
+using YouZan.Open.Api.Entry.Request.Trade;
 using YouZan.Open.Api.Entry.Request.Ump;
 using YouZan.Open.Api.Entry.Request.Users;
+using YouZan.Open.Api.Entry.Response;
+using YouZan.Open.Api.Entry.Response.Trade;
 using YouZan.Open.Log;
 
 namespace UnitTest
@@ -34,6 +37,26 @@ namespace UnitTest
             this.TestSalesmanAccountAdd();
         }
 
+        [TestMethod]
+        public void TestTradeMemoUpdate()
+        {
+            string OrderId = "E20201030104820051104261";
+            var request = new TradeGetRequest();
+            request.Tid = OrderId;
+            YouZanResponse<TradeGetResponse> response = api.TradesGet(request);
+            if (response.Data.DeliveryOrder.Count>0 && response.Data.DeliveryOrder[0].ExpressState==1)
+            {
+                //已发货
+
+            }
+            var tradeMemo = response.Data;
+
+            var updateRequest = new TradeMemoUpdateRequest();
+            updateRequest.Tid = OrderId;
+            updateRequest.Memo = tradeMemo.FullOrderInfo.RemarkInfo.TradeMemo + "测试更新备注-审核通过";
+            var updateResponse = api.TradeMemoUpdate(updateRequest);
+            var success = updateResponse.Response.IsSuccess;
+        }
 
         [TestMethod]
         public void TestPromocardBuyerSearch()
