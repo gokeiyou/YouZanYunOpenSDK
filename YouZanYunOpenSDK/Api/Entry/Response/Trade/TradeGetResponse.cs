@@ -116,19 +116,19 @@ namespace YouZan.Open.Api.Entry.Response.Trade
         public OrderInfo OrderInfo { get; set; }
 
         [JsonProperty("child_info")]
-        public string ChildInfo { get; set; }
+        public object ChildInfo { get; set; }
 
         [JsonProperty("source_info")]
-        public string SourceInfo { get; set; }
+        public object SourceInfo { get; set; }
 
         [JsonProperty("remark_info")]
         public RemarkInfo RemarkInfo { get; set; }
 
         [JsonProperty("invoice_info")]
-        public string InvoiceInfo { get; set; }
+        public object InvoiceInfo { get; set; }
 
         [JsonProperty("buyer_info")]
-        public string BuyerInfo { get; set; }
+        public object BuyerInfo { get; set; }
 
     }
 
@@ -151,7 +151,7 @@ namespace YouZan.Open.Api.Entry.Response.Trade
         /// 交易完成时间，时间格式为yyyy年-MM月-dd日 HH时:mm分:ss秒
         /// </summary>
         [JsonProperty("success_time")]
-        public DateTime SuccessTime { get; set; }
+        public DateTime? SuccessTime { get; set; }
         /// <summary>
         /// 主订单状态描述，和status对应关系。
         /// WAIT_BUYER_PAY：待支付，TRADE_PAID：已支付，WAIT_CONFIRM：待接单， WAIT_SELLER_SEND_GOODS：待发货，WAIT_BUYER_CONFIRM_GOODS：已发货，TRADE_SUCCESS：已完成，TRADE_CLOSED：已关闭
@@ -181,7 +181,7 @@ namespace YouZan.Open.Api.Entry.Response.Trade
         /// 订单创建时间
         /// </summary>
         [JsonProperty("created")]
-        public DateTime Created { get; set; }
+        public DateTime? Created { get; set; }
         /// <summary>
         /// 是否零售订单，true：是，false：否
         /// </summary>
@@ -201,7 +201,7 @@ namespace YouZan.Open.Api.Entry.Response.Trade
         /// 订单更新时间
         /// </summary>
         [JsonProperty("update_time")]
-        public DateTime UpdateTime { get; set; }
+        public DateTime? UpdateTime { get; set; }
         /// <summary>
         /// 订单支付类型
         /// 0:默认值, 未支付; 1:微信自有支付; 2:支付宝wap; 3:支付宝wap; 5:财付通; 7:代付; 8:联动优势; 9:货到付款; 10:大账号代销; 11:受理模式; 12:百付宝; 13:sdk支付; 14:合并付货款; 15:赠品; 16:优惠兑换; 17:自动付货款; 18:爱学贷; 19:微信wap; 20:微信红包支付; 21:返利; 22:ump红包; 24:易宝支付; 25:储值卡; 27:qq支付; 28:有赞E卡支付; 29:微信条码; 30:支付宝条码; 33:礼品卡支付; 35:储值卡（会员余额）; 37:银行卡支付;72:微信扫码二维码支付; 100:代收账户; 300:储值账户; 400:保证金账户; 101:收款码; 102:微信; 103:支付宝; 104:刷卡; 105:二维码台卡; 106:储值卡（线下场景使用）; 107:有赞E卡; 110:标记收款-自有微信支付; 111:标记收款-自有支付宝; 112:标记收款-自有POS刷卡; 113:通联刷卡支付; 200:记账账户; 201:现金;202:组合支付
@@ -224,7 +224,7 @@ namespace YouZan.Open.Api.Entry.Response.Trade
         /// 订单支付时间
         /// </summary>
         [JsonProperty("pay_time")]
-        public DateTime PayTime { get; set; }
+        public DateTime? PayTime { get; set; }
         /// <summary>
         /// 订单关闭类型
         ///  0:未关闭; 1:过期关闭; 2:标记退款; 3:订单取消; 4:买家取消; 5:卖家取消; 6:部分退款; 10:无法联系上买家; 11:买家误拍或重拍了; 12:买家无诚意完成交易; 13:已通过银行线下汇款; 14:已通过同城见面交易; 15:已通过货到付款交易; 16:已通过网上银行直接汇款; 17:已经缺货无法交易; 18:扣款失败; 19:0元关单; 20:社区团购活动结束未付款; 21:0元抽奖订单未中一等奖; 22:拒单退款;
@@ -254,12 +254,12 @@ namespace YouZan.Open.Api.Entry.Response.Trade
         /// 订单过期时间（未付款订单关闭时间）
         /// </summary>
         [JsonProperty("expired_time")]
-        public int ExpiredTime { get; set; }
+        public DateTime? ExpiredTime { get; set; }
         /// <summary>
         /// 订单发货时间（当所有商品发货后才会更新）
         /// </summary>
         [JsonProperty("consign_time")]
-        public DateTime ConsignTime { get; set; }
+        public DateTime? ConsignTime { get; set; }
 
         /// <summary>
         /// 店铺类型
@@ -313,7 +313,7 @@ namespace YouZan.Open.Api.Entry.Response.Trade
         /// 订单商品扩展信息
         /// </summary>
         [JsonProperty("order_item_extra")]
-        public string[] OrderItemExtra { get; set; }
+        public string OrderItemExtra { get; set; }
         /// <summary>
         /// 分销单实付金额 ，单位元
         /// </summary>
@@ -566,13 +566,13 @@ namespace YouZan.Open.Api.Entry.Response.Trade
         /// 同城送预计送达时间 - 开始时间
         /// </summary>
         [JsonProperty("delivery_start_time")]
-        public DateTime DeliveryStartTime { get; set; }
+        public DateTime? DeliveryStartTime { get; set; }
 
         /// <summary>
         /// 同城送预计送达时间 - 结束时间
         /// </summary>
         [JsonProperty("delivery_end_time")]
-        public DateTime DeliveryEndTime { get; set; }
+        public DateTime? DeliveryEndTime { get; set; }
 
         /// <summary>
         /// 收货人姓名
@@ -597,7 +597,7 @@ namespace YouZan.Open.Api.Entry.Response.Trade
     public class PayInfo
     {
         [JsonProperty("phase_payments")]
-        public PhasePayments PhasePayments { get; set; }
+        public List<PhasePayments> PhasePayments { get; set; }
 
         /// <summary>
         /// 订单整单实付价格 单位：元
@@ -618,7 +618,7 @@ namespace YouZan.Open.Api.Entry.Response.Trade
         /// 支付流水号（即微信端商户单号）
         /// </summary>
         [JsonProperty("transaction")]
-        public string Transaction { get; set; }
+        public List<string> Transaction { get; set; }
         /// <summary>
         /// 邮费，单位元
         /// </summary>
@@ -657,7 +657,7 @@ namespace YouZan.Open.Api.Entry.Response.Trade
         /// 支付开始时间
         /// </summary>
         [JsonProperty("pay_start_time")]
-        public DateTime PayStartTime { get; set; }
+        public DateTime? PayStartTime { get; set; }
         /// <summary>
         /// 支付类型
         /// 取值范围： WEIXIN (微信自有支付) WEIXIN_DAIXIAO (微信代销支付) ALIPAY (支付宝支付) BANKCARDPAY (银行卡支付) PEERPAY (代付) CODPAY (货到付款) BAIDUPAY (百度钱包支付) PRESENTTAKE (直接领取赠品) COUPONPAY(优惠券/码全额抵扣) BULKPURCHASE(来自分销商的采购) MERGEDPAY(合并付货款) ECARD(有赞E卡支付) PURCHASE_PAY(采购单支付) MARKPAY(标记收款) OFCASH(现金支付) PREPAIDCARD(储值卡余额支付)ENCHASHMENT_GIFT_CARD(礼品卡支付)
@@ -681,7 +681,7 @@ namespace YouZan.Open.Api.Entry.Response.Trade
         /// 支付结束时间
         /// </summary>
         [JsonProperty("pay_end_time")]
-        public DateTime PayEndTime { get; set; }
+        public DateTime? PayEndTime { get; set; }
 
         /// <summary>
         /// 外部支付流水号
