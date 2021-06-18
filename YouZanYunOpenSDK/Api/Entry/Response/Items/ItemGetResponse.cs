@@ -75,7 +75,6 @@ namespace YouZan.Open.Api.Entry.Response.Items
 
         /// <summary>
         ///  商品卖点
-
         /// </summary>
         [JsonProperty("sell_point")]
         public string sell_point { get; set; }

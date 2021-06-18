@@ -109,7 +109,6 @@ namespace YouZan.Open.Api
         /// <summary>
         /// 执行API请求
         /// </summary>
-        /// <typeparam name="TIn">请求参数</typeparam>
         /// <typeparam name="T">响应参数</typeparam>
         /// <param name="request">请求参数值</param>
         /// <param name="apiName">api名称</param>

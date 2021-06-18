@@ -97,7 +97,9 @@ namespace YouZan.Open.TokenEx
                 var yzToken = new YouZanAccessToken
                 {
                     Key = this._CacheKey,
-                    TokenData = JsonConvert.SerializeObject(token)
+                    TokenData = JsonConvert.SerializeObject(token),
+                    AddTime = DateTime.Now,
+                    UpdateTime = null
                 };
                 yzToken.Save(create);
             });

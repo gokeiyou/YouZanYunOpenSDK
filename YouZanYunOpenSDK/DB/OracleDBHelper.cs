@@ -24,13 +24,13 @@ namespace YouZan.Open.DB
 
                     return func.Invoke(cmd);
                 }
-                catch (Exception ex)
+                catch
                 {
                     return default;
                 }
                 finally
                 {
-                    if (conn != null && conn.State == ConnectionState.Open)
+                    if (conn.State == ConnectionState.Open)
                     {
                         conn.Close();
                         conn.Dispose();
@@ -56,7 +56,7 @@ namespace YouZan.Open.DB
                     tran.Commit();
                     return t;
                 }
-                catch (Exception ex)
+                catch
                 {
                     if (tran != null)
                     {
@@ -67,7 +67,7 @@ namespace YouZan.Open.DB
                 }
                 finally
                 {
-                    if (conn != null && conn.State == ConnectionState.Open)
+                    if (conn.State == ConnectionState.Open)
                     {
                         conn.Close();
                         conn.Dispose();

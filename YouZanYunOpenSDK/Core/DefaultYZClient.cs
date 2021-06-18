@@ -49,8 +49,6 @@ namespace YouZan.Open.Core
                     YouZanLogger log = new YouZanLogger
                     {
                         ApiName = api.GetName(),
-                        ApiVersion = api.GetVersion(),
-                        ApiMethod = api.GetHttpMethod(),
                         AuthType = oAuth.ToString(),
                         RequestUrl = url,
                         PostData = JsonConvert.SerializeObject(requestParams),

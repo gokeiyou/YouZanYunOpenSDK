@@ -41,8 +41,8 @@ namespace YouZan.Open.TokenEx
             public DateTime ExpiresTime
             {
                 get {
-                    DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
-                    TimeSpan ts = new TimeSpan(this.Expires * 10000);
+                    var startTime = new DateTime(1970, 1, 1);
+                    var ts = new TimeSpan(this.Expires * 10000);
                     return startTime.Add(ts);
                 }
             }

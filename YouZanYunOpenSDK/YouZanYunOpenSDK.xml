@@ -43,7 +43,6 @@
             <summary>
             执行API请求
             </summary>
-            <typeparam name="TIn">请求参数</typeparam>
             <typeparam name="T">响应参数</typeparam>
             <param name="request">请求参数值</param>
             <param name="apiName">api名称</param>
@@ -910,7 +909,11 @@
              总库存
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "P:YouZan.Open.Api.Entry.Response.Items.Item.sell_point" -->
+        <member name="P:YouZan.Open.Api.Entry.Response.Items.Item.sell_point">
+            <summary>
+             商品卖点
+            </summary>
+        </member>
         <member name="P:YouZan.Open.Api.Entry.Response.Items.Item.Created">
             <summary>
              商品创建时间，格式"yyyy-MM-dd HH:mm:ss"
@@ -3069,7 +3072,6 @@
             <summary>
             执行SQL语句
             </summary>
-            <typeparam name="TCommand">DB执行命令</typeparam>
             <typeparam name="T">返回值类型</typeparam>
             <param name="sql">需要执行的SQL语句</param>
             <param name="func">执行过程的委托</param>
@@ -3079,7 +3081,6 @@
             <summary>
             执行SQL语句，事务
             </summary>
-            <typeparam name="TCommand">DB执行命令</typeparam>
             <typeparam name="T">返回值类型</typeparam>
             <param name="sql">需要执行的SQL语句</param>
             <param name="func">执行过程的委托</param>

@@ -17,6 +17,8 @@ namespace YouZan.Open.TokenEx
     {
         public string Key { get; set; }
         public string TokenData { get; set; }
+        public DateTime AddTime { get; set; } = DateTime.Now;
+        public DateTime? UpdateTime { get; set; } = null;
 
         public static TokenData GetData(string key, Func<bool, TokenData> func)
         {
@@ -74,7 +76,7 @@ namespace YouZan.Open.TokenEx
                     tableName = $"\"{YouZanConfig.AccessTokenTableName}\"";
                     fields = properties.Select(p => $"{p.Name}").ToArray();
                     @params = properties.Select(p => $":{p.Name}").ToArray();
-                    updateField = $"TokenData = :TokenData";
+                    updateField = $"TokenData = :TokenData,UpdateTime=SYSDATE";
                     condition = $"Key = :Key";
                     parameters = properties.Select(t => new OracleParameter($":{t.Name}", t.GetValue(this))).ToArray();
                     break;
@@ -82,7 +84,7 @@ namespace YouZan.Open.TokenEx
                     tableName = $"`{YouZanConfig.AccessTokenTableName}`";
                     fields = properties.Select(t => $"`{t.Name}`").ToArray();
                     @params = properties.Select(t => $"?{t.Name}").ToArray();
-                    updateField = $"`TokenData` = ?TokenData";
+                    updateField = $"`TokenData` = ?TokenData,`UpdateTime`=NOW()";
                     condition = $"`Key` = ?Key";
                     parameters = properties.Select(t => new MySqlParameter($"?{t.Name}", t.GetValue(this))).ToArray();
                     break;
@@ -91,7 +93,7 @@ namespace YouZan.Open.TokenEx
                     tableName = $"[{YouZanConfig.AccessTokenTableName}]";
                     fields = properties.Select(t => $"[{t.Name}]").ToArray();
                     @params = properties.Select(t => $"@{t.Name}").ToArray();
-                    updateField = $"[TokenData] = @TokenData";
+                    updateField = $"[TokenData] = @TokenData,[UpdateTime]=GETDATE()";
                     condition = $"[Key] = @Key";
                     parameters = properties.Select(t => new SqlParameter($"@{t.Name}", t.GetValue(this))).ToArray();
                     break;
