@@ -45,6 +45,21 @@ namespace YouZan.Open.Api
         IYouZanClient _YouZanClient = null;
         public TokenData oAuthToken = null;
 
+        private bool _checkToken = false;
+        private Func<TokenData> _funcGetTokenData;
+
+        /// <summary>
+        /// 初始化，直接传入TokenData
+        /// </summary>
+        /// <param name="tokenData">token</param>
+        /// <param name="funcGetTokenData">获取新TokenData的委托</param>
+        public ApiHelper(TokenData tokenData, Func<TokenData> funcGetTokenData = null)
+        {
+            oAuthToken = tokenData;
+            _checkToken = true;
+            _funcGetTokenData = funcGetTokenData;
+        }
+
         /// <summary>
         /// 初始化API工具类
         /// </summary>
@@ -124,6 +139,7 @@ namespace YouZan.Open.Api
             IDictionary<string, string> headers = null,
             List<KeyValuePair<string, string>> files = null)
         {
+            
             GeneralApi generalApi = new GeneralApi();
             generalApi.SetName(apiName);
             generalApi.SetVersion(apiVersion);
@@ -146,7 +162,16 @@ namespace YouZan.Open.Api
             var errCodes = new[] { 4201, 4202, 4203 };
             if (resp.ErrorResponse != null && errCodes.Contains(resp.ErrorResponse.ErrorCode))
             {
-                this.GetAccessToken(true);
+                if (_checkToken)
+                {
+                    if (_funcGetTokenData == null)
+                        return resp;
+                    oAuthToken = _funcGetTokenData();
+                }
+                else
+                {
+                    this.GetAccessToken(true);
+                }
                 resp = func();
             }
 
