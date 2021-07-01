@@ -58,6 +58,8 @@ namespace YouZan.Open.Api
             oAuthToken = tokenData;
             _checkToken = true;
             _funcGetTokenData = funcGetTokenData;
+
+            _YouZanClient = new DefaultYZClient();
         }
 
         /// <summary>
