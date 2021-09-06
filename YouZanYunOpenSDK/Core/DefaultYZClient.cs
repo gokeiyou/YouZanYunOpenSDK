@@ -55,7 +55,11 @@ namespace YouZan.Open.Core
                         Header = JsonConvert.SerializeObject(header),
                         ResponseData = result
                     };
-                    Task.Run(log.Save);
+                    try
+                    {
+                        log.Save();
+                    }
+                    catch {}
                 }
                 return result;
             }
