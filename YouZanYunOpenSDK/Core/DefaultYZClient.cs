@@ -15,9 +15,19 @@ namespace YouZan.Open.Core
     {
         private readonly DefaultHttpClient defaultHttpClient;
 
+        private string _clientId = null;
+        private string _grantId = null;
+
         public DefaultYZClient()
         {
             this.defaultHttpClient = new DefaultHttpClient();
+        }
+
+        public DefaultYZClient(string clientId, string grantId)
+            : this()
+        {
+            this._clientId = clientId;
+            this._grantId = grantId;
         }
 
 
@@ -49,17 +59,17 @@ namespace YouZan.Open.Core
                     YouZanLogger log = new YouZanLogger
                     {
                         ApiName = api.GetName(),
+                        ApiVersion = api.GetVersion(),
+                        ApiMethod = api.GetHttpMethod(),
                         AuthType = oAuth.ToString(),
                         RequestUrl = url,
                         PostData = JsonConvert.SerializeObject(requestParams),
                         Header = JsonConvert.SerializeObject(header),
-                        ResponseData = result
+                        ResponseData = result,
+                        ClientId = _clientId,
+                        GrantId = _grantId
                     };
-                    try
-                    {
-                        log.Save();
-                    }
-                    catch {}
+                    Task.Run(log.Save);
                 }
                 return result;
             }

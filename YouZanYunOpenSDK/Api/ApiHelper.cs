@@ -79,7 +79,7 @@ namespace YouZan.Open.Api
             this.ClientSecret = clientSecret;
             this.GrantId = grantId;
 
-            _YouZanClient = new DefaultYZClient();
+            _YouZanClient = new DefaultYZClient(clientId, grantId);
 
             this.GetAccessToken();
         }

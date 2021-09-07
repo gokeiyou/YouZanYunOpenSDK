@@ -21,6 +21,8 @@
 
 CREATE TABLE [dbo].[YouZanApiLogs] (
   [Guid] varchar(50) NOT NULL,
+  [ClientId] varchar(50) COLLATE Chinese_PRC_CI_AS  NULL,
+  [GrantId] varchar(50) COLLATE Chinese_PRC_CI_AS  NULL,
   [LogTime] datetime NOT NULL,
   [ApiName] varchar(255) NOT NULL,
   [ApiVersion] varchar(255) NOT NULL,
@@ -40,6 +42,20 @@ EXEC sp_addextendedproperty
 'SCHEMA', N'dbo',
 'TABLE', N'YouZanApiLogs',
 'COLUMN', N'Guid'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'客户端ID',
+'SCHEMA', N'dbo',
+'TABLE', N'YouZanApiLogs',
+'COLUMN', N'ClientId'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'店铺ID',
+'SCHEMA', N'dbo',
+'TABLE', N'YouZanApiLogs',
+'COLUMN', N'GrantId'
 GO
 
 EXEC sp_addextendedproperty
@@ -116,11 +132,13 @@ GO
 
 ## 3.Api调用凭证AccessToken记录（支持Sql Server、Oracle、MySql）
 ```sql
-需提前在数据库中创建日志表，表名自定义，默认为YouZanAccessToken，以SqlServer为例：
+需提前在数据库中创建AccessToken记录表，表名自定义，默认为YouZanAccessToken，以SqlServer为例：
 
 CREATE TABLE [dbo].[YouZanAccessToken] (
   [Key] varchar(255) COLLATE Chinese_PRC_CI_AS  NOT NULL,
-  [TokenData] text COLLATE Chinese_PRC_CI_AS  NOT NULL
+  [TokenData] text COLLATE Chinese_PRC_CI_AS  NOT NULL,
+  [AddTime] datetime DEFAULT getdate() NOT NULL,
+  [UpdateTime] datetime  NULL
 )
 GO
 
@@ -139,6 +157,20 @@ EXEC sp_addextendedproperty
 'SCHEMA', N'dbo',
 'TABLE', N'YouZanAccessToken',
 'COLUMN', N'TokenData'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'添加时间',
+'SCHEMA', N'dbo',
+'TABLE', N'YouZanAccessToken',
+'COLUMN', N'AddTime'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'修改时间',
+'SCHEMA', N'dbo',
+'TABLE', N'YouZanAccessToken',
+'COLUMN', N'UpdateTime'
 GO
 
 EXEC sp_addextendedproperty
@@ -172,4 +204,4 @@ YouZanResponse<T>
 
 ### NuGet程序包安装
 
-	PM> Install-Package YouzanYunOpenSDK -Version 1.1.12 
+	PM> Install-Package YouzanYunOpenSDK -Version 1.1.14 

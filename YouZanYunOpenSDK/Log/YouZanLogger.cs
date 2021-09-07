@@ -16,6 +16,8 @@ namespace YouZan.Open.Log
     public class YouZanLogger
     {
         private string Guid { get; set; }
+        public string ClientId { get; set; }
+        public string GrantId { get; set; }
         private DateTime LogTime { get; set; }
         public string ApiName { get; set; }
         public string ApiVersion { get; set; }
