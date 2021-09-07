@@ -54,7 +54,7 @@ namespace YouZan.Open.Api
         public abstract OAuthEnum GetOAuthType();
         public abstract string GetHttpMethod();
         public abstract string GetName();
-
-       
+        public abstract string GetClientId();
+        public abstract string GetGrantId();
     }
 }

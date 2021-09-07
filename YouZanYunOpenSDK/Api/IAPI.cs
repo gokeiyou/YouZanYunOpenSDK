@@ -42,6 +42,18 @@ namespace YouZan.Open.Api
          */
         string GetName();
 
+        /// <summary>
+        /// 获取客户端ID
+        /// </summary>
+        /// <returns></returns>
+        string GetClientId();
+
+        /// <summary>
+        /// 获取店铺ID
+        /// </summary>
+        /// <returns></returns>
+        string GetGrantId();
+
         /**
          * 获取API参数
          */

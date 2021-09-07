@@ -79,7 +79,7 @@ namespace YouZan.Open.Api
             this.ClientSecret = clientSecret;
             this.GrantId = grantId;
 
-            _YouZanClient = new DefaultYZClient(clientId, grantId);
+            _YouZanClient = new DefaultYZClient();
 
             this.GetAccessToken();
         }
@@ -145,6 +145,8 @@ namespace YouZan.Open.Api
             GeneralApi generalApi = new GeneralApi();
             generalApi.SetName(apiName);
             generalApi.SetVersion(apiVersion);
+            generalApi.SetClientId(ClientId);
+            generalApi.SetGrantId(GrantId);
             generalApi.SetHttpMethod(method);
             generalApi.SetOAuthType(OAuthEnum.TOKEN);
 

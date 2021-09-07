@@ -14,6 +14,14 @@ namespace YouZan.Open.Api
          * 
          */        
         private string serviceName;
+        /// <summary>
+        /// 客户端ID
+        /// </summary>
+        private string clientId;
+        /// <summary>
+        /// 店铺ID
+        /// </summary>
+        private string grantId;
 
         /***
          * 
@@ -60,6 +68,26 @@ namespace YouZan.Open.Api
         public void SetVersion(string serviceVersion)
         {
             this._Version = serviceVersion;
+        }
+
+        public void SetClientId(string clientId)
+        {
+            this.clientId = clientId;
+        }
+
+        public override string GetClientId()
+        {
+            return this.clientId;
+        }
+
+        public void SetGrantId(string grantId)
+        {
+            this.grantId = grantId;
+        }
+
+        public override string GetGrantId()
+        {
+            return this.grantId;
         }
 
         public override string ToString()
