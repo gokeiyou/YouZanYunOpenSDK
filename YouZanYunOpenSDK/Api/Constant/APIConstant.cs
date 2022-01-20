@@ -10,18 +10,18 @@ namespace YouZan.Open.Api.Constant
         /// <summary>
         /// API请求域名
         /// </summary>
-        internal const string GATEWAY = "https://open.youzanyun.com";
+        internal const string HOST = "https://open.youzanyun.com";
 
         #region METHOD
 
         /// <summary>
         /// GET
         /// </summary>
-        public const string METHOD_GET = "get";
+        public const string HTTP_GET = "get";
         /// <summary>
         /// POST
         /// </summary>
-        public const string METHOD_POST = "post";
+        public const string HTTP_POST = "post";
 
         #endregion
 
@@ -58,6 +58,19 @@ namespace YouZan.Open.Api.Constant
         #region API列表
 
         #region 用户API
+
+        /// <summary>
+        /// 获取有赞openId(收费)
+        /// </summary>
+        /// <remarks>
+        /// 根据userId（有赞账号id）查询有赞openId(注意是有赞openId，非微信openId)
+        /// </remarks>
+        internal const string USER_OPENAPI_GET = "youzan.user.openid.get";
+
+        /// <summary>
+        /// 用户查询接口
+        /// </summary>
+        internal const string USERS_INFO_QUERY = "youzan.users.info.query";
 
         /// <summary>
         /// 查询是否存在有赞帐号

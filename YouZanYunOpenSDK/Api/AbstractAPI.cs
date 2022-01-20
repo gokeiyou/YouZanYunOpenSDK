@@ -34,7 +34,7 @@ namespace YouZan.Open.Api
             this.apiParams = apiParams;
         }
 
-        public void SetGateway(string gateway = API.GATEWAY)
+        public void SetGateway(string gateway = API.HOST)
         {
             this._Gateway = gateway;
         }
