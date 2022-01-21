@@ -16,7 +16,6 @@ namespace YouZan.Open.Api
 {
     public partial class ApiHelper
     {
-
         /// <summary>
         /// 客户端ID
         /// </summary>
@@ -172,9 +171,4 @@ namespace YouZan.Open.Api
             return resp;
         }
     }
-
-    #region 交易API请求
-    
-    #endregion
-
 }
