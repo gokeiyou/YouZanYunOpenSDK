@@ -1,0 +1,59 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using YouZan.Open.Api.Constant;
+using YouZan.Open.Api.Entry.Request;
+using YouZan.Open.Api.Entry.Response;
+using YouZan.Open.Api.Entry.Response.Customer;
+
+namespace YouZan.Open.Api
+{
+    /// <summary>
+    /// 客户模块API
+    /// </summary>
+    /// <see cref="https://doc.youzanyun.com/list/API/1288"/>
+    public partial class ApiHelper
+    {
+        /// <summary>
+        /// 创建客户
+        /// 手机号和{"name":"丽丽"}必填
+        /// </summary>
+        /// <param name="request">请求参数</param>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/92"/>
+        /// <returns></returns>
+        public YouZanResponse<ScrmCustomerCreateResponse> ScrmCustomerCreate(YouZanRequest request)
+        {
+            return ApiInvoke<ScrmCustomerCreateResponse>(
+                request,
+                API.SCRM_CUSTOMER_CREATE,
+                API.VERSION_3_0_0);
+        }
+
+        /// <summary>
+        /// 给用户加积分，注意仅支持总部加积分，不支持网店或分店增加积分 支持的用户账号类型 1-有赞粉丝id(有赞不同的合作渠道会生成不同渠道对应在有赞平台下的fans_id) ; 2-手机号; 3-三方帐号(原open_user_id:三方App用户ID，该参数仅限购买App开店插件的商家使用) ; 5-有赞用户id，用户在有赞的唯一id。推荐使用）； 注意：不要针对同一个客户做并发加/减积分操作。
+        /// </summary>
+        /// <param name="request"></param>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/872"/>
+        /// <returns></returns>
+        public YouZanResponse<CrmCustomerPointsIncreaseResponse> CrmCustomerPointsIncrease(YouZanRequest request)
+        {
+            return ApiInvoke<CrmCustomerPointsIncreaseResponse>(request,
+                API.CRM_CUSTOMER_POINTS_INCREASE,
+                API.VERSION_4_0_0);
+        }
+
+        /// <summary>
+        /// 给客户加成长值，帐号类型(与帐户ID配合使用: 1:粉丝(原fansId),2:手机号,3:三方帐号(原open_user_id),4:UnionID,5:有赞客户唯一id即yz_open_id
+        /// </summary>
+        /// <param name="request"></param>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/863"/>
+        /// <returns></returns>
+        public YouZanResponse<CrmCustomerGrowthIncreaseResponse> CrmCustomerGrowthIncrease(YouZanRequest request)
+        {
+            return ApiInvoke<CrmCustomerGrowthIncreaseResponse>(request,
+                API.CRM_CUSTOMER_GROWTH_INCREASE,
+                API.VERSION_2_0_0);
+        }
+
+    }
+}

@@ -48,6 +48,11 @@ namespace YouZan.Open.Api.Constant
         public const string VERSION_3_0_1 = "3.0.1";
 
         /// <summary>
+        /// 版本号：3.0.1
+        /// </summary>
+        public const string VERSION_3_0_2 = "3.0.2";
+
+        /// <summary>
         /// 版本号：4.0.0
         /// </summary>
         public const string VERSION_4_0_0 = "4.0.0";
@@ -73,8 +78,38 @@ namespace YouZan.Open.Api.Constant
         internal const string USERS_INFO_QUERY = "youzan.users.info.query";
 
         /// <summary>
+        /// 根据关注时间段批量查询微信粉丝用户信息
+        /// </summary>
+        internal const string USERS_WEIXIN_FOLLOWS_INFO_SEARCH = "youzan.users.weixin.followers.info.search";
+
+        /// <summary>
+        /// 根据微信粉丝用户的 weixin_openid 或 fans_id 绑定对应的标签
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/103"/>
+        internal const string USERS_WEIXIN_FOLLOWER_TAGS_ADD = "youzan.users.weixin.follower.tags.add";
+
+        /// <summary>
+        /// 获取单个粉丝标签集合
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/105"/>
+        internal const string USERS_WEIXIN_FOLLOWER_TAGS_GET = "youzan.users.weixin.follower.tags.get";
+
+        /// <summary>
+        /// 根据微信粉丝用户的 weixin_openid 或 fans_id 删除对应的标签
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/133"/>
+        internal const string USERS_WEIXIN_FOLLOWER_TAGS_DELETE = "youzan.users.weixin.follower.tags.delete";
+
+        /// <summary>
+        /// 生成微信小程序二维码（支持超过32可见字符的自定义参数）
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/910"/>
+        internal const string USERS_CHANNEL_CODE_ULTRA_GET = "youzan.users.channel.code.ultra.get";
+
+        /// <summary>
         /// 查询是否存在有赞帐号
         /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/21"/>
         internal const string USERS_ACCOUNT_CHECK = "youzan.users.account.check";
 
         /// <summary>
@@ -95,6 +130,7 @@ namespace YouZan.Open.Api.Constant
         /// 创建客户
         /// 手机号和{"name":"丽丽"}必填
         /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/92"/>
         internal const string SCRM_CUSTOMER_CREATE = "youzan.scrm.customer.create";
 
         #endregion
@@ -104,34 +140,42 @@ namespace YouZan.Open.Api.Constant
         /// <summary>
         /// 获取分销员账户信息，不支持返回分销员等级
         /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/67"/>
         internal const string SALESMAN_ACCOUNT_GET = "youzan.salesman.account.get";
         /// <summary>
         /// 设置用户成为分销员
         /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/41"/>
         internal const string SALESMAN_ACCOUNT_ADD = "youzan.salesman.account.add";
         /// <summary>
         /// 更新分销员信息,客户已经是分销员才可以更新
         /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/42"/>
         internal const string SALESMAN_ACCOUNT_UPDATE = "youzan.salesman.account.update";
         /// <summary>
         /// 清退分销员，客户必须是分销员才能清退
         /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/345"/>
         internal const string SALESMAN_ACCOUNT_FIRE = "youzan.salesman.account.fire";
         /// <summary>
         /// 获取推广订单列表
         /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/74"/>
         internal const string SALESMAN_TRADES_GET = "youzan.salesman.trades.get";
         /// <summary>
         /// 获取商品推广链接
         /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/43"/>
         internal const string SALESMAN_ITEM_SHARE_GET = "youzan.salesman.item.share.get";
         /// <summary>
         /// 获取分销员业绩统计
         /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/37"/>
         internal const string SALESMAN_ACCOUNT_SCORE_SEARCH = "youzan.salesman.account.score.search";
         /// <summary>
         /// 批量获取商品提成比例信息
         /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/732"/>
         internal const string SALESMAN_ITEMS_GET = "youzan.salesman.items.get";
 
         #endregion
@@ -141,21 +185,25 @@ namespace YouZan.Open.Api.Constant
         /// <summary>
         /// （分页查询）查询优惠券/码列表
         /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/159"/>
         internal const string UMP_COUPON_SEARCH = "youzan.ump.coupon.search";
 
         /// <summary>
         /// 发放优惠券优惠码
         /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/155"/>
         internal const string UMP_COUPON_TAKE = "youzan.ump.coupon.take";
 
         /// <summary>
         /// 根据核销码获取优惠券/优惠码
         /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/142"/>
         internal const string UMP_COUPON_CONSUME_GET = "youzan.ump.coupon.consume.get";
 
         /// <summary>
         /// 查询买家优惠券列表 查询条件优先级 1. mobile 2. open_user_id 3. fans_id fans_type
         /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/163"/>
         internal const string UMP_PROMOCRAD_BUYER_SEARCH = "youzan.ump.promocard.buyer.search";
 
         /// <summary>
@@ -198,6 +246,7 @@ namespace YouZan.Open.Api.Constant
         /// <summary>
         /// youzan.trade.memo.update    增加/修改订单备注
         /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/137"/>
         internal const string TRADE_MEMO_UPDATE = "youzan.trade.memo.update";
 
         /// <summary>
@@ -213,6 +262,7 @@ namespace YouZan.Open.Api.Constant
         /// <summary>
         /// youzan.trade.get 交易订单详情4.0接口
         /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/120"/>
         internal const string TRADE_GET = "youzan.trade.get";
 
 
@@ -223,11 +273,13 @@ namespace YouZan.Open.Api.Constant
         /// <summary>
         /// 给用户加积分，帐号类型(与帐户ID配合使用: 1:粉丝(原fansId),2:手机号,3:三方帐号(原open_user_id),4:UnionID,5:OpenID
         /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/872"/>
         internal const string CRM_CUSTOMER_POINTS_INCREASE = "youzan.crm.customer.points.increase";
 
         /// <summary>
         /// 给用户加成长值，帐号类型(与帐户ID配合使用: 1:粉丝(原fansId),2:手机号,3:三方帐号(原open_user_id),4:UnionID,5:OpenID
         /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/863"/>
         internal const string CRM_CUSTOMER_GROWTH_INCREASE = "youzan.crm.customer.growth.increase";
 
         #endregion

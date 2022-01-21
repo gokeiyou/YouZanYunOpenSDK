@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using YouZan.Open.Common.Extensions.Attributes;
 
-namespace YouZan.Open.Api.Entry.Request.Scrm
+namespace YouZan.Open.Api.Entry.Request.Customer
 {
     /// <summary>
     /// 创建客户请求参数

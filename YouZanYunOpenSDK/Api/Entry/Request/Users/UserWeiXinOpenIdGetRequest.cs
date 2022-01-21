@@ -5,6 +5,10 @@ using YouZan.Open.Common.Extensions.Attributes;
 
 namespace YouZan.Open.Api.Entry.Request.Users
 {
+    /// <summary>
+    /// 使用手机号或有赞openId获取用户的微信openId
+    /// </summary>
+    /// <see cref="https://doc.youzanyun.com/detail/API/0/12"/>
     public class UserWeiXinOpenIdGetRequest : YouZanRequest
     {
 
@@ -27,6 +31,13 @@ namespace YouZan.Open.Api.Entry.Request.Users
         /// </summary>
         [ApiField("wechat_type")]
         public int WechatType { get; set; }
+
+        /// <summary>
+        /// 有赞用户id，用户在有赞的唯一id。推荐使用
+        /// </summary>
+        /// <example>LnhGm4rh576452722916618240</example>
+        [ApiField("yz_open_id")]
+        public int YzOpenId { get; set; }
 
     }
 }

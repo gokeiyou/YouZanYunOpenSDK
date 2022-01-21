@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using YouZan.Open.Common.Extensions.Attributes;
 
-namespace YouZan.Open.Api.Entry.Request.Crm
+namespace YouZan.Open.Api.Entry.Request.Customer
 {
     public class CrmCustomerGrowthIncreaseRequest : YouZanRequest
     {

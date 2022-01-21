@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace YouZan.Open.Api.Entry.Response.Scrm
+namespace YouZan.Open.Api.Entry.Response.Customer
 {
     public class ScrmCustomerCreateResponse
     {
