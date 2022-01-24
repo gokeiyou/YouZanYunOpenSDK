@@ -199,9 +199,9 @@ GO
 ### 响应参数
 
 ```c#
-YouZanResponse<T>
+YouZanResponse<T>（继承自YouZanResponse）
 ```
 
 ### NuGet程序包安装
 
-	PM> Install-Package YouzanYunOpenSDK -Version 1.1.14 
+	PM> Install-Package YouzanYunOpenSDK 
