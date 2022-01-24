@@ -57,6 +57,16 @@ namespace YouZan.Open.Api.Constant
         /// </summary>
         public const string VERSION_4_0_0 = "4.0.0";
 
+        /// <summary>
+        /// 版本号：4.0.1
+        /// </summary>
+        public const string VERSION_4_0_1 = "4.0.1";
+
+        /// <summary>
+        /// 版本号：4.0.2
+        /// </summary>
+        public const string VERSION_4_0_2 = "4.0.2";
+
 
         #endregion
 
@@ -126,6 +136,21 @@ namespace YouZan.Open.Api.Constant
 
         #region 客户API
 
+        /// <summary>
+        /// 根据卡号获取用户购卡记录
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/2107"/>
+        internal const string SCRM_CUSTOMER_GET_RECORD = "youzan.scrm.customer.get.record";
+        /// <summary>
+        /// 删除积分商城的积分商品信息
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/1068"/>
+        internal const string CRM_CUSTOMER_POINTGOODS_DELETE = "youzan.crm.customer.pointgoods.delete";
+        /// <summary>
+        /// 查询用户积分日志
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/3410"/>
+        internal const string CRM_CUSTOMER_POINTS_CHANGELOG_SEARCH = "youzan.crm.customer.points.changelog.search";
         /// <summary>
         /// 创建客户
         /// 手机号和{"name":"丽丽"}必填

@@ -111,6 +111,76 @@ namespace YouZan.Open.Api
             return dict;
         }
 
+        private T GetResponse<T>(IAPI api, IAuth auth, IDictionary<string, string> headers, List<KeyValuePair<string, string>> files)
+            where T : YouZanResponse
+        {
+            var result = _YouZanClient.Invoke(api, auth, headers, files);
+            return JsonConvert.DeserializeObject<T>(result);
+        }
+
+        private T Invoke<T>(YouZanRequest request,
+            string apiName,
+            string apiVersion,
+            string method = API.HTTP_POST,
+            IDictionary<string, string> headers = null,
+            List<KeyValuePair<string, string>> files = null) where T : YouZanResponse
+        {
+            GeneralApi generalApi = new GeneralApi();
+            generalApi.SetName(apiName);
+            generalApi.SetVersion(apiVersion);
+            generalApi.SetClientId(ClientId);
+            generalApi.SetGrantId(GrantId);
+            generalApi.SetHttpMethod(method);
+            generalApi.SetOAuthType(OAuthEnum.TOKEN);
+
+            GeneralApiParams apiParams = new GeneralApiParams();
+            apiParams.AddParam(this.GenericParameter(request));
+
+            generalApi.SetAPIParams(apiParams);
+
+            var resp = GetResponse<T>(generalApi, new Token(oAuthToken.Token), headers, files);
+
+            // 当Token失效或Token不存在时，强制刷新AccessToken并且重新请求
+            var errCodes = new[] { 4201, 4202, 4203 };
+            if (resp.ErrorResponse != null && errCodes.Contains(resp.ErrorResponse.ErrorCode))
+            {
+                if (_checkToken)
+                {
+                    if (_funcGetTokenData == null)
+                        return resp;
+                    oAuthToken = _funcGetTokenData();
+                }
+                else
+                {
+                    this.GetAccessToken(true);
+                }
+                resp = GetResponse<T>(generalApi, new Token(oAuthToken.Token), headers, files);
+            }
+
+            return resp;
+        }
+
+        /// <summary>
+        /// 执行API请求
+        /// </summary>
+        /// <typeparam name="T">响应参数</typeparam>
+        /// <param name="request">请求参数值</param>
+        /// <param name="apiName">api名称</param>
+        /// <param name="apiVersion">api版本</param>
+        /// <param name="method">api版本</param>
+        /// <param name="headers">http请求头信息</param>
+        /// <param name="files">文件列表（暂不支持）</param>
+        /// <returns></returns>
+        protected YouZanResponse ApiInvoke(YouZanRequest request,
+            string apiName,
+            string apiVersion,
+            string method = API.HTTP_POST,
+            IDictionary<string, string> headers = null,
+            List<KeyValuePair<string, string>> files = null)
+        {
+            return Invoke<YouZanResponse>(request, apiName, apiVersion, method, headers, files);
+        }
+
         /// <summary>
         /// 执行API请求
         /// </summary>
@@ -129,46 +199,7 @@ namespace YouZan.Open.Api
             IDictionary<string, string> headers = null,
             List<KeyValuePair<string, string>> files = null)
         {
-
-            GeneralApi generalApi = new GeneralApi();
-            generalApi.SetName(apiName);
-            generalApi.SetVersion(apiVersion);
-            generalApi.SetClientId(ClientId);
-            generalApi.SetGrantId(GrantId);
-            generalApi.SetHttpMethod(method);
-            generalApi.SetOAuthType(OAuthEnum.TOKEN);
-
-            GeneralApiParams apiParams = new GeneralApiParams();
-            apiParams.AddParam(this.GenericParameter(request));
-
-            generalApi.SetAPIParams(apiParams);
-
-            Func<YouZanResponse<T>> func = () =>
-            {
-                string result = _YouZanClient.Invoke(generalApi, new Token(oAuthToken.Token), headers, files);
-                return JsonConvert.DeserializeObject<YouZanResponse<T>>(result);
-            };
-
-            var resp = func();
-
-            // 当Token失效或Token不存在时，强制刷新AccessToken并且重新请求
-            var errCodes = new[] { 4201, 4202, 4203 };
-            if (resp.ErrorResponse != null && errCodes.Contains(resp.ErrorResponse.ErrorCode))
-            {
-                if (_checkToken)
-                {
-                    if (_funcGetTokenData == null)
-                        return resp;
-                    oAuthToken = _funcGetTokenData();
-                }
-                else
-                {
-                    this.GetAccessToken(true);
-                }
-                resp = func();
-            }
-
-            return resp;
+            return Invoke<YouZanResponse<T>>(request, apiName, apiVersion, method, headers, files);
         }
     }
 }

@@ -14,6 +14,49 @@ namespace YouZan.Open.Api
     /// <see cref="https://doc.youzanyun.com/list/API/1288"/>
     public partial class ApiHelper
     {
+
+        /// <summary>
+        /// 根据卡号获取用户购卡记录
+        /// </summary>
+        /// <param name="request">请求参数</param>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/2107"/>
+        /// <returns></returns>
+        public YouZanResponse<ScrmCustomerGetRecordResponse> ScrmCustomerGetRecord(YouZanRequest request)
+        {
+            return ApiInvoke<ScrmCustomerGetRecordResponse>(
+                request,
+                API.SCRM_CUSTOMER_GET_RECORD,
+                API.VERSION_1_0_0);
+        }
+
+        /// <summary>
+        /// 根据商品id，kdtId等，删除积分商品
+        /// </summary>
+        /// <param name="request">请求参数</param>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/1068"/>
+        /// <returns></returns>
+        public YouZanResponse CrmCustomerPointGoodsDelete(YouZanRequest request)
+        {
+            return ApiInvoke(
+                request,
+                API.CRM_CUSTOMER_POINTGOODS_DELETE,
+                API.VERSION_1_0_0);
+        }
+
+        /// <summary>
+        /// 查询用户接口操作积分日志，支持查询所有来源积分日志。
+        /// </summary>
+        /// <param name="request">请求参数</param>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/3410"/>
+        /// <returns></returns>
+        public YouZanResponse<CrmCustomerPointsChangeLogSearchResponse> CrmCustomerPointsChangeLogSearch(YouZanRequest request)
+        {
+            return ApiInvoke<CrmCustomerPointsChangeLogSearchResponse>(
+                request,
+                API.CRM_CUSTOMER_POINTS_CHANGELOG_SEARCH,
+                API.VERSION_4_0_2);
+        }
+
         /// <summary>
         /// 创建客户
         /// 手机号和{"name":"丽丽"}必填

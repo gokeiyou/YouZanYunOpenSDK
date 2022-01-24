@@ -5,11 +5,7 @@ using System.Text;
 
 namespace YouZan.Open.Api.Entry.Response
 {
-    /// <summary>
-    /// API响应参数
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public class YouZanResponse<T>
+    public class YouZanResponse
     {
         /// <summary>
         /// 成功失败码
@@ -33,6 +29,19 @@ namespace YouZan.Open.Api.Entry.Response
         public bool Success { get; set; }
 
         /// <summary>
+        /// 错误响应
+        /// </summary>
+        [JsonProperty("gw_err_resp")]
+        public ErrorResponse ErrorResponse { get; set; }
+    }
+
+    /// <summary>
+    /// API响应参数
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public class YouZanResponse<T> : YouZanResponse
+    {
+        /// <summary>
         /// 响应数据
         /// </summary>
         [JsonProperty("data")]
@@ -43,12 +52,6 @@ namespace YouZan.Open.Api.Entry.Response
         /// </summary>
         [JsonProperty("response")]
         public T Response { get; set; }
-
-        /// <summary>
-        /// 错误响应
-        /// </summary>
-        [JsonProperty("gw_err_resp")]
-        public ErrorResponse ErrorResponse { get; set; }
     }
 
     public class ErrorResponse
