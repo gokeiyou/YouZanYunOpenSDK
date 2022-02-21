@@ -103,10 +103,11 @@ namespace YouZan.Open.Api
         }
 
         /// <summary>
-        /// 查询权益卡下对应的会员列表
+        /// 给客户减成长值
+        /// 给客户减成长值，帐号类型(与帐户ID配合使用: 1:粉丝(原fansId),2:手机号,3:三方帐号(原open_user_id),4:UnionID,5:有赞客户唯一id即yz_open_id
         /// </summary>
         /// <param name="request"></param>
-        /// <see cref="https://doc.youzanyun.com/detail/API/0/94"/>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/864"/>
         /// <returns></returns>
         public YouZanResponse<SuccessResponse> CrmCustomerGrowthDecrease(YouZanRequest request) {
             return ApiInvoke<SuccessResponse>(
