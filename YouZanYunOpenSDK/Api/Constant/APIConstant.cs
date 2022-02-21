@@ -132,6 +132,11 @@ namespace YouZan.Open.Api.Constant
         /// </summary>
         internal const string USER_BASIC_GET = "youzan.user.basic.get";
 
+        /// <summary>
+        /// 查询app开店的用户信息
+        /// </summary>
+        internal const string USER_APP_SHOP_GET_INFO = "youzan.user.appshop.get.info";
+
         #endregion
 
         #region 客户API

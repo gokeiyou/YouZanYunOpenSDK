@@ -175,5 +175,18 @@ namespace YouZan.Open.Api
                 API.USER_BASIC_GET,
                 API.VERSION_3_0_1);
         }
+
+        /// <summary>
+        /// [新增] 仅限购买APP开店插件商家使用，查询app开店的用户信息。
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public YouZanResponse<UserAppShopGetInfoResponse> UserAppShopGetInfo(YouZanRequest request)
+        {
+            return ApiInvoke<UserAppShopGetInfoResponse>(
+                request,
+                API.USER_APP_SHOP_GET_INFO,
+                API.VERSION_1_0_0);
+        }
     }
 }
