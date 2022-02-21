@@ -58,6 +58,64 @@ namespace YouZan.Open.Api
         }
 
         /// <summary>
+        /// 获取用户C端等级信息（免费、付费）
+        /// </summary>
+        /// <param name="request"></param>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/3134"/>
+        /// <returns></returns>
+        public YouZanResponse<ScrmLevelGetUserLevelResponse> ScrmLevelGetUserLevel(YouZanRequest request) {
+            return ApiInvoke<ScrmLevelGetUserLevelResponse>(
+                request,
+                API.SCRM_LEVEL_GET_USER_LEVEL,
+                API.VERSION_1_0_0);
+        }
+
+        /// <summary>
+        /// 删除用户的权益卡
+        /// 1、删除用户的权益卡支持的用户账号类型
+        ///     1）有赞粉丝id(有赞不同的合作渠道会生成不同渠道对应在有赞平台下的fans_id) ;
+        ///     2）手机号;
+        ///     3）三方帐号(原open_user_id:三方App用户ID，该参数仅限购买App开店插件的商家使用) ;
+        ///     5）有赞用户id，用户在有赞的唯一id。推荐使用）
+        /// 2、仅支持零售连锁总部调用
+        /// </summary>
+        /// <param name="request"></param>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/870"/>
+        /// <returns></returns>
+        public YouZanResponse<SuccessResponse> ScrmCustomerCardDelete(YouZanRequest request) {
+            return ApiInvoke<SuccessResponse>(
+                request,
+                API.SCRM_CUSTOMER_CARD_DELETE,
+                API.VERSION_4_0_0);
+        }
+
+        /// <summary>
+        /// 查询权益卡下对应的会员列表
+        /// </summary>
+        /// <param name="request"></param>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/94"/>
+        /// <returns></returns>
+        public YouZanResponse<ScrmCustomerSearchResponse> ScrmCustomerSearch(YouZanRequest request) {
+            return ApiInvoke<ScrmCustomerSearchResponse>(
+                request,
+                API.SCRM_CUSTOMER_SEARCH,
+                API.VERSION_3_0_0);
+        }
+
+        /// <summary>
+        /// 查询权益卡下对应的会员列表
+        /// </summary>
+        /// <param name="request"></param>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/94"/>
+        /// <returns></returns>
+        public YouZanResponse<SuccessResponse> CrmCustomerGrowthDecrease(YouZanRequest request) {
+            return ApiInvoke<SuccessResponse>(
+                request,
+                API.CRM_CUSTOMER_GROWTH_DECREASE,
+                API.VERSION_2_0_0);
+        }
+
+        /// <summary>
         /// 创建客户
         /// 手机号和{"name":"丽丽"}必填
         /// </summary>
@@ -78,9 +136,9 @@ namespace YouZan.Open.Api
         /// <param name="request"></param>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/872"/>
         /// <returns></returns>
-        public YouZanResponse<CrmCustomerPointsIncreaseResponse> CrmCustomerPointsIncrease(YouZanRequest request)
+        public YouZanResponse<SuccessResponse> CrmCustomerPointsIncrease(YouZanRequest request)
         {
-            return ApiInvoke<CrmCustomerPointsIncreaseResponse>(request,
+            return ApiInvoke<SuccessResponse>(request,
                 API.CRM_CUSTOMER_POINTS_INCREASE,
                 API.VERSION_4_0_0);
         }
@@ -91,9 +149,9 @@ namespace YouZan.Open.Api
         /// <param name="request"></param>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/863"/>
         /// <returns></returns>
-        public YouZanResponse<CrmCustomerGrowthIncreaseResponse> CrmCustomerGrowthIncrease(YouZanRequest request)
+        public YouZanResponse<SuccessResponse> CrmCustomerGrowthIncrease(YouZanRequest request)
         {
-            return ApiInvoke<CrmCustomerGrowthIncreaseResponse>(request,
+            return ApiInvoke<SuccessResponse>(request,
                 API.CRM_CUSTOMER_GROWTH_INCREASE,
                 API.VERSION_2_0_0);
         }

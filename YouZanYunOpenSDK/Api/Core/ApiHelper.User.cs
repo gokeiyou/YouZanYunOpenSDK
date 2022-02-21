@@ -108,9 +108,9 @@ namespace YouZan.Open.Api
         /// <param name="request"></param>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/133"/>
         /// <returns></returns>
-        public YouZanResponse<UsersWeixinFollowerTagsDeleteResponse> UsersWeixinFollowerTagsDelete(YouZanRequest request)
+        public YouZanResponse<SuccessResponse> UsersWeixinFollowerTagsDelete(YouZanRequest request)
         {
-            return ApiInvoke<UsersWeixinFollowerTagsDeleteResponse>(
+            return ApiInvoke<SuccessResponse>(
                 request,
                 API.USERS_WEIXIN_FOLLOWER_TAGS_DELETE,
                 API.VERSION_3_0_0);
@@ -180,6 +180,7 @@ namespace YouZan.Open.Api
         /// [新增] 仅限购买APP开店插件商家使用，查询app开店的用户信息。
         /// </summary>
         /// <param name="request"></param>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/3606"/>
         /// <returns></returns>
         public YouZanResponse<UserAppShopGetInfoResponse> UserAppShopGetInfo(YouZanRequest request)
         {

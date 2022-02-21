@@ -5,6 +5,9 @@ using YouZan.Open.Common.Extensions.Attributes;
 
 namespace YouZan.Open.Api.Entry.Request.Users
 {
+    /// <summary>
+    /// 查询app开店的用户信息参数实体
+    /// </summary>
     public class UserAppShopGetInfoRequest : YouZanRequest
     {
         /// <summary>

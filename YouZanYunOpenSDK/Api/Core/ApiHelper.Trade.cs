@@ -20,9 +20,9 @@ namespace YouZan.Open.Api
         /// <param name="request"></param>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/137"/>
         /// <returns></returns>
-        public YouZanResponse<TradeMemoUpdateResponse> TradeMemoUpdate(YouZanRequest request)
+        public YouZanResponse<SuccessResponse> TradeMemoUpdate(YouZanRequest request)
         {
-            return ApiInvoke<TradeMemoUpdateResponse>(request,
+            return ApiInvoke<SuccessResponse>(request,
                 API.TRADE_MEMO_UPDATE,
                 API.VERSION_3_0_0);
         }

@@ -157,6 +157,22 @@ namespace YouZan.Open.Api.Constant
         /// <see cref="https://doc.youzanyun.com/detail/API/0/3410"/>
         internal const string CRM_CUSTOMER_POINTS_CHANGELOG_SEARCH = "youzan.crm.customer.points.changelog.search";
         /// <summary>
+        /// 获取C端用户等级
+        /// </summary>
+        internal const string SCRM_LEVEL_GET_USER_LEVEL = "youzan.scrm.level.get.userlevel"; 
+        /// <summary>
+        /// 获取C端用户等级
+        /// </summary>
+        internal const string SCRM_CUSTOMER_CARD_DELETE = "youzan.scrm.customer.card.delete";
+        /// <summary>
+        /// 查询权益卡下对应的会员列表
+        /// </summary>
+        internal const string SCRM_CUSTOMER_SEARCH = "youzan.scrm.customer.search";
+        /// <summary>
+        /// 给客户减成长值
+        /// </summary>
+        internal const string CRM_CUSTOMER_GROWTH_DECREASE = "youzan.crm.customer.growth.decrease";
+        /// <summary>
         /// 创建客户
         /// 手机号和{"name":"丽丽"}必填
         /// </summary>
