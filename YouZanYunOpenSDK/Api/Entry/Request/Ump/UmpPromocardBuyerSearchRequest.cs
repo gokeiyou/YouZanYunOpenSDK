@@ -16,7 +16,7 @@ namespace YouZan.Open.Api.Entry.Request.Ump
         /// 用户手机号
         /// </summary>
         [ApiField("mobile")]
-        public string Mobile { get; set; }
+        public String Mobile { get; set; }
         /// <summary>
         /// 三方App用户ID，该参数仅限购买App开店插件的商家使用
         /// </summary>

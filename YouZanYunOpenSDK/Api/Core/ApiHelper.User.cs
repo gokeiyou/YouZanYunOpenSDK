@@ -72,23 +72,6 @@ namespace YouZan.Open.Api
         /// 已支持：微商城单店、零售单店、教育多校区-总部
         /// </remarks>
         /// <param name="request"></param>
-        /// <see cref="https://doc.youzanyun.com/detail/API/0/103"/>
-        /// <returns></returns>
-        public YouZanResponse<UsersWeixinFollowerTagsAddResponse> UsersWeixinFollowerTagsAdd(YouZanRequest request)
-        {
-            return ApiInvoke<UsersWeixinFollowerTagsAddResponse>(
-                request,
-                API.USERS_WEIXIN_FOLLOWER_TAGS_ADD,
-                API.VERSION_3_0_0);
-        }
-
-        /// <summary>
-        /// 获取单个粉丝标签集合，调用时，参数 weixin_openid 和 fans_id 选其一即可,只支持商家自有粉丝（fanstype为1的）
-        /// </summary>
-        /// <remarks>
-        /// 已支持：微商城单店、零售单店、教育多校区-总部
-        /// </remarks>
-        /// <param name="request"></param>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/105"/>
         /// <returns></returns>
         public YouZanResponse<UsersWeixinFollowerTagsGetResponse> UsersWeixinFollowerTagsGet(YouZanRequest request)
@@ -100,20 +83,17 @@ namespace YouZan.Open.Api
         }
 
         /// <summary>
-        /// 根据微信粉丝用户的 weixin_openid 或 fans_id 删除对应的标签，一次删除的标签数量不能大于20。只支持商家自有粉丝（fanstype为1的）
+        /// [新增] 仅限购买APP开店插件商家使用，查询app开店的用户信息。
         /// </summary>
-        /// <remarks>
-        /// 已支持：微商城单店、零售单店、教育多校区-总部
-        /// </remarks>
         /// <param name="request"></param>
-        /// <see cref="https://doc.youzanyun.com/detail/API/0/133"/>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/3606"/>
         /// <returns></returns>
-        public YouZanResponse<SuccessResponse> UsersWeixinFollowerTagsDelete(YouZanRequest request)
+        public YouZanResponse<UserAppShopGetInfoResponse> UserAppShopGetInfo(YouZanRequest request)
         {
-            return ApiInvoke<SuccessResponse>(
+            return ApiInvoke<UserAppShopGetInfoResponse>(
                 request,
-                API.USERS_WEIXIN_FOLLOWER_TAGS_DELETE,
-                API.VERSION_3_0_0);
+                API.USER_APP_SHOP_GET_INFO,
+                API.VERSION_1_0_0);
         }
 
         /// <summary>
@@ -133,6 +113,23 @@ namespace YouZan.Open.Api
                 API.VERSION_1_0_0);
         }
 
+        /// <summary>
+        /// 获取单个粉丝标签集合，调用时，参数 weixin_openid 和 fans_id 选其一即可,只支持商家自有粉丝（fanstype为1的）
+        /// </summary>
+        /// <remarks>
+        /// 已支持：微商城单店、零售单店、教育多校区-总部
+        /// </remarks>
+        /// <param name="request"></param>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/103"/>
+        /// <returns></returns>
+        public YouZanResponse<UsersWeixinFollowerTagsAddResponse> UsersWeixinFollowerTagsAdd(YouZanRequest request)
+        {
+            return ApiInvoke<UsersWeixinFollowerTagsAddResponse>(
+                request,
+                API.USERS_WEIXIN_FOLLOWER_TAGS_ADD,
+                API.VERSION_3_0_0);
+        }
+
 
         /// <summary>
         /// 查询是否存在有赞帐号
@@ -147,6 +144,23 @@ namespace YouZan.Open.Api
                 request,
                 API.USERS_ACCOUNT_CHECK,
                 API.VERSION_1_0_0);
+        }
+
+        /// <summary>
+        /// 根据微信粉丝用户的 weixin_openid 或 fans_id 删除对应的标签，一次删除的标签数量不能大于20。只支持商家自有粉丝（fanstype为1的）
+        /// </summary>
+        /// <remarks>
+        /// 已支持：微商城单店、零售单店、教育多校区-总部
+        /// </remarks>
+        /// <param name="request"></param>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/133"/>
+        /// <returns></returns>
+        public YouZanResponse<SuccessResponse> UsersWeixinFollowerTagsDelete(YouZanRequest request)
+        {
+            return ApiInvoke<SuccessResponse>(
+                request,
+                API.USERS_WEIXIN_FOLLOWER_TAGS_DELETE,
+                API.VERSION_3_0_0);
         }
 
         /// <summary>
@@ -174,20 +188,6 @@ namespace YouZan.Open.Api
                 request,
                 API.USER_BASIC_GET,
                 API.VERSION_3_0_1);
-        }
-
-        /// <summary>
-        /// [新增] 仅限购买APP开店插件商家使用，查询app开店的用户信息。
-        /// </summary>
-        /// <param name="request"></param>
-        /// <see cref="https://doc.youzanyun.com/detail/API/0/3606"/>
-        /// <returns></returns>
-        public YouZanResponse<UserAppShopGetInfoResponse> UserAppShopGetInfo(YouZanRequest request)
-        {
-            return ApiInvoke<UserAppShopGetInfoResponse>(
-                request,
-                API.USER_APP_SHOP_GET_INFO,
-                API.VERSION_1_0_0);
         }
     }
 }

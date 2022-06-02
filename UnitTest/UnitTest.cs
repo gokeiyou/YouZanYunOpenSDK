@@ -4,9 +4,9 @@ using Newtonsoft.Json;
 using System.Diagnostics;
 using YouZan.Open.Api;
 using YouZan.Open.Api.Entry.Request;
+using YouZan.Open.Api.Entry.Request.Customer;
 using YouZan.Open.Api.Entry.Request.Items;
 using YouZan.Open.Api.Entry.Request.Salesman;
-using YouZan.Open.Api.Entry.Request.Scrm;
 using YouZan.Open.Api.Entry.Request.Trade;
 using YouZan.Open.Api.Entry.Request.Ump;
 using YouZan.Open.Api.Entry.Request.Users;
@@ -47,14 +47,14 @@ namespace UnitTest
             YouZanResponse<TradeGetResponse> response = api.TradesGet(request);
             if (response.Data.DeliveryOrder.Count>0 && response.Data.DeliveryOrder[0].ExpressState==1)
             {
-                //ÒÑ·¢»õ
+                //å·²å‘è´§
 
             }
             var tradeMemo = response.Data;
 
             var updateRequest = new TradeMemoUpdateRequest();
             updateRequest.Tid = OrderId;
-            updateRequest.Memo = tradeMemo.FullOrderInfo.RemarkInfo.TradeMemo + "²âÊÔ¸üĞÂ±¸×¢-ÉóºËÍ¨¹ı";
+            updateRequest.Memo = tradeMemo.FullOrderInfo.RemarkInfo.TradeMemo + "æµ‹è¯•æ›´æ–°å¤‡æ³¨-å®¡æ ¸é€šè¿‡";
             var updateResponse = api.TradeMemoUpdate(updateRequest);
             var success = updateResponse.Response.IsSuccess;
         }
@@ -63,7 +63,7 @@ namespace UnitTest
         public void TestPromocardBuyerSearch()
         {
             UmpPromocardBuyerSearchRequest request = new UmpPromocardBuyerSearchRequest();
-            request.Mobile = 13333333333;
+            request.Mobile = "13333333333";
             request.Status = "VALID";
             // request.Status = "USED";
             var response = api.UmpPromocardBuyerSearch(request);

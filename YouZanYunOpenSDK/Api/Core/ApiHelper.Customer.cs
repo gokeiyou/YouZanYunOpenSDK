@@ -117,6 +117,62 @@ namespace YouZan.Open.Api
         }
 
         /// <summary>
+        /// 批量获取客户成长值，只支持根据手机号和yz_open_id有赞客户唯一id查询，最大支持一次查询50条客户信息
+        /// </summary>
+        /// <param name="request"></param>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/861"/>
+        /// <returns></returns>
+        public YouZanResponse<CrmCustomerGrowthListResponse> CrmCustomerGrowthList(YouZanRequest request)
+        {
+            return ApiInvoke<CrmCustomerGrowthListResponse>(
+                request,
+                API.CRM_CUSTOMER_GROWTH_LIST,
+                API.VERSION_2_0_0);
+        }
+
+        /// <summary>
+        /// 查询付费权益卡商品id
+        /// </summary>
+        /// <param name="request">请求参数</param>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/3280"/>
+        /// <returns></returns>
+        public YouZanResponse<ScrmCardGetGoodsInfoResponse> ScrmCardGetGoodsInfo(YouZanRequest request)
+        {
+            return ApiInvoke<ScrmCardGetGoodsInfoResponse>(
+                request,
+                API.SCRM_CARD_GET_GOODS_INFO,
+                API.VERSION_1_0_0);
+        }
+
+        /// <summary>
+        /// 给指定客户打上一组标签，标签不存在会自动创建
+        /// </summary>
+        /// <param name="request"></param>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/17"/>
+        /// <returns></returns>
+        public YouZanResponse<bool> ScrmTagRelationAdd(YouZanRequest request)
+        {
+            return ApiInvoke<bool>(
+                request,
+                API.SCRM_TAG_RELATION_ADD,
+                API.VERSION_4_0_0);
+        }
+
+        /// <summary>
+        /// 根据手机号批量查询客户信息
+        /// </summary>
+        /// <param name="request"></param>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/3220"/>
+        /// <returns></returns>
+        public YouZanResponse<ScrmCustomerListPhoneResponse> ScrmCustomerListPhon(YouZanRequest request)
+        {
+            return ApiInvoke<ScrmCustomerListPhoneResponse>(
+                request,
+                API.SCRM_CUSTOMER_LIST_PHONE,
+                API.VERSION_1_0_0);
+        }
+
+        /// <summary>
         /// 创建客户
         /// 手机号和{"name":"丽丽"}必填
         /// </summary>

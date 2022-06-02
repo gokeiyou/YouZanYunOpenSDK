@@ -8,7 +8,7 @@ namespace YouZan.Open.Api.Entry.Request
     /// <summary>
     /// 用户
     /// </summary>
-    public class ParamUser : YouZanRequest
+    public abstract class ParamUser : YouZanRequest
     {
         /// <summary>
         /// 帐号类型（支持的用户账号类型) ;
