@@ -21,7 +21,7 @@ namespace YouZan.Open.Core
         }
 
 
-        string IYouZanClient.Invoke(IAPI api, IAuth auth, IDictionary<string, string> headers, List<KeyValuePair<string, string>> files)
+        string IYouZanClient.Invoke(IApi api, IAuth auth, IDictionary<string, string> headers, List<KeyValuePair<string, string>> files)
         {
             string url = null;
             if (api != null)
@@ -39,7 +39,6 @@ namespace YouZan.Open.Core
                         break;
 
                 }
-                var method = api.GetHttpMethod();
                 IApiParams apiParams = api.GetAPIParams();
                 IDictionary<string, object> requestParams = apiParams.ToParams();
                 IDictionary<string, string> header = api.GetHeaders();
@@ -70,7 +69,7 @@ namespace YouZan.Open.Core
          * 构建请求URL
          * 
          */
-        private string BuildUrl(IAPI api, IAuth auth)
+        private string BuildUrl(IApi api, IAuth auth)
         {
             string url = null;
             if (auth == null)
@@ -78,27 +77,20 @@ namespace YouZan.Open.Core
                 throw new ArgumentNullException(nameof(auth));
             }
 
-            var method = api.GetHttpMethod();
             var gatway = api.GetGateway();
             var apiName = api.GetName();
             var version = api.GetVersion();
-            IApiParams apiParams = api.GetAPIParams();
-            IDictionary<string, object> requestParams = apiParams.ToParams();
-            IDictionary<string, string> header = api.GetHeaders();
 
-            if (auth is Token)
+            switch (auth)
             {
-                var authToken = auth as Token;
-
-                url = string.Format("{0}{1}{2}/{3}{4}{5}", gatway, "/api/", apiName, version, "?access_token=", authToken.GetToken());
+                case Token token:
+                    url = $"{gatway}/api/{apiName}/{version}?access_token={token.GetToken()}";
+                    break;
+                case Direct _:
+                    url = $"{gatway}/api/auth_exempt/{apiName}/{version}";
+                    break;
             }
 
-            if (auth is Direct)
-            {
-                var authToken = auth as Direct;
-
-                url = string.Format("{0}{1}{2}{3}/{4}", gatway, "/api/", "auth_exempt/", apiName, version);
-            }
             return url;
         }
 

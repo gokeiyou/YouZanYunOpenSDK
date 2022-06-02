@@ -4,7 +4,6 @@ using System.IO;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Text;
-using System.Web;
 using YouZan.Open.Exceptions;
 
 namespace YouZan.Open.Http
@@ -15,10 +14,6 @@ namespace YouZan.Open.Http
         private const string CONTENT_TYPE = "application/json";
 
         private const string CHART_SET = "utf-8";
-
-
-
-        public DefaultHttpClient() { }
 
 
         public string Send(string url, IDictionary<string, object> apiParams, IDictionary<string, string> headers, List<KeyValuePair<string, string>> files)
@@ -33,10 +28,8 @@ namespace YouZan.Open.Http
                         httpClient.DefaultRequestHeaders.Add(header.Key, header.Value);
                     }
                 }
-                // User-Agent 值修改 TODO
+                // User-Agent
                 httpClient.DefaultRequestHeaders.Add("UserAgent", "YZY-Open-Client 1.0.0-CSharp");
-
-                var builder = new UriBuilder(url);
 
                 var json = JsonConvert.SerializeObject(apiParams);
 

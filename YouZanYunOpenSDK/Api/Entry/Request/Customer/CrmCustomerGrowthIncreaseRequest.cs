@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using YouZan.Open.Common.Extensions.Attributes;
+﻿using YouZan.Open.Common.Extensions.Attributes;
 
 namespace YouZan.Open.Api.Entry.Request.Customer
 {

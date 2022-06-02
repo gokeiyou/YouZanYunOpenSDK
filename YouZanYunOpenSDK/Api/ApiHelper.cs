@@ -19,22 +19,22 @@ namespace YouZan.Open.Api
         /// <summary>
         /// 客户端ID
         /// </summary>
-        private string ClientId { get; set; }
+        private string ClientId { get; }
 
         /// <summary>
         /// 客户端密码
         /// </summary>
-        private string ClientSecret { get; set; }
+        private string ClientSecret { get; }
         /// <summary>
         /// 店铺ID
         /// </summary>
-        private string GrantId { get; set; }
+        private string GrantId { get; }
 
-        IYouZanClient _YouZanClient = null;
-        public TokenData oAuthToken = null;
+        private readonly IYouZanClient _youZanClient;
+        private TokenData _oAuthToken;
 
-        private bool _checkToken = false;
-        private Func<TokenData> _funcGetTokenData;
+        private readonly bool _checkToken;
+        private readonly Func<TokenData> _funcGetTokenData;
 
         /// <summary>
         /// 初始化，直接传入TokenData
@@ -43,47 +43,39 @@ namespace YouZan.Open.Api
         /// <param name="funcGetTokenData">获取新TokenData的委托</param>
         public ApiHelper(TokenData tokenData, Func<TokenData> funcGetTokenData = null)
         {
-            oAuthToken = tokenData;
+            _oAuthToken = tokenData;
             _checkToken = true;
             _funcGetTokenData = funcGetTokenData;
 
-            _YouZanClient = new DefaultYZClient();
+            _youZanClient = new DefaultYZClient();
         }
 
         /// <summary>
         /// 初始化API工具类
         /// </summary>
-        /// <param name="clientId"></param>
-        /// <param name="clientSecret"></param>
-        public ApiHelper(string clientId, string clientSecret)
-            : this(clientId, clientSecret, null)
-        {
-
-        }
-
-        public ApiHelper(string clientId, string clientSecret, string grantId)
+        /// <param name="clientId">客户端Id</param>
+        /// <param name="clientSecret">客户端秘钥</param>
+        /// <param name="grantId">店铺id</param>
+        public ApiHelper(string clientId, string clientSecret, string grantId = null)
         {
             this.ClientId = clientId;
             this.ClientSecret = clientSecret;
             this.GrantId = grantId;
 
-            _YouZanClient = new DefaultYZClient();
+            _youZanClient = new DefaultYZClient();
 
             this.GetAccessToken();
         }
 
         private void GetAccessToken(bool refresh = false)
         {
-            Silent silent = new Silent(this.ClientId, this.ClientSecret, this.GrantId);
+            var silent = new Silent(this.ClientId, this.ClientSecret, this.GrantId);
             if (refresh)
             {
-                if (YouZanConfig.SaveAccessTokenToDB)
-                    oAuthToken = silent.GetNewTokenData(false);
-                else
-                    oAuthToken = silent.GetToken(refresh);
+                _oAuthToken = YouZanConfig.SaveAccessTokenToDB ? silent.GetNewTokenData(false) : silent.GetToken(true);
             }
             else
-                oAuthToken = silent.GetToken();
+                _oAuthToken = silent.GetToken();
         }
 
         /// <summary>
@@ -95,7 +87,7 @@ namespace YouZan.Open.Api
         private IDictionary<string, object> GenericParameter<T>(T t) where T : YouZanRequest
         {
             IDictionary<string, object> dict = new ConcurrentDictionary<string, object>();
-            Type type = t.GetType();
+            var type = t.GetType();
             foreach (var item in type.GetProperties())
             {
                 if (item.PropertyType == typeof(YouZanRequest))
@@ -111,10 +103,10 @@ namespace YouZan.Open.Api
             return dict;
         }
 
-        private T GetResponse<T>(IAPI api, IAuth auth, IDictionary<string, string> headers, List<KeyValuePair<string, string>> files)
+        private T GetResponse<T>(IApi api, IAuth auth, IDictionary<string, string> headers, List<KeyValuePair<string, string>> files)
             where T : YouZanResponse
         {
-            var result = _YouZanClient.Invoke(api, auth, headers, files);
+            var result = _youZanClient.Invoke(api, auth, headers, files);
             return JsonConvert.DeserializeObject<T>(result);
         }
 
@@ -138,7 +130,7 @@ namespace YouZan.Open.Api
 
             generalApi.SetAPIParams(apiParams);
 
-            var resp = GetResponse<T>(generalApi, new Token(oAuthToken.Token), headers, files);
+            var resp = GetResponse<T>(generalApi, new Token(_oAuthToken.Token), headers, files);
 
             // 当Token失效或Token不存在时，强制刷新AccessToken并且重新请求
             var errCodes = new[] { 4201, 4202, 4203 };
@@ -148,13 +140,13 @@ namespace YouZan.Open.Api
                 {
                     if (_funcGetTokenData == null)
                         return resp;
-                    oAuthToken = _funcGetTokenData();
+                    _oAuthToken = _funcGetTokenData();
                 }
                 else
                 {
                     this.GetAccessToken(true);
                 }
-                resp = GetResponse<T>(generalApi, new Token(oAuthToken.Token), headers, files);
+                resp = GetResponse<T>(generalApi, new Token(_oAuthToken.Token), headers, files);
             }
 
             return resp;
@@ -163,7 +155,6 @@ namespace YouZan.Open.Api
         /// <summary>
         /// 执行API请求
         /// </summary>
-        /// <typeparam name="T">响应参数</typeparam>
         /// <param name="request">请求参数值</param>
         /// <param name="apiName">api名称</param>
         /// <param name="apiVersion">api版本</param>
@@ -171,7 +162,7 @@ namespace YouZan.Open.Api
         /// <param name="headers">http请求头信息</param>
         /// <param name="files">文件列表（暂不支持）</param>
         /// <returns></returns>
-        protected YouZanResponse ApiInvoke(YouZanRequest request,
+        private YouZanResponse ApiInvoke(YouZanRequest request,
             string apiName,
             string apiVersion,
             string method = API.HTTP_POST,
@@ -192,7 +183,7 @@ namespace YouZan.Open.Api
         /// <param name="headers">http请求头信息</param>
         /// <param name="files">文件列表（暂不支持）</param>
         /// <returns></returns>
-        protected YouZanResponse<T> ApiInvoke<T>(YouZanRequest request,
+        private YouZanResponse<T> ApiInvoke<T>(YouZanRequest request,
             string apiName,
             string apiVersion,
             string method = API.HTTP_POST,

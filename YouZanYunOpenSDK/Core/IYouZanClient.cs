@@ -9,7 +9,7 @@ namespace YouZan.Open.Core
 {
     public interface IYouZanClient
     {
-        string Invoke(IAPI api, IAuth auth,IDictionary<string, string> headers, List<KeyValuePair<string, string>> files);
+        string Invoke(IApi api, IAuth auth,IDictionary<string, string> headers, List<KeyValuePair<string, string>> files);
 
     }
 }

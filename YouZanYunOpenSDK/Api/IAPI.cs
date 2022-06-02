@@ -4,7 +4,7 @@ using YouZan.Open.Common.Constant;
 
 namespace YouZan.Open.Api
 {
-    public interface IAPI
+    public interface IApi
     {
 
         /**

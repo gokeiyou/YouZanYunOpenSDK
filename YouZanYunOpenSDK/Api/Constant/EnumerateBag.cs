@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace YouZan.Open.Api.Constant
+﻿namespace YouZan.Open.Api.Constant
 {
     /// <summary>
     /// 性别

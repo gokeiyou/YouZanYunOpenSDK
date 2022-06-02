@@ -3,7 +3,7 @@ using YouZan.Open.Common.Constant;
 
 namespace YouZan.Open.Api
 {
-    public class GeneralApi : AbstractAPI
+    public class GeneralApi : AbstractApi
     {
         /**
          * 请求方法
@@ -32,7 +32,7 @@ namespace YouZan.Open.Api
 
         public override string GetGateway()
         {
-            return this._Gateway;
+            return this.Gateway;
         }
 
         public override string GetHttpMethod()
@@ -67,7 +67,7 @@ namespace YouZan.Open.Api
 
         public void SetVersion(string serviceVersion)
         {
-            this._Version = serviceVersion;
+            this.Version = serviceVersion;
         }
 
         public void SetClientId(string clientId)
@@ -95,11 +95,11 @@ namespace YouZan.Open.Api
             return "GeneralApi{" +
                     "httpMethod='" + httpMethod + '\'' +
                     ", serviceName='" + serviceName + '\'' +
-                    ", serviceVersion='" + _Version + '\'' +
+                    ", serviceVersion='" + Version + '\'' +
                     ", oAuthType=" + oAuthType +
-                    ", apiParams=" + apiParams +
-                    ", gateway='" + _Gateway + '\'' +
-                    ", headers=" + headers +
+                    ", apiParams=" + ApiParams +
+                    ", gateway='" + Gateway + '\'' +
+                    ", headers=" + Headers +
                     '}';
         }
     }

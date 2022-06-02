@@ -1,52 +1,50 @@
-﻿using System;
-using System.Collections.Concurrent;
+﻿using System.Collections.Concurrent;
 using System.Collections.Generic;
-using YouZan.Open.Api.Constant;
 using YouZan.Open.Common.Constant;
 
 namespace YouZan.Open.Api
 {
     /// <summary>
-    /// 
+    /// Api抽象类
     /// </summary>
-    public abstract class AbstractAPI : IAPI
+    public abstract class AbstractApi : IApi
     {
-        protected IApiParams apiParams;
+        protected IApiParams ApiParams;
 
-        protected string _Gateway = "https://open.youzanyun.com";
+        protected string Gateway = "https://open.youzanyun.com";
 
-        protected string _Version;
+        protected string Version;
 
-        protected IDictionary<string, string> headers = new ConcurrentDictionary<string, string>();
+        protected readonly IDictionary<string, string> Headers = new ConcurrentDictionary<string, string>();
 
         public void AddHeader(string headerName, string headerValue)
         {
-            headers.Add(headerName, headerValue);
+            Headers.Add(headerName, headerValue);
         }
 
         public IApiParams GetAPIParams()
         {
-            return apiParams;
+            return ApiParams;
         }
 
         public void SetAPIParams(IApiParams apiParams)
         {
-            this.apiParams = apiParams;
+            this.ApiParams = apiParams;
         }
 
-        public void SetGateway(string gateway = API.HOST)
+        public void SetGateway(string gateway)
         {
-            this._Gateway = gateway;
+            Gateway = gateway;
         }
 
         public IDictionary<string, string> GetHeaders()
         {
-            return headers;
+            return Headers;
         }
 
         public string GetVersion()
         {
-            return _Version;
+            return Version;
         }
 
        
