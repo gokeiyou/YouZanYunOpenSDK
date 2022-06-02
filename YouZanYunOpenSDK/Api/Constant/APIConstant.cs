@@ -4,6 +4,9 @@ using System.Text;
 
 namespace YouZan.Open.Api.Constant
 {
+    /// <summary>
+    /// 常量定义
+    /// </summary>
     public struct API
     {
 
