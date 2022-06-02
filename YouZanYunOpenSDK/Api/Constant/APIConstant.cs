@@ -342,13 +342,17 @@ namespace YouZan.Open.Api.Constant
         /// <summary>
         /// 给用户加积分，帐号类型(与帐户ID配合使用: 1:粉丝(原fansId),2:手机号,3:三方帐号(原open_user_id),4:UnionID,5:OpenID
         /// </summary>
-        /// <see cref="https://doc.youzanyun.com/detail/API/0/872"/>
+        /// <see>
+        ///     <cref>https://doc.youzanyun.com/detail/API/0/872</cref>
+        /// </see>
         internal const string CRM_CUSTOMER_POINTS_INCREASE = "youzan.crm.customer.points.increase";
 
         /// <summary>
         /// 给用户加成长值，帐号类型(与帐户ID配合使用: 1:粉丝(原fansId),2:手机号,3:三方帐号(原open_user_id),4:UnionID,5:OpenID
         /// </summary>
-        /// <see cref="https://doc.youzanyun.com/detail/API/0/863"/>
+        /// <see>
+        ///     <cref>https://doc.youzanyun.com/detail/API/0/863</cref>
+        /// </see>
         internal const string CRM_CUSTOMER_GROWTH_INCREASE = "youzan.crm.customer.growth.increase";
 
         #endregion
