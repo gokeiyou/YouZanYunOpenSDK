@@ -13,12 +13,12 @@ namespace YouZan.Open.DB
     {
         public T ExecuteSql<T>(string sql, Func<DbCommand, T> func)
         {
-            using (OracleConnection conn = new OracleConnection(YouZanConfig.DBConnectionString))
+            using (var conn = new OracleConnection(YouZanConfig.DBConnectionString))
             {
                 try
                 {
                     conn.Open();
-                    OracleCommand cmd = conn.CreateCommand();
+                    var cmd = conn.CreateCommand();
                     cmd.CommandText = sql;
                     cmd.CommandType = CommandType.Text;
 
@@ -41,13 +41,13 @@ namespace YouZan.Open.DB
 
         public T ExecuteSqlWithTran<T>(string sql, Func<DbCommand, T> func)
         {
-            using (OracleConnection conn = new OracleConnection(YouZanConfig.DBConnectionString))
+            using (var conn = new OracleConnection(YouZanConfig.DBConnectionString))
             {
                 OracleTransaction tran = null;
                 try
                 {
                     conn.Open();
-                    OracleCommand cmd = conn.CreateCommand();
+                    var cmd = conn.CreateCommand();
                     tran = conn.BeginTransaction();
                     cmd.CommandText = sql;
                     cmd.CommandType = CommandType.Text;
@@ -58,11 +58,10 @@ namespace YouZan.Open.DB
                 }
                 catch
                 {
-                    if (tran != null)
-                    {
-                        tran.Rollback();
-                        tran.Dispose();
-                    }
+                    if (tran == null) return default;
+                    
+                    tran.Rollback();
+                    tran.Dispose();
                     return default;
                 }
                 finally
@@ -77,7 +76,7 @@ namespace YouZan.Open.DB
         }
         public void Dispose()
         {
-            throw new NotImplementedException();
+            GC.SuppressFinalize(this);
         }
     }
 }
