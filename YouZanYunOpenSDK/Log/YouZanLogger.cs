@@ -28,6 +28,8 @@ namespace YouZan.Open.Log
         public string PostData { get; set; }
         public string ResponseData { get; set; }
 
+        private static readonly IDBHelper Db = DBFactory.DbHelper;
+
         public void Save()
         {
             this.Guid = System.Guid.NewGuid().ToString("N");
@@ -62,11 +64,9 @@ namespace YouZan.Open.Log
                     break;
             }
 
-            string SQL = $"INSERT INTO {tableName}({string.Join(",", fields)}) VALUES ({string.Join(",", @params)});";
-
-            IDBHelper db = DBFactory.CreateInstance();
-
-            db.ExecuteSql(SQL, cmd =>
+            var SQL = $"INSERT INTO {tableName}({string.Join(",", fields)}) VALUES ({string.Join(",", @params)});";
+            
+            Db.ExecuteSql(SQL, cmd =>
             {
                 cmd.Parameters.AddRange(parameters);
                 return cmd.ExecuteScalar();

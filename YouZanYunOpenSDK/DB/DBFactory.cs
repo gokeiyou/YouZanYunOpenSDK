@@ -10,11 +10,13 @@ namespace YouZan.Open.DB
 {
     public class DBFactory
     {
+        public static readonly IDBHelper DbHelper = CreateInstance();
+
         /// <summary>
         /// 创建DBHelper
         /// </summary>
         /// <returns></returns>
-        public static IDBHelper CreateInstance()
+        private static IDBHelper CreateInstance()
         {
             switch (YouZanConfig.DBType)
             {

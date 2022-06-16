@@ -20,6 +20,8 @@ namespace YouZan.Open.TokenEx
         public DateTime AddTime { get; set; } = DateTime.Now;
         public DateTime? UpdateTime { get; set; } = null;
 
+        private static readonly IDBHelper Db = DBFactory.DbHelper;
+
         public static TokenData GetData(string key, Func<bool, TokenData> func)
         {
             string tableName;
@@ -45,19 +47,15 @@ namespace YouZan.Open.TokenEx
                     break;
             }
 
-            string SQL = $"SELECT {field} FROM {tableName} WHERE {condition};";
-
-            IDBHelper db = DBFactory.CreateInstance();
-            string tokenData = db.ExecuteSql(SQL, cmd => cmd.ExecuteScalar()?.ToString());
+            var SQL = $"SELECT {field} FROM {tableName} WHERE {condition};";
+            
+            var tokenData = Db.ExecuteSql(SQL, cmd => cmd.ExecuteScalar()?.ToString());
             if (string.IsNullOrEmpty(tokenData))
                 return func(true);
 
             var token = JsonConvert.DeserializeObject<TokenData>(tokenData);
 
-            if (token.ExpiresTime <= DateTime.Now)
-                return func(false);
-
-            return JsonConvert.DeserializeObject<TokenData>(tokenData);
+            return token.ExpiresTime <= DateTime.Now ? func(false) : JsonConvert.DeserializeObject<TokenData>(tokenData);
         }
 
         public void Save(bool create = true)
@@ -98,13 +96,11 @@ namespace YouZan.Open.TokenEx
                     parameters = properties.Select(t => new SqlParameter($"@{t.Name}", t.GetValue(this))).ToArray();
                     break;
             }
-            string SQL = $"UPDATE {tableName} SET {updateField} WHERE {condition};";
+            var sql = $"UPDATE {tableName} SET {updateField} WHERE {condition};";
             if (create)
-                SQL = $"INSERT INTO {tableName}({string.Join(",", fields)}) VALUES ({string.Join(",", @params)});";
+                sql = $"INSERT INTO {tableName}({string.Join(",", fields)}) VALUES ({string.Join(",", @params)});";
 
-            IDBHelper db = DBFactory.CreateInstance();
-
-            db.ExecuteSql(SQL, cmd => {
+            Db.ExecuteSql(sql, cmd => {
                 cmd.Parameters.AddRange(parameters);
                 return cmd.ExecuteScalar();
             });
