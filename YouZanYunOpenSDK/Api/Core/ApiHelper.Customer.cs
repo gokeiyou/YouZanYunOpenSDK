@@ -164,12 +164,26 @@ namespace YouZan.Open.Api
         /// <param name="request"></param>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/3220"/>
         /// <returns></returns>
-        public YouZanResponse<ScrmCustomerListPhoneResponse> ScrmCustomerListPhon(YouZanRequest request)
+        public YouZanResponse<ScrmCustomerListPhoneResponse> ScrmCustomerListPhone(YouZanRequest request)
         {
             return ApiInvoke<ScrmCustomerListPhoneResponse>(
                 request,
                 API.SCRM_CUSTOMER_LIST_PHONE,
                 API.VERSION_1_0_0);
+        }
+
+        /// <summary>
+        /// 冻结&消费用户积分，冻结消费积分原子接口
+        /// </summary>
+        /// <param name="request">请求参数</param>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/3048"/>
+        /// <returns></returns>
+        public YouZanResponse<SuccessResponse<string>> CrmCustomerPointsOperateFreezeAndConsume(YouZanRequest request)
+        {
+            return ApiInvoke<SuccessResponse<string>>(
+                request,
+                API.CRM_CUSTOMER_POINTS_OPERATE_FREEZE_CONSUME,
+                API.VERSION_4_0_0);
         }
 
         /// <summary>
@@ -185,6 +199,21 @@ namespace YouZan.Open.Api
                 request,
                 API.SCRM_CUSTOMER_CREATE,
                 API.VERSION_3_0_0);
+        }
+        
+        /// <summary>
+        /// 删除客户标签
+        /// 1.删除指定客户身上的指定标签，标签不存在或客户身上没这个标签不会返回错误。 2.最大支持一次请求删除20个标签。
+        /// </summary>
+        /// <param name="request"></param>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/18"/>
+        /// <returns></returns>
+        public YouZanResponse<bool> ScrmTagRelationDelete(YouZanRequest request)
+        {
+            return ApiInvoke<bool>(
+                request,
+                API.SCRM_TAG_RELATION_DELETE,
+                API.VERSION_4_0_0);
         }
 
         /// <summary>

@@ -187,6 +187,16 @@
         /// <see cref="https://doc.youzanyun.com/detail/API/0/3220"/>
         internal const string SCRM_CUSTOMER_LIST_PHONE = "youzan.scrm.customer.list.phone";
         /// <summary>
+        /// 冻结&消费用户积分
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/3048"/>
+        internal const string CRM_CUSTOMER_POINTS_OPERATE_FREEZE_CONSUME = "youzan.crm.customer.points.operate.freezeandconsume";
+        /// <summary>
+        /// 删除客户标签
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/18"/>
+        internal const string SCRM_TAG_RELATION_DELETE = "youzan.scrm.tag.relation.delete";
+        /// <summary>
         /// 给客户打标
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/17"/>
