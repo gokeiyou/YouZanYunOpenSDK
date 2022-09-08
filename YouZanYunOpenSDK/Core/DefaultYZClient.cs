@@ -77,17 +77,17 @@ namespace YouZan.Open.Core
                 throw new ArgumentNullException(nameof(auth));
             }
 
-            var gatway = api.GetGateway();
+            var gateway = api.GetGateway();
             var apiName = api.GetName();
             var version = api.GetVersion();
 
             switch (auth)
             {
                 case Token token:
-                    url = $"{gatway}/api/{apiName}/{version}?access_token={token.GetToken()}";
+                    url = $"{gateway}/api/{apiName}/{version}?access_token={token.GetToken()}";
                     break;
                 case Direct _:
-                    url = $"{gatway}/api/auth_exempt/{apiName}/{version}";
+                    url = $"{gateway}/api/auth_exempt/{apiName}/{version}";
                     break;
             }
 

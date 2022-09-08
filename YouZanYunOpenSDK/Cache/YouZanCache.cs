@@ -14,7 +14,7 @@ namespace YouZan.Open.Cache
     public class YouZanCache : ICache
     {
 
-        private static IDictionary<string, KeyValuePair<DateTime, object>> _CustomerCacheDictionary = new ConcurrentDictionary<string, KeyValuePair<DateTime, object>>();
+        private static readonly IDictionary<string, KeyValuePair<DateTime, object>> CustomerCacheDictionary = new ConcurrentDictionary<string, KeyValuePair<DateTime, object>>();
 
         static YouZanCache()
         {
@@ -22,10 +22,10 @@ namespace YouZan.Open.Cache
             {
                 while (true)
                 {
-                    if (_CustomerCacheDictionary.Count > 0)
+                    if (CustomerCacheDictionary.Count > 0)
                     {
-                        List<string> list = new List<string>();
-                        foreach (var item in _CustomerCacheDictionary)
+                        var list = new List<string>();
+                        foreach (var item in CustomerCacheDictionary)
                         {
                             KeyValuePair<DateTime, object> keyValuePair = item.Value;
                             if (DateTime.Now > keyValuePair.Key)//过期了
@@ -35,7 +35,7 @@ namespace YouZan.Open.Cache
                         }
                         foreach (var key in list)
                         {
-                            _CustomerCacheDictionary.Remove(key);
+                            CustomerCacheDictionary.Remove(key);
                         }
                     }
                     Thread.Sleep(1000);
@@ -51,7 +51,7 @@ namespace YouZan.Open.Cache
         /// <param name="cacheTime">默认30分钟  单位分钟</param>
         public void Add(string key, object data, int cacheTime = 9900)
         {
-            if (_CustomerCacheDictionary.ContainsKey(key)) return;
+            if (CustomerCacheDictionary.ContainsKey(key)) return;
             //throw new Exception("相同的key");
             //_CustomerCacheDictionary.Add(key, new KeyValuePair<DateTime, object>(DateTime.Now.AddMinutes(cacheTime), data));
             this.Add(key, data, DateTime.Now.AddMinutes(cacheTime));
@@ -59,7 +59,7 @@ namespace YouZan.Open.Cache
 
         public void Add(string key, object data, DateTime expires)
         {
-            _CustomerCacheDictionary.Add(key, new KeyValuePair<DateTime, object>(expires, data));
+            CustomerCacheDictionary.Add(key, new KeyValuePair<DateTime, object>(expires, data));
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace YouZan.Open.Cache
         /// <returns></returns>
         public T Get<T>(string key)
         {
-            return (T)_CustomerCacheDictionary[key].Value;
+            return (T)CustomerCacheDictionary[key].Value;
         }
         /// <summary>
         /// 
@@ -82,12 +82,12 @@ namespace YouZan.Open.Cache
             //完成清理  不能用
             //return _CustomerCacheDictionary.ContainsKey(key) && DateTime.Now <= _CustomerCacheDictionary[key].Key;
 
-            if (_CustomerCacheDictionary.ContainsKey(key))
+            if (CustomerCacheDictionary.ContainsKey(key))
             {
-                KeyValuePair<DateTime, object> keyValuePair = _CustomerCacheDictionary[key];
+                KeyValuePair<DateTime, object> keyValuePair = CustomerCacheDictionary[key];
                 if (DateTime.Now > keyValuePair.Key)//过期了
                 {
-                    _CustomerCacheDictionary.Remove(key);
+                    CustomerCacheDictionary.Remove(key);
                     return false;
                 }
                 else

@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
 using YouZan.Open.Api.Constant;
 using YouZan.Open.Api.Entry.Request;
 using YouZan.Open.Api.Entry.Response;
@@ -58,18 +58,18 @@ namespace YouZan.Open.Api
         /// <param name="grantId">店铺id</param>
         public ApiHelper(string clientId, string clientSecret, string grantId = null)
         {
-            this.ClientId = clientId;
-            this.ClientSecret = clientSecret;
-            this.GrantId = grantId;
+            ClientId = clientId;
+            ClientSecret = clientSecret;
+            GrantId = grantId;
 
             _youZanClient = new DefaultYZClient();
 
-            this.GetAccessToken();
+            RefreshAccessToken();
         }
 
-        private void GetAccessToken(bool refresh = false)
+        private void RefreshAccessToken(bool refresh = false)
         {
-            var silent = new Silent(this.ClientId, this.ClientSecret, this.GrantId);
+            var silent = new Silent(ClientId, ClientSecret, GrantId);
             if (refresh)
             {
                 _oAuthToken = YouZanConfig.SaveAccessTokenToDB ? silent.GetNewTokenData(false) : silent.GetToken(true);
@@ -117,7 +117,7 @@ namespace YouZan.Open.Api
             IDictionary<string, string> headers = null,
             List<KeyValuePair<string, string>> files = null) where T : YouZanResponse
         {
-            GeneralApi generalApi = new GeneralApi();
+            var generalApi = new GeneralApi();
             generalApi.SetName(apiName);
             generalApi.SetVersion(apiVersion);
             generalApi.SetClientId(ClientId);
@@ -125,8 +125,8 @@ namespace YouZan.Open.Api
             generalApi.SetHttpMethod(method);
             generalApi.SetOAuthType(OAuthEnum.TOKEN);
 
-            GeneralApiParams apiParams = new GeneralApiParams();
-            apiParams.AddParam(this.GenericParameter(request));
+            var apiParams = new GeneralApiParams();
+            apiParams.AddParam(GenericParameter(request));
 
             generalApi.SetAPIParams(apiParams);
 
@@ -134,20 +134,18 @@ namespace YouZan.Open.Api
 
             // 当Token失效或Token不存在时，强制刷新AccessToken并且重新请求
             var errCodes = new[] { 4201, 4202, 4203 };
-            if (resp.ErrorResponse != null && errCodes.Contains(resp.ErrorResponse.ErrorCode))
+            if (resp.ErrorResponse == null || !errCodes.Contains(resp.ErrorResponse.ErrorCode)) return resp;
+            if (_checkToken)
             {
-                if (_checkToken)
-                {
-                    if (_funcGetTokenData == null)
-                        return resp;
-                    _oAuthToken = _funcGetTokenData();
-                }
-                else
-                {
-                    this.GetAccessToken(true);
-                }
-                resp = GetResponse<T>(generalApi, new Token(_oAuthToken.Token), headers, files);
+                if (_funcGetTokenData == null)
+                    return resp;
+                _oAuthToken = _funcGetTokenData();
             }
+            else
+            {
+                RefreshAccessToken(true);
+            }
+            resp = GetResponse<T>(generalApi, new Token(_oAuthToken.Token), headers, files);
 
             return resp;
         }
