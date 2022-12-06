@@ -32,14 +32,14 @@ namespace YouZan.Open.Log
 
         public void Save()
         {
-            this.Guid = System.Guid.NewGuid().ToString("N");
-            this.LogTime = DateTime.Now;
-            Type type = this.GetType();
+            Guid = System.Guid.NewGuid().ToString("N");
+            LogTime = DateTime.Now;
+            var type = GetType();
             var properties = type.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
             string tableName;
-            string[] fields = default;
-            string[] @params = default;
-            DbParameter[] parameters = default;
+            string[] fields;
+            string[] @params;
+            DbParameter[] parameters;
 
             switch (YouZanConfig.DBType)
             {
@@ -64,9 +64,9 @@ namespace YouZan.Open.Log
                     break;
             }
 
-            var SQL = $"INSERT INTO {tableName}({string.Join(",", fields)}) VALUES ({string.Join(",", @params)});";
+            var sql = $"INSERT INTO {tableName}({string.Join(",", fields)}) VALUES ({string.Join(",", @params)});";
             
-            Db.ExecuteSql(SQL, cmd =>
+            Db.ExecuteSql(sql, cmd =>
             {
                 cmd.Parameters.AddRange(parameters);
                 return cmd.ExecuteScalar();

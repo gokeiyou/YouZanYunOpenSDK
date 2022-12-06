@@ -19,23 +19,13 @@ namespace YouZan.Open.TokenEx.Type
 
         public override TokenData GetToken(bool getNew = false)
         {
-            TokenData tokenData = null;
-            if (getNew)
-            {
-                tokenData = GetNewTokenData();
-            }
-            else
-            {
-                tokenData = cache.GetT(this._ClientId, this.GetNewTokenData);
-            }
-
-
+            var tokenData = getNew ? GetNewTokenData() : cache.GetT(_ClientId, GetNewTokenData);
             return tokenData;
         }
 
         public TokenData GetNewTokenData()
         {
-            TokenData tokenData = null;
+            TokenData tokenData;
             IDictionary<string, object> tokenParams = new Dictionary<string, object>
             {
                 { "client_id", _ClientId },
@@ -44,10 +34,10 @@ namespace YouZan.Open.TokenEx.Type
                 { "code", Code }
             };
             DefaultHttpClient defaultHttpClient = new DefaultHttpClient();
-            string result = defaultHttpClient.Send(this.GetTokenUrl(), tokenParams, null, null);
+            string result = defaultHttpClient.Send(GetTokenUrl(), tokenParams, null, null);
             Console.WriteLine("t result *******************"+result);
 
-            OauthToken oAuthToken = JsonConvert.DeserializeObject<OauthToken>(result);
+            var oAuthToken = JsonConvert.DeserializeObject<OauthToken>(result);
             if (oAuthToken.Data == null) {
                 tokenData = new TokenData
                 {
@@ -59,9 +49,9 @@ namespace YouZan.Open.TokenEx.Type
             tokenData = JsonConvert.DeserializeObject<TokenData>(data);
 
             // Token添加缓存
-            if (cache.Contains(this._ClientId))
-                cache.Remove(this._ClientId);
-            cache.Add(this._ClientId, tokenData, tokenData.ExpiresTime.AddMinutes(-5));
+            if (cache.Contains(_ClientId))
+                cache.Remove(_ClientId);
+            cache.Add(_ClientId, tokenData, tokenData.ExpiresTime.AddMinutes(-5));
 
             return tokenData;
         }

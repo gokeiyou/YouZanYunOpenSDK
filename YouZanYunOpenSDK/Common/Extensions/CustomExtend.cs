@@ -16,8 +16,7 @@ namespace System
         public static string GetApiField(this MemberInfo member)
         {
             var attr = member.GetCustomAttribute<ApiFieldAttribute>();
-            if (attr == null) return member.Name;
-            return attr.Name;
+            return attr == null ? member.Name : attr.Name;
         }
     }
 }

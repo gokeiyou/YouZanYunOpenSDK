@@ -13,7 +13,7 @@ namespace YouZan.Open.TokenEx
         public string Success { get; set; }
 
         [JsonProperty("data")]
-        public Object Data { get; set; }
+        public object Data { get; set; }
 
         [JsonProperty("message")]
         public string Message { get; set; }
@@ -41,7 +41,7 @@ namespace YouZan.Open.TokenEx
             public DateTime ExpiresTime
             {
                 get {
-                    if (this.Expires == null)
+                    if (Expires == null)
                         return new DateTime(2099, 12, 31, 23, 59, 59);
                     var startTime = new DateTime(1970, 1, 1);
                     var ts = new TimeSpan(this.Expires.Value * 10000);

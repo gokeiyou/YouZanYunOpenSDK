@@ -27,7 +27,7 @@ namespace YouZan.Open.Cache
                         var list = new List<string>();
                         foreach (var item in CustomerCacheDictionary)
                         {
-                            KeyValuePair<DateTime, object> keyValuePair = item.Value;
+                            var keyValuePair = item.Value;
                             if (DateTime.Now > keyValuePair.Key)//过期了
                             {
                                 list.Add(item.Key);
