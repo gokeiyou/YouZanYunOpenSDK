@@ -52,6 +52,11 @@
         public const string VERSION_3_0_2 = "3.0.2";
 
         /// <summary>
+        /// 版本号：3.1.2
+        /// </summary>
+        public const string VERSION_3_1_2 = "3.1.2";
+
+        /// <summary>
         /// 版本号：4.0.0
         /// </summary>
         public const string VERSION_4_0_0 = "4.0.0";
@@ -114,6 +119,18 @@
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/910"/>
         internal const string USERS_CHANNEL_CODE_ULTRA_GET = "youzan.users.channel.code.ultra.get";
+
+        /// <summary>
+        /// 获取客户列表
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/755"/>
+        internal const string USERS_SCRM_CUSTOMER_SEARCH = "youzan.scrm.customer.search";
+
+        /// <summary>
+        /// 删除三方帐号信息，用于App开店帐号一键授权
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/3946"/>
+        internal const string USERS_WECHAT_DELETE = "youzan.user.wechat.delete";
 
         /// <summary>
         /// 查询是否存在有赞帐号

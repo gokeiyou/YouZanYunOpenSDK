@@ -114,6 +114,40 @@ namespace YouZan.Open.Api
         }
 
         /// <summary>
+        /// 获取客户列表
+        /// </summary>
+        /// <remarks>
+        /// 已支持：微商城单店、零售单店、有赞连锁D-总部、有赞连锁D-网店、有赞连锁D-合伙人、有赞连锁L-总部、有赞连锁L-总部-高级版、有赞连锁L-网店、有赞连锁L-网店-Lite、有赞连锁L-门店、有赞连锁L-合伙人、有赞连锁L-供货商、有赞连锁L-独立仓库
+        /// </remarks>
+        /// <param name="request"></param>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/755"/>
+        /// <returns></returns>
+        public YouZanResponse<UserCustomerSearchResponse> UserCustomerSearch(YouZanRequest request)
+        {
+            return ApiInvoke<UserCustomerSearchResponse>(
+                request,
+                API.USERS_SCRM_CUSTOMER_SEARCH,
+                API.VERSION_3_1_2);
+        }
+
+        /// <summary>
+        /// 删除三方帐号信息，用于App开店帐号一键授权
+        /// </summary>
+        /// <remarks>
+        /// 已支持：微商城单店、零售单店、有赞连锁D-总部、有赞连锁D-网店、有赞连锁D-合伙人、教育多校区-总部
+        /// </remarks>
+        /// <param name="request"></param>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/3946"/>
+        /// <returns></returns>
+        public YouZanResponse<bool> UserWechatDelete(YouZanRequest request)
+        {
+            return ApiInvoke<bool>(
+                request,
+                API.USERS_WECHAT_DELETE,
+                API.VERSION_1_0_0);
+        }
+
+        /// <summary>
         /// 获取单个粉丝标签集合，调用时，参数 weixin_openid 和 fans_id 选其一即可,只支持商家自有粉丝（fanstype为1的）
         /// </summary>
         /// <remarks>
@@ -129,8 +163,7 @@ namespace YouZan.Open.Api
                 API.USERS_WEIXIN_FOLLOWER_TAGS_ADD,
                 API.VERSION_3_0_0);
         }
-
-
+        
         /// <summary>
         /// 查询是否存在有赞帐号
         /// 传入参数参考{"account_type":"Mobile", "account_id":"1385716120"}
