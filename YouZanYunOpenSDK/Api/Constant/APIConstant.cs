@@ -222,17 +222,17 @@
         /// 查询用户当前积分
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/884"/>
-        internal const string SCRM_CUSTOMER_POINTS_GET = "youzan.crm.customer.points.get";
+        internal const string CRM_CUSTOMER_POINTS_GET = "youzan.crm.customer.points.get";
         /// <summary>
         /// 给用户减积分
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/873"/>
-        internal const string SCRM_CUSTOMER_POINTS_DECREASE = "youzan.crm.customer.points.decrease";
+        internal const string CRM_CUSTOMER_POINTS_DECREASE = "youzan.crm.customer.points.decrease";
         /// <summary>
         /// 同步客户积分
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/883"/>
-        internal const string SCRM_CUSTOMER_POINTS_SYNC = "youzan.crm.customer.points.sync";
+        internal const string CRM_CUSTOMER_POINTS_SYNC = "youzan.crm.customer.points.sync";
         /// <summary>
         /// 给客户打标
         /// </summary>

@@ -5,19 +5,19 @@ namespace YouZan.Open.Api.Entry.Request.Customer
     /// <summary>
     /// 获取客户账号下权益卡列表 参数
     /// </summary>
-    public class ScrmCustomerCardListRequest : YouZanRequest
+    public class CrmCustomerCardListRequest : YouZanRequest
     {
         /// <summary>
         /// 请求参数
         /// </summary>
         [ApiField("params")]
-        public ScrmCustomerCardListParams Params { get; set; }
+        public CrmCustomerCardListParams Params { get; set; }
     }
     
     /// <summary>
     /// 参数信息
     /// </summary>
-    public class ScrmCustomerCardListParams
+    public class CrmCustomerCardListParams
     {
         /// <summary>
         /// 是否查询所有（false-查可用权益卡;true-查全部权益卡）默认查可用权益卡

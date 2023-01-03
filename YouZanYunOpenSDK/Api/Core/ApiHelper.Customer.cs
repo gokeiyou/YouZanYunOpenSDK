@@ -248,12 +248,29 @@ namespace YouZan.Open.Api
         /// <param name="request"></param>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/884"/>
         /// <returns></returns>
-        public YouZanResponse<ScrmCustomerPointsGetResponse> ScrmCustomerPointsGet(YouZanRequest request)
+        public YouZanResponse<ScrmCustomerPointsGetResponse> CrmCustomerPointsGet(YouZanRequest request)
         {
             return ApiInvoke<ScrmCustomerPointsGetResponse>(
                 request,
-                API.SCRM_CUSTOMER_POINTS_GET,
+                API.CRM_CUSTOMER_POINTS_GET,
                 API.VERSION_1_0_0);
+        }
+
+        /// <summary>
+        /// 给用户减积分
+        /// </summary>
+        /// <remarks>
+        /// 已支持：微商城单店、零售单店、有赞连锁D-总部、有赞连锁L-总部、有赞连锁L-总部-高级版、教育多校区-总部
+        /// </remarks>
+        /// <param name="request"></param>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/873"/>
+        /// <returns></returns>
+        public YouZanResponse<SuccessResponse> CrmCustomerPointsDecrease(YouZanRequest request)
+        {
+            return ApiInvoke<SuccessResponse>(
+                request,
+                API.CRM_CUSTOMER_POINTS_DECREASE,
+                API.VERSION_4_0_0);
         }
 
         /// <summary>
