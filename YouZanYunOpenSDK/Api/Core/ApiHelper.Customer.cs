@@ -274,6 +274,24 @@ namespace YouZan.Open.Api
         }
 
         /// <summary>
+        /// 同步客户积分
+        /// API描述：同步客户积分（根据传参覆盖掉用户当前积分值，例 A有200积分，传参需要同步后的用户积分为10，则会扣除A 190个积分，将A的积分修改为10） 限制条件：同一店铺同一用户10s内只能操作一次同步积分
+        /// </summary>
+        /// <remarks>
+        /// 已支持：微商城单店
+        /// </remarks>
+        /// <param name="request"></param>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/883"/>
+        /// <returns></returns>
+        public YouZanResponse<SuccessResponse> CrmCustomerPointsSync(YouZanRequest request)
+        {
+            return ApiInvoke<SuccessResponse>(
+                request,
+                API.CRM_CUSTOMER_POINTS_SYNC,
+                API.VERSION_4_0_0);
+        }
+
+        /// <summary>
         /// 给用户加积分，注意仅支持总部加积分，不支持网店或分店增加积分 支持的用户账号类型 1-有赞粉丝id(有赞不同的合作渠道会生成不同渠道对应在有赞平台下的fans_id) ; 2-手机号; 3-三方帐号(原open_user_id:三方App用户ID，该参数仅限购买App开店插件的商家使用) ; 5-有赞用户id，用户在有赞的唯一id。推荐使用）； 注意：不要针对同一个客户做并发加/减积分操作。
         /// </summary>
         /// <param name="request"></param>
