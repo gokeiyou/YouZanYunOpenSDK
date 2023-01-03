@@ -223,7 +223,11 @@
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/884"/>
         internal const string SCRM_CUSTOMER_POINTS_GET = "youzan.crm.customer.points.get";
-        
+        /// <summary>
+        /// 给用户减积分
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/873"/>
+        internal const string SCRM_CUSTOMER_POINTS_DECREASE = "youzan.crm.customer.points.decrease";
         /// <summary>
         /// 给客户打标
         /// </summary>
