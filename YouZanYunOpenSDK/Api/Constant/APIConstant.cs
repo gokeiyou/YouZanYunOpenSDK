@@ -214,6 +214,17 @@
         /// <see cref="https://doc.youzanyun.com/detail/API/0/18"/>
         internal const string SCRM_TAG_RELATION_DELETE = "youzan.scrm.tag.relation.delete";
         /// <summary>
+        /// 获取客户账号下权益卡列表
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/869"/>
+        internal const string SCRM_CUSTOMER_CARD_LIST = "youzan.scrm.customer.card.list";
+        /// <summary>
+        /// 查询用户当前积分
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/884"/>
+        internal const string SCRM_CUSTOMER_POINTS_GET = "youzan.crm.customer.points.get";
+        
+        /// <summary>
         /// 给客户打标
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/17"/>

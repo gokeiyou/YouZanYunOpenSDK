@@ -217,6 +217,46 @@ namespace YouZan.Open.Api
         }
 
         /// <summary>
+        /// 获取客户账号下权益卡列表
+        /// 获取用户的权益卡列表（列表不返回卡模板禁用的卡、未激活的卡和过期的卡）
+        /// 支持的用户账号类型
+        /// 1-有赞粉丝id(有赞不同的合作渠道会生成不同渠道对应在有赞平台下的fans_id) ;
+        /// 2-手机号;
+        /// 3-三方帐号(原open_user_id:三方App用户ID，该参数仅限购买App开店插件的商家使用) ;
+        /// 5-有赞用户id，用户在有赞的唯一id。推荐使用）
+        /// </summary>
+        /// <remarks>
+        /// 已支持：微商城单店、零售单店、有赞连锁D-总部、有赞连锁D-网店、有赞连锁D-合伙人、教育多校区-总部
+        /// </remarks>
+        /// <param name="request"></param>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/869"/>
+        /// <returns></returns>
+        public YouZanResponse<PageResponse<ScrmCustomerCardListResponse>> ScrmCustomerCardList(YouZanRequest request)
+        {
+            return ApiInvoke<PageResponse<ScrmCustomerCardListResponse>>(
+                request,
+                API.SCRM_CUSTOMER_CARD_LIST,
+                API.VERSION_4_0_0);
+        }
+
+        /// <summary>
+        /// 查询用户当前积分
+        /// </summary>
+        /// <remarks>
+        /// 已支持：微商城单店、零售单店、有赞连锁D-总部、有赞连锁L-总部、有赞连锁L-总部-高级版
+        /// </remarks>
+        /// <param name="request"></param>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/884"/>
+        /// <returns></returns>
+        public YouZanResponse<ScrmCustomerPointsGetResponse> ScrmCustomerPointsGet(YouZanRequest request)
+        {
+            return ApiInvoke<ScrmCustomerPointsGetResponse>(
+                request,
+                API.SCRM_CUSTOMER_POINTS_GET,
+                API.VERSION_1_0_0);
+        }
+
+        /// <summary>
         /// 给用户加积分，注意仅支持总部加积分，不支持网店或分店增加积分 支持的用户账号类型 1-有赞粉丝id(有赞不同的合作渠道会生成不同渠道对应在有赞平台下的fans_id) ; 2-手机号; 3-三方帐号(原open_user_id:三方App用户ID，该参数仅限购买App开店插件的商家使用) ; 5-有赞用户id，用户在有赞的唯一id。推荐使用）； 注意：不要针对同一个客户做并发加/减积分操作。
         /// </summary>
         /// <param name="request"></param>
