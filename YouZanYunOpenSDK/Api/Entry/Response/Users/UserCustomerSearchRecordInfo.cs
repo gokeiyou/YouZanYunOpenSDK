@@ -32,7 +32,7 @@ namespace YouZan.Open.Api.Entry.Response.Users
         /// 性别，0:其他 1:男 2:女
         /// </summary>
         [JsonProperty("gender")]
-        public YzGender Gender { get; set; }
+        public Gender Gender { get; set; }
         /// <summary>
         /// 是否是会员，0：不是 1：是
         /// </summary>

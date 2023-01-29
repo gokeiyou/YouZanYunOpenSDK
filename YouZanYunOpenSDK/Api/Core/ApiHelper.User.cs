@@ -27,8 +27,8 @@ namespace YouZan.Open.Api
         {
             return ApiInvoke<UserOpenApiGetResponse>(
                 request,
-                API.USER_OPENAPI_GET,
-                API.VERSION_1_0_0);
+                ApiConst.USER_OPENAPI_GET,
+                ApiConst.VERSION_1_0_0);
         }
 
         /// <summary>
@@ -44,8 +44,8 @@ namespace YouZan.Open.Api
         {
             return ApiInvoke<UsersInfoQueryResponse>(
                 request,
-                API.USERS_INFO_QUERY,
-                API.VERSION_1_0_0);
+                ApiConst.USERS_INFO_QUERY,
+                ApiConst.VERSION_1_0_0);
         }
 
         /// <summary>
@@ -61,8 +61,8 @@ namespace YouZan.Open.Api
         {
             return ApiInvoke<UsersWeixinFollowersInfoSearchResponse>(
                 request,
-                API.USERS_WEIXIN_FOLLOWS_INFO_SEARCH,
-                API.VERSION_3_0_0);
+                ApiConst.USERS_WEIXIN_FOLLOWS_INFO_SEARCH,
+                ApiConst.VERSION_3_0_0);
         }
 
         /// <summary>
@@ -78,8 +78,8 @@ namespace YouZan.Open.Api
         {
             return ApiInvoke<UsersWeixinFollowerTagsGetResponse>(
                 request,
-                API.USERS_WEIXIN_FOLLOWER_TAGS_GET,
-                API.VERSION_3_0_0);
+                ApiConst.USERS_WEIXIN_FOLLOWER_TAGS_GET,
+                ApiConst.VERSION_3_0_0);
         }
 
         /// <summary>
@@ -92,8 +92,8 @@ namespace YouZan.Open.Api
         {
             return ApiInvoke<UserAppShopGetInfoResponse>(
                 request,
-                API.USER_APP_SHOP_GET_INFO,
-                API.VERSION_1_0_0);
+                ApiConst.USER_APP_SHOP_GET_INFO,
+                ApiConst.VERSION_1_0_0);
         }
 
         /// <summary>
@@ -109,8 +109,8 @@ namespace YouZan.Open.Api
         {
             return ApiInvoke<UsersChannelCodeUltraGetResponse>(
                 request,
-                API.USERS_CHANNEL_CODE_ULTRA_GET,
-                API.VERSION_1_0_0);
+                ApiConst.USERS_CHANNEL_CODE_ULTRA_GET,
+                ApiConst.VERSION_1_0_0);
         }
 
         /// <summary>
@@ -126,8 +126,8 @@ namespace YouZan.Open.Api
         {
             return ApiInvoke<UserCustomerSearchResponse>(
                 request,
-                API.USERS_SCRM_CUSTOMER_SEARCH,
-                API.VERSION_3_1_2);
+                ApiConst.USERS_SCRM_CUSTOMER_SEARCH,
+                ApiConst.VERSION_3_1_2);
         }
 
         /// <summary>
@@ -143,8 +143,8 @@ namespace YouZan.Open.Api
         {
             return ApiInvoke<bool>(
                 request,
-                API.USERS_WECHAT_DELETE,
-                API.VERSION_1_0_0);
+                ApiConst.USERS_WECHAT_DELETE,
+                ApiConst.VERSION_1_0_0);
         }
 
         /// <summary>
@@ -160,8 +160,8 @@ namespace YouZan.Open.Api
         {
             return ApiInvoke<UsersWeixinFollowerTagsAddResponse>(
                 request,
-                API.USERS_WEIXIN_FOLLOWER_TAGS_ADD,
-                API.VERSION_3_0_0);
+                ApiConst.USERS_WEIXIN_FOLLOWER_TAGS_ADD,
+                ApiConst.VERSION_3_0_0);
         }
         
         /// <summary>
@@ -175,8 +175,8 @@ namespace YouZan.Open.Api
         {
             return ApiInvoke<bool>(
                 request,
-                API.USERS_ACCOUNT_CHECK,
-                API.VERSION_1_0_0);
+                ApiConst.USERS_ACCOUNT_CHECK,
+                ApiConst.VERSION_1_0_0);
         }
 
         /// <summary>
@@ -192,8 +192,8 @@ namespace YouZan.Open.Api
         {
             return ApiInvoke<SuccessResponse>(
                 request,
-                API.USERS_WEIXIN_FOLLOWER_TAGS_DELETE,
-                API.VERSION_3_0_0);
+                ApiConst.USERS_WEIXIN_FOLLOWER_TAGS_DELETE,
+                ApiConst.VERSION_3_0_0);
         }
 
         /// <summary>
@@ -206,8 +206,8 @@ namespace YouZan.Open.Api
         {
             return ApiInvoke<UserWeiXinOpenIdGetResponse>(
                 request,
-                API.USER_WEIXIN_OPENID_GET,
-                API.VERSION_3_0_0);
+                ApiConst.USER_WEIXIN_OPENID_GET,
+                ApiConst.VERSION_3_0_0);
         }
 
         /// <summary>
@@ -219,8 +219,8 @@ namespace YouZan.Open.Api
         {
             return ApiInvoke<UserBasicGetResponse>(
                 request,
-                API.USER_BASIC_GET,
-                API.VERSION_3_0_1);
+                ApiConst.USER_BASIC_GET,
+                ApiConst.VERSION_3_0_1);
         }
     }
 }

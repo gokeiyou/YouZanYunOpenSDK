@@ -22,16 +22,16 @@ namespace YouZan.Open.Api
         public YouZanResponse<ItemsOnsaleGetResponse> ItemsOnsaleGet(YouZanRequest request)
         {
             return ApiInvoke<ItemsOnsaleGetResponse>(request,
-                API.ITEMS_ONSALE_GET,
-                API.VERSION_3_0_0);
+                ApiConst.ITEMS_ONSALE_GET,
+                ApiConst.VERSION_3_0_0);
         }
 
 
         public YouZanResponse<ItemGetResponse> ItemGet(YouZanRequest request)
         {
             return ApiInvoke<ItemGetResponse>(request,
-                API.ITEM_GET,
-                API.VERSION_3_0_0);
+                ApiConst.ITEM_GET,
+                ApiConst.VERSION_3_0_0);
         }
 
         /// <summary>
@@ -42,8 +42,8 @@ namespace YouZan.Open.Api
         public YouZanResponse<ItemStandardGetResponse> ItemStandardGet(YouZanRequest request)
         {
             return ApiInvoke<ItemStandardGetResponse>(request,
-                API.ITEM_STANDARD_GET,
-                API.VERSION_1_0_0);
+                ApiConst.ITEM_STANDARD_GET,
+                ApiConst.VERSION_1_0_0);
         }
     }
 }

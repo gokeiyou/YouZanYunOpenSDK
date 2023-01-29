@@ -23,8 +23,8 @@ namespace YouZan.Open.Api
         public YouZanResponse<UmpCouponSearchResponse> UmpCouponSearch(YouZanRequest request)
         {
             return ApiInvoke<UmpCouponSearchResponse>(request,
-               API.UMP_COUPON_SEARCH,
-               API.VERSION_3_0_0);
+               ApiConst.UMP_COUPON_SEARCH,
+               ApiConst.VERSION_3_0_0);
         }
 
         /// <summary>
@@ -43,8 +43,8 @@ namespace YouZan.Open.Api
         public YouZanResponse<UmpCouponTakeResponse> UmpCouponTake(YouZanRequest request)
         {
             return ApiInvoke<UmpCouponTakeResponse>(request,
-               API.UMP_COUPON_TAKE,
-               API.VERSION_3_0_0);
+               ApiConst.UMP_COUPON_TAKE,
+               ApiConst.VERSION_3_0_0);
         }
 
         /// <summary>
@@ -56,8 +56,8 @@ namespace YouZan.Open.Api
         public YouZanResponse<UmpCouponConsumeGetResponse> UmpCouponConsumeGet(YouZanRequest request)
         {
             return ApiInvoke<UmpCouponConsumeGetResponse>(request,
-                API.UMP_COUPON_CONSUME_GET,
-                API.VERSION_3_0_0);
+                ApiConst.UMP_COUPON_CONSUME_GET,
+                ApiConst.VERSION_3_0_0);
         }
 
         /// <summary>
@@ -69,8 +69,8 @@ namespace YouZan.Open.Api
         public YouZanResponse<List<UmpPromocardBuyerSearchResponse>> UmpPromocardBuyerSearch(YouZanRequest request)
         {
             return ApiInvoke<List<UmpPromocardBuyerSearchResponse>>(request,
-                API.UMP_PROMOCRAD_BUYER_SEARCH,
-                API.VERSION_3_0_2);
+                ApiConst.UMP_PROMOCRAD_BUYER_SEARCH,
+                ApiConst.VERSION_3_0_2);
         }
     }
 }

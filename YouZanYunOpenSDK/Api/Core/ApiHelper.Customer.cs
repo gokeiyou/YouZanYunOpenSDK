@@ -25,8 +25,8 @@ namespace YouZan.Open.Api
         {
             return ApiInvoke<ScrmCustomerGetRecordResponse>(
                 request,
-                API.SCRM_CUSTOMER_GET_RECORD,
-                API.VERSION_1_0_0);
+                ApiConst.SCRM_CUSTOMER_GET_RECORD,
+                ApiConst.VERSION_1_0_0);
         }
 
         /// <summary>
@@ -39,8 +39,8 @@ namespace YouZan.Open.Api
         {
             return ApiInvoke(
                 request,
-                API.CRM_CUSTOMER_POINTGOODS_DELETE,
-                API.VERSION_1_0_0);
+                ApiConst.CRM_CUSTOMER_POINTGOODS_DELETE,
+                ApiConst.VERSION_1_0_0);
         }
 
         /// <summary>
@@ -53,8 +53,8 @@ namespace YouZan.Open.Api
         {
             return ApiInvoke<CrmCustomerPointsChangeLogSearchResponse>(
                 request,
-                API.CRM_CUSTOMER_POINTS_CHANGELOG_SEARCH,
-                API.VERSION_4_0_2);
+                ApiConst.CRM_CUSTOMER_POINTS_CHANGELOG_SEARCH,
+                ApiConst.VERSION_4_0_2);
         }
 
         /// <summary>
@@ -66,8 +66,8 @@ namespace YouZan.Open.Api
         public YouZanResponse<ScrmLevelGetUserLevelResponse> ScrmLevelGetUserLevel(YouZanRequest request) {
             return ApiInvoke<ScrmLevelGetUserLevelResponse>(
                 request,
-                API.SCRM_LEVEL_GET_USER_LEVEL,
-                API.VERSION_1_0_0);
+                ApiConst.SCRM_LEVEL_GET_USER_LEVEL,
+                ApiConst.VERSION_1_0_0);
         }
 
         /// <summary>
@@ -85,8 +85,8 @@ namespace YouZan.Open.Api
         public YouZanResponse<SuccessResponse> ScrmCustomerCardDelete(YouZanRequest request) {
             return ApiInvoke<SuccessResponse>(
                 request,
-                API.SCRM_CUSTOMER_CARD_DELETE,
-                API.VERSION_4_0_0);
+                ApiConst.SCRM_CUSTOMER_CARD_DELETE,
+                ApiConst.VERSION_4_0_0);
         }
 
         /// <summary>
@@ -98,8 +98,8 @@ namespace YouZan.Open.Api
         public YouZanResponse<ScrmCustomerSearchResponse> ScrmCustomerSearch(YouZanRequest request) {
             return ApiInvoke<ScrmCustomerSearchResponse>(
                 request,
-                API.SCRM_CUSTOMER_SEARCH,
-                API.VERSION_3_0_0);
+                ApiConst.SCRM_CUSTOMER_SEARCH,
+                ApiConst.VERSION_3_0_0);
         }
 
         /// <summary>
@@ -112,8 +112,8 @@ namespace YouZan.Open.Api
         public YouZanResponse<SuccessResponse> CrmCustomerGrowthDecrease(YouZanRequest request) {
             return ApiInvoke<SuccessResponse>(
                 request,
-                API.CRM_CUSTOMER_GROWTH_DECREASE,
-                API.VERSION_2_0_0);
+                ApiConst.CRM_CUSTOMER_GROWTH_DECREASE,
+                ApiConst.VERSION_2_0_0);
         }
 
         /// <summary>
@@ -126,8 +126,8 @@ namespace YouZan.Open.Api
         {
             return ApiInvoke<CrmCustomerGrowthListResponse>(
                 request,
-                API.CRM_CUSTOMER_GROWTH_LIST,
-                API.VERSION_2_0_0);
+                ApiConst.CRM_CUSTOMER_GROWTH_LIST,
+                ApiConst.VERSION_2_0_0);
         }
 
         /// <summary>
@@ -140,8 +140,8 @@ namespace YouZan.Open.Api
         {
             return ApiInvoke<ScrmCardGetGoodsInfoResponse>(
                 request,
-                API.SCRM_CARD_GET_GOODS_INFO,
-                API.VERSION_1_0_0);
+                ApiConst.SCRM_CARD_GET_GOODS_INFO,
+                ApiConst.VERSION_1_0_0);
         }
 
         /// <summary>
@@ -154,8 +154,8 @@ namespace YouZan.Open.Api
         {
             return ApiInvoke<bool>(
                 request,
-                API.SCRM_TAG_RELATION_ADD,
-                API.VERSION_4_0_0);
+                ApiConst.SCRM_TAG_RELATION_ADD,
+                ApiConst.VERSION_4_0_0);
         }
 
         /// <summary>
@@ -168,8 +168,8 @@ namespace YouZan.Open.Api
         {
             return ApiInvoke<ScrmCustomerListPhoneResponse>(
                 request,
-                API.SCRM_CUSTOMER_LIST_PHONE,
-                API.VERSION_1_0_0);
+                ApiConst.SCRM_CUSTOMER_LIST_PHONE,
+                ApiConst.VERSION_1_0_0);
         }
 
         /// <summary>
@@ -182,8 +182,8 @@ namespace YouZan.Open.Api
         {
             return ApiInvoke<SuccessResponse<string>>(
                 request,
-                API.CRM_CUSTOMER_POINTS_OPERATE_FREEZE_CONSUME,
-                API.VERSION_4_0_0);
+                ApiConst.CRM_CUSTOMER_POINTS_OPERATE_FREEZE_CONSUME,
+                ApiConst.VERSION_4_0_0);
         }
 
         /// <summary>
@@ -197,8 +197,8 @@ namespace YouZan.Open.Api
         {
             return ApiInvoke<ScrmCustomerCreateResponse>(
                 request,
-                API.SCRM_CUSTOMER_CREATE,
-                API.VERSION_3_0_0);
+                ApiConst.SCRM_CUSTOMER_CREATE,
+                ApiConst.VERSION_3_0_0);
         }
         
         /// <summary>
@@ -212,8 +212,8 @@ namespace YouZan.Open.Api
         {
             return ApiInvoke<bool>(
                 request,
-                API.SCRM_TAG_RELATION_DELETE,
-                API.VERSION_4_0_0);
+                ApiConst.SCRM_TAG_RELATION_DELETE,
+                ApiConst.VERSION_4_0_0);
         }
 
         /// <summary>
@@ -235,8 +235,8 @@ namespace YouZan.Open.Api
         {
             return ApiInvoke<PageResponse<ScrmCustomerCardListResponse>>(
                 request,
-                API.SCRM_CUSTOMER_CARD_LIST,
-                API.VERSION_4_0_0);
+                ApiConst.SCRM_CUSTOMER_CARD_LIST,
+                ApiConst.VERSION_4_0_0);
         }
 
         /// <summary>
@@ -252,8 +252,8 @@ namespace YouZan.Open.Api
         {
             return ApiInvoke<ScrmCustomerPointsGetResponse>(
                 request,
-                API.CRM_CUSTOMER_POINTS_GET,
-                API.VERSION_1_0_0);
+                ApiConst.CRM_CUSTOMER_POINTS_GET,
+                ApiConst.VERSION_1_0_0);
         }
 
         /// <summary>
@@ -269,8 +269,8 @@ namespace YouZan.Open.Api
         {
             return ApiInvoke<SuccessResponse>(
                 request,
-                API.CRM_CUSTOMER_POINTS_DECREASE,
-                API.VERSION_4_0_0);
+                ApiConst.CRM_CUSTOMER_POINTS_DECREASE,
+                ApiConst.VERSION_4_0_0);
         }
 
         /// <summary>
@@ -287,8 +287,8 @@ namespace YouZan.Open.Api
         {
             return ApiInvoke<SuccessResponse>(
                 request,
-                API.CRM_CUSTOMER_POINTS_SYNC,
-                API.VERSION_4_0_0);
+                ApiConst.CRM_CUSTOMER_POINTS_SYNC,
+                ApiConst.VERSION_4_0_0);
         }
 
         /// <summary>
@@ -300,8 +300,8 @@ namespace YouZan.Open.Api
         public YouZanResponse<SuccessResponse> CrmCustomerPointsIncrease(YouZanRequest request)
         {
             return ApiInvoke<SuccessResponse>(request,
-                API.CRM_CUSTOMER_POINTS_INCREASE,
-                API.VERSION_4_0_0);
+                ApiConst.CRM_CUSTOMER_POINTS_INCREASE,
+                ApiConst.VERSION_4_0_0);
         }
 
         /// <summary>
@@ -313,8 +313,8 @@ namespace YouZan.Open.Api
         public YouZanResponse<SuccessResponse> CrmCustomerGrowthIncrease(YouZanRequest request)
         {
             return ApiInvoke<SuccessResponse>(request,
-                API.CRM_CUSTOMER_GROWTH_INCREASE,
-                API.VERSION_2_0_0);
+                ApiConst.CRM_CUSTOMER_GROWTH_INCREASE,
+                ApiConst.VERSION_2_0_0);
         }
 
     }

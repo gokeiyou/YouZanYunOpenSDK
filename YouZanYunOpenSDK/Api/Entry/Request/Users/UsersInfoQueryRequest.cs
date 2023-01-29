@@ -14,7 +14,7 @@ namespace YouZan.Open.Api.Entry.Request.Users
         /// </summary>
         /// <example>1</example>
         [ApiField("open_id_type")]
-        public WeixinOpenIdType OpenIdType { get; set; }
+        public WeiXinOpenIdType OpenIdType { get; set; }
         /// <summary>
         /// 微信体系的openId；和yz_open_id、mobile、weixin_union_id至少传一个
         /// </summary>

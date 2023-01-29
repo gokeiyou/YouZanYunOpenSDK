@@ -3,7 +3,7 @@
     /// <summary>
     /// 常量定义
     /// </summary>
-    public struct API
+    public struct ApiConst
     {
 
         /// <summary>

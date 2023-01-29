@@ -113,7 +113,7 @@ namespace YouZan.Open.Api
         private T Invoke<T>(YouZanRequest request,
             string apiName,
             string apiVersion,
-            string method = API.HTTP_POST,
+            string method = ApiConst.HTTP_POST,
             IDictionary<string, string> headers = null,
             List<KeyValuePair<string, string>> files = null) where T : YouZanResponse
         {
@@ -163,7 +163,7 @@ namespace YouZan.Open.Api
         private YouZanResponse ApiInvoke(YouZanRequest request,
             string apiName,
             string apiVersion,
-            string method = API.HTTP_POST,
+            string method = ApiConst.HTTP_POST,
             IDictionary<string, string> headers = null,
             List<KeyValuePair<string, string>> files = null)
         {
@@ -184,7 +184,7 @@ namespace YouZan.Open.Api
         private YouZanResponse<T> ApiInvoke<T>(YouZanRequest request,
             string apiName,
             string apiVersion,
-            string method = API.HTTP_POST,
+            string method = ApiConst.HTTP_POST,
             IDictionary<string, string> headers = null,
             List<KeyValuePair<string, string>> files = null)
         {

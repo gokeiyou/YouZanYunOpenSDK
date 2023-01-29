@@ -3,7 +3,7 @@
     /// <summary>
     /// 性别
     /// </summary>
-    public enum YzGender
+    public enum Gender
     {
         /// <summary>
         /// 未知
@@ -21,20 +21,20 @@
     /// <summary>
     /// weixin_open_id类型
     /// </summary>
-    public enum WeixinOpenIdType
+    public enum WeiXinOpenIdType
     {
         /// <summary>
         /// 微信公众号
         /// </summary>
-        WEIXIN_MP = 1,
+        WeiXinMp = 1,
         /// <summary>
         /// 微信小程序
         /// </summary>
-        WEIXIN_MINI_PROGRAM = 2,
+        WeiXinMiniProgram = 2,
         /// <summary>
         /// 微信大账号
         /// </summary>
-        BIG_ACCOUNT = 9
+        BigAccount = 9
     }
 
     /// <summary>
@@ -49,15 +49,15 @@
         /// <summary>
         /// 手机帐号
         /// </summary>
-        WeixinMp,
+        WeiXinMp,
         /// <summary>
         /// 手机帐号
         /// </summary>
-        WeixinMiniprogram,
+        WeiXinMiniProgram,
         /// <summary>
         /// 微信大账号
         /// </summary>
-        WeixinBigAccount = 9
+        WeiXinBigAccount = 9
     }
 
     /// <summary>
@@ -72,6 +72,6 @@
         /// <summary>
         /// 小程序
         /// </summary>
-        Miniprogram
+        MiniProgram
     }
 }

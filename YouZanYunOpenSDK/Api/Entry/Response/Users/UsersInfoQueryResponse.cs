@@ -100,7 +100,7 @@ namespace YouZan.Open.Api.Entry.Response.Users
         /// </summary>
         /// <example>1</example>
         [JsonProperty("gender")]
-        public YzGender Gender { get; set; }
+        public Gender Gender { get; set; }
         /// <summary>
         /// 国家
         /// </summary>

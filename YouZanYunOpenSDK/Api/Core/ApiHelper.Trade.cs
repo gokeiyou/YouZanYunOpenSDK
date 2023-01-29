@@ -23,8 +23,8 @@ namespace YouZan.Open.Api
         public YouZanResponse<SuccessResponse> TradeMemoUpdate(YouZanRequest request)
         {
             return ApiInvoke<SuccessResponse>(request,
-                API.TRADE_MEMO_UPDATE,
-                API.VERSION_3_0_0);
+                ApiConst.TRADE_MEMO_UPDATE,
+                ApiConst.VERSION_3_0_0);
         }
 
         /// <summary>
@@ -36,8 +36,8 @@ namespace YouZan.Open.Api
         public YouZanResponse<TradeGetResponse> TradesGet(YouZanRequest request)
         {
             return ApiInvoke<TradeGetResponse>(request,
-                API.TRADE_GET,
-                API.VERSION_4_0_0);
+                ApiConst.TRADE_GET,
+                ApiConst.VERSION_4_0_0);
         }
     }
 }

@@ -24,8 +24,8 @@ namespace YouZan.Open.Api
         {
             return ApiInvoke<SalesmanAccountGetResponse>(
                 request,
-                API.SALESMAN_ACCOUNT_GET,
-                API.VERSION_3_0_0);
+                ApiConst.SALESMAN_ACCOUNT_GET,
+                ApiConst.VERSION_3_0_0);
         }
 
         /// <summary>
@@ -38,8 +38,8 @@ namespace YouZan.Open.Api
         {
             return ApiInvoke<SalesmanAccountAddResponse>(
                 request,
-                API.SALESMAN_ACCOUNT_ADD,
-                API.VERSION_3_0_1);
+                ApiConst.SALESMAN_ACCOUNT_ADD,
+                ApiConst.VERSION_3_0_1);
         }
 
         /// <summary>
@@ -52,8 +52,8 @@ namespace YouZan.Open.Api
         {
             return ApiInvoke<SalesmanAccountUpdateResponse>(
                 request,
-                API.SALESMAN_ACCOUNT_UPDATE,
-                API.VERSION_3_0_0);
+                ApiConst.SALESMAN_ACCOUNT_UPDATE,
+                ApiConst.VERSION_3_0_0);
         }
 
         /// <summary>
@@ -65,8 +65,8 @@ namespace YouZan.Open.Api
         public YouZanResponse<bool> SalesmanAccountFire(YouZanRequest request)
         {
             return ApiInvoke<bool>(request,
-                API.SALESMAN_ACCOUNT_FIRE,
-                API.VERSION_3_0_0);
+                ApiConst.SALESMAN_ACCOUNT_FIRE,
+                ApiConst.VERSION_3_0_0);
         }
 
         /// <summary>
@@ -78,8 +78,8 @@ namespace YouZan.Open.Api
         public YouZanResponse<SalesmanTradesGetResponse> SalesmanTradesGet(YouZanRequest request)
         {
             return ApiInvoke<SalesmanTradesGetResponse>(request,
-                API.SALESMAN_TRADES_GET,
-                API.VERSION_3_0_1);
+                ApiConst.SALESMAN_TRADES_GET,
+                ApiConst.VERSION_3_0_1);
         }
 
         /// <summary>
@@ -91,8 +91,8 @@ namespace YouZan.Open.Api
         public YouZanResponse<SalesmanItemShareGetResponse> SalesmanItemShareGet(YouZanRequest request)
         {
             return ApiInvoke<SalesmanItemShareGetResponse>(request,
-                API.SALESMAN_ITEM_SHARE_GET,
-                API.VERSION_3_0_0);
+                ApiConst.SALESMAN_ITEM_SHARE_GET,
+                ApiConst.VERSION_3_0_0);
         }
 
         /// <summary>
@@ -104,8 +104,8 @@ namespace YouZan.Open.Api
         public YouZanResponse<SalesmanAccountScoreSearchResponse> SalesmanAccountScoreSearch(YouZanRequest request)
         {
             return ApiInvoke<SalesmanAccountScoreSearchResponse>(request,
-                API.SALESMAN_ACCOUNT_SCORE_SEARCH,
-                API.VERSION_3_0_0);
+                ApiConst.SALESMAN_ACCOUNT_SCORE_SEARCH,
+                ApiConst.VERSION_3_0_0);
         }
 
         /// <summary>
@@ -117,8 +117,8 @@ namespace YouZan.Open.Api
         public YouZanResponse<SalesmanItemsGetResponse> SalesmanItemsGet(YouZanRequest request)
         {
             return ApiInvoke<SalesmanItemsGetResponse>(request,
-                API.SALESMAN_ITEMS_GET,
-                API.VERSION_3_0_0);
+                ApiConst.SALESMAN_ITEMS_GET,
+                ApiConst.VERSION_3_0_0);
         }
     }
 }
