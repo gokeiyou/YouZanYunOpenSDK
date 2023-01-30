@@ -154,6 +154,12 @@
         internal const string USER_BASIC_GET = "youzan.user.basic.get";
 
         /// <summary>
+        /// App开店用户解绑(App开店专属接口)
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/3833"/>
+        internal const string USERS_APPSHOP_UNBIND = "youzan.users.appshop.unbind";
+
+        /// <summary>
         /// 查询app开店的用户信息
         /// </summary>
         internal const string USER_APP_SHOP_GET_INFO = "youzan.user.appshop.get.info";

@@ -57,7 +57,7 @@ namespace YouZan.Open.Api
         /// <param name="request"></param>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/132"/>
         /// <returns></returns>
-        public YouZanResponse<UsersWeixinFollowersInfoSearchResponse> UsersWeixinFollowersInfoSearch(YouZanRequest request)
+        public YouZanResponse<UsersWeixinFollowersInfoSearchResponse> UsersWeiXinFollowersInfoSearch(YouZanRequest request)
         {
             return ApiInvoke<UsersWeixinFollowersInfoSearchResponse>(
                 request,
@@ -74,12 +74,26 @@ namespace YouZan.Open.Api
         /// <param name="request"></param>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/105"/>
         /// <returns></returns>
-        public YouZanResponse<UsersWeixinFollowerTagsGetResponse> UsersWeixinFollowerTagsGet(YouZanRequest request)
+        public YouZanResponse<UsersWeixinFollowerTagsGetResponse> UsersWeiXinFollowerTagsGet(YouZanRequest request)
         {
             return ApiInvoke<UsersWeixinFollowerTagsGetResponse>(
                 request,
                 ApiConst.USERS_WEIXIN_FOLLOWER_TAGS_GET,
                 ApiConst.VERSION_3_0_0);
+        }
+
+        /// <summary>
+        /// App开店用户解绑(App开店专属接口)
+        /// </summary>
+        /// <param name="request"></param>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/3833"/>
+        /// <returns></returns>
+        public YouZanResponse UsersAppShopUnbind(YouZanRequest request)
+        {
+            return ApiInvoke<SuccessResponse>(
+                request,
+                ApiConst.USERS_APPSHOP_UNBIND,
+                ApiConst.VERSION_1_0_0);
         }
 
         /// <summary>
@@ -156,7 +170,7 @@ namespace YouZan.Open.Api
         /// <param name="request"></param>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/103"/>
         /// <returns></returns>
-        public YouZanResponse<UsersWeixinFollowerTagsAddResponse> UsersWeixinFollowerTagsAdd(YouZanRequest request)
+        public YouZanResponse<UsersWeixinFollowerTagsAddResponse> UsersWeiXinFollowerTagsAdd(YouZanRequest request)
         {
             return ApiInvoke<UsersWeixinFollowerTagsAddResponse>(
                 request,
@@ -188,7 +202,7 @@ namespace YouZan.Open.Api
         /// <param name="request"></param>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/133"/>
         /// <returns></returns>
-        public YouZanResponse<SuccessResponse> UsersWeixinFollowerTagsDelete(YouZanRequest request)
+        public YouZanResponse<SuccessResponse> UsersWeiXinFollowerTagsDelete(YouZanRequest request)
         {
             return ApiInvoke<SuccessResponse>(
                 request,
