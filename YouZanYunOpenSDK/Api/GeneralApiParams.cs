@@ -13,7 +13,7 @@ namespace YouZan.Open.Api
 
         public void AddParam(IDictionary<string, object> apiParams)
         {
-            this._apiParams = apiParams;
+            _apiParams = apiParams;
         }
 
         public void AddParam(string name, object value)

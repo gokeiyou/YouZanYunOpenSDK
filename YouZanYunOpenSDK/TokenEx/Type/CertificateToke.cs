@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using YouZan.Open.Api.Constant;
 using YouZan.Open.Http;
 using static YouZan.Open.TokenEx.OauthToken;
 
@@ -13,7 +14,7 @@ namespace YouZan.Open.TokenEx.Type
 
         public override TokenData GetToken(bool getNew = false)
         {
-            var tokenData = getNew ? GetNewTokenData() : cache.GetT(_ClientId, GetNewTokenData);
+            var tokenData = getNew ? GetNewTokenData() : Cache.GetT(ClientId, GetNewTokenData);
             return tokenData;
         }
 
@@ -22,12 +23,12 @@ namespace YouZan.Open.TokenEx.Type
             TokenData tokenData;
             IDictionary<string, object> tokenParams = new Dictionary<string, object>
             {
-                { "client_id", _ClientId },
-                { "client_secret", _ClientSecret },
+                { "client_id", ClientId },
+                { "client_secret", ClientSecret },
                 { "authorize_type", "certificate" }
             };
             DefaultHttpClient defaultHttpClient = new DefaultHttpClient();
-            string result = defaultHttpClient.Send(GetTokenUrl(), tokenParams, null, null);
+            string result = defaultHttpClient.Send(ApiConst.TOKEN_URL, tokenParams, null, null);
             OauthToken oAuthToken = JsonConvert.DeserializeObject<OauthToken>(result);
             if (oAuthToken.Data == null)
             {
@@ -41,9 +42,9 @@ namespace YouZan.Open.TokenEx.Type
             tokenData = JsonConvert.DeserializeObject<TokenData>(data);
 
             // Token添加缓存
-            if (cache.Contains(_ClientId))
-                cache.Remove(_ClientId);
-            cache.Add(_ClientId, tokenData, tokenData.ExpiresTime.AddMinutes(-5));
+            if (Cache.Contains(ClientId))
+                Cache.Remove(ClientId);
+            Cache.Add(ClientId, tokenData, tokenData.ExpiresTime.AddMinutes(-5));
 
             return tokenData;
         }

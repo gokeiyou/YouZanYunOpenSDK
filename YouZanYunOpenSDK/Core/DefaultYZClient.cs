@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using YouZan.Open.Api;
+using YouZan.Open.Api.Constant;
 using YouZan.Open.Auth;
 using YouZan.Open.Common.Constant;
 using YouZan.Open.Http;
@@ -21,80 +22,72 @@ namespace YouZan.Open.Core
         }
 
 
-        string IYouZanClient.Invoke(IApi api, IAuth auth, IDictionary<string, string> headers, List<KeyValuePair<string, string>> files)
+        string IYouZanClient.Invoke(GeneralApi api, IAuth auth, IDictionary<string, string> headers, List<KeyValuePair<string, string>> files)
         {
             string url = null;
-            if (api != null)
+            if (api == null) return null;
+            // OAuthEnum oAuth = api.GetOAuthType();
+            switch (api.OAuthType)
             {
-                OAuthEnum oAuth = api.GetOAuthType();
-                switch (oAuth)
-                {
-                    case OAuthEnum.TOKEN:
-                        url = BuildUrl(api, auth);
-                        break;
-                    case OAuthEnum.SIGN:
-                        break;
-                    case OAuthEnum.DIRECT:
-                        url = BuildUrl(api, auth);
-                        break;
-
-                }
-                IApiParams apiParams = api.GetAPIParams();
-                IDictionary<string, object> requestParams = apiParams.ToParams();
-                IDictionary<string, string> header = api.GetHeaders();
-                string result = defaultHttpClient.Send(url, requestParams, header, files);
-                if (YouZanConfig.SaveApiLogToDB)
-                {
-                    YouZanLogger log = new YouZanLogger
-                    {
-                        ApiName = api.GetName(),
-                        ApiVersion = api.GetVersion(),
-                        ApiMethod = api.GetHttpMethod(),
-                        AuthType = oAuth.ToString(),
-                        RequestUrl = url,
-                        PostData = JsonConvert.SerializeObject(requestParams),
-                        Header = JsonConvert.SerializeObject(header),
-                        ResponseData = result,
-                        ClientId = api.GetClientId(),
-                        GrantId = api.GetGrantId()
-                    };
-                    Task.Run(log.Save);
-                }
-                return result;
+                case OAuthEnum.TOKEN:
+                    url = BuildUrl(api, auth);
+                    break;
+                case OAuthEnum.SIGN:
+                    break;
+                case OAuthEnum.DIRECT:
+                    url = BuildUrl(api, auth);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
-            return null;
+            // var apiParams = api.GetAPIParams();
+            var requestParams = api.ApiParams.ToParams();
+            // var header = api.GetHeaders();
+            var result = defaultHttpClient.Send(url, requestParams, api.Headers, files);
+            if (!YouZanConfig.SaveApiLogToDB) return result;
+            var log = new YouZanLogger
+            {
+                ApiName = api.ServiceName,
+                ApiVersion = api.Version,
+                ApiMethod = api.HttpMethod,
+                AuthType = api.OAuthType.ToString(),
+                RequestUrl = url,
+                PostData = JsonConvert.SerializeObject(requestParams),
+                Header = JsonConvert.SerializeObject(api.Headers),
+                ResponseData = result,
+                ClientId = api.ClientId,
+                GrantId = api.GrantId
+            };
+            Task.Run(log.Save);
+            return result;
         }
 
         /**
          * 构建请求URL
          * 
          */
-        private string BuildUrl(IApi api, IAuth auth)
+        private static string BuildUrl(GeneralApi api, IAuth auth)
         {
-            string url = null;
+            string url;
             if (auth == null)
             {
                 throw new ArgumentNullException(nameof(auth));
             }
 
-            var gateway = api.GetGateway();
-            var apiName = api.GetName();
-            var version = api.GetVersion();
+            // var gateway = api.GetGateway();
+            // var apiName = api.GetName();
+            // var version = api.GetVersion();
 
             switch (auth)
             {
                 case Token token:
-                    url = $"{gateway}/api/{apiName}/{version}?access_token={token.GetToken()}";
-                    break;
+                    return $"{ApiConst.HOST}/api/{api.ServiceName}/{api.Version}?access_token={token.GetToken()}";
                 case Direct _:
-                    url = $"{gateway}/api/auth_exempt/{apiName}/{version}";
-                    break;
+                    return $"{ApiConst.HOST}/api/auth_exempt/{api.ServiceName}/{api.Version}";
+                default:
+                    return null;
             }
-
-            return url;
         }
-
-
     }
 }
 

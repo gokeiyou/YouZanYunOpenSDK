@@ -19,7 +19,7 @@ namespace YouZan.Open.Api
         /// </summary>
         /// <param name="request">请求参数</param>
         /// <returns></returns>
-        public YouZanResponse<ItemsOnsaleGetResponse> ItemsOnsaleGet(YouZanRequest request)
+        public YouZanResponse<ItemsOnsaleGetResponse> ItemsOnSaleGet(YouZanRequest request)
         {
             return ApiInvoke<ItemsOnsaleGetResponse>(request,
                 ApiConst.ITEMS_ONSALE_GET,

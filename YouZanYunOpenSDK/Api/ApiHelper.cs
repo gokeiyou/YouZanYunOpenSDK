@@ -103,7 +103,7 @@ namespace YouZan.Open.Api
             return dict;
         }
 
-        private T GetResponse<T>(IApi api, IAuth auth, IDictionary<string, string> headers, List<KeyValuePair<string, string>> files)
+        private T GetResponse<T>(GeneralApi api, IAuth auth, IDictionary<string, string> headers, List<KeyValuePair<string, string>> files)
             where T : YouZanResponse
         {
             var result = _youZanClient.Invoke(api, auth, headers, files);
@@ -117,18 +117,27 @@ namespace YouZan.Open.Api
             IDictionary<string, string> headers = null,
             List<KeyValuePair<string, string>> files = null) where T : YouZanResponse
         {
-            var generalApi = new GeneralApi();
-            generalApi.SetName(apiName);
-            generalApi.SetVersion(apiVersion);
-            generalApi.SetClientId(ClientId);
-            generalApi.SetGrantId(GrantId);
-            generalApi.SetHttpMethod(method);
-            generalApi.SetOAuthType(OAuthEnum.TOKEN);
+            var generalApi = new GeneralApi
+            {
+                Version = apiVersion,
+                HttpMethod = method,
+                ServiceName = apiName,
+                ClientId = ClientId,
+                GrantId = GrantId,
+                OAuthType = OAuthEnum.TOKEN
+            };
+            // generalApi.SetName(apiName);
+            // generalApi.SetVersion(apiVersion);
+            // generalApi.SetClientId(ClientId);
+            // generalApi.SetGrantId(GrantId);
+            // generalApi.SetHttpMethod(method);
+            // generalApi.SetOAuthType(OAuthEnum.TOKEN);
 
             var apiParams = new GeneralApiParams();
             apiParams.AddParam(GenericParameter(request));
 
-            generalApi.SetAPIParams(apiParams);
+            // generalApi.SetAPIParams(apiParams);
+            generalApi.ApiParams = apiParams;
 
             var resp = GetResponse<T>(generalApi, new Token(_oAuthToken.Token), headers, files);
 

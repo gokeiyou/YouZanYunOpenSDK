@@ -5,20 +5,21 @@ using Newtonsoft.Json;
 using static YouZan.Open.TokenEx.OauthToken;
 using System.Collections.Concurrent;
 using System.Threading.Tasks;
+using YouZan.Open.Api.Constant;
 using YouZan.Open.Core;
 
 namespace YouZan.Open.TokenEx
 {
     public class Silent : AbstractOauth
     {
-        private string _GrantId;
+        private string _grantId;
 
-        private string _CacheKey = null;
+        private readonly string _cacheKey;
 
         public Silent(string clientId, string clientSecret, string grantId) : base(clientId, clientSecret)
         {
-            this._GrantId = grantId;
-            _CacheKey = $"{clientId}_{grantId}";
+            _grantId = grantId;
+            _cacheKey = $"{clientId}_{grantId}";
         }
 
         public Silent(string clientId, string clientSecret) : base(clientId, clientSecret)
@@ -28,7 +29,7 @@ namespace YouZan.Open.TokenEx
         public void SetKdtId(string grantId)
         {
 
-            this._GrantId = grantId;
+            this._grantId = grantId;
         }
 
         /// <summary>
@@ -45,29 +46,23 @@ namespace YouZan.Open.TokenEx
             }
             else
             {
-                if (YouZanConfig.SaveAccessTokenToDB)
-                {
-                    tokenData = YouZanAccessToken.GetData(this._CacheKey, this.GetNewTokenData);
-                }
-                else
-                    tokenData = cache.GetT(this._CacheKey, this.GetNewTokenData);
+                tokenData = YouZanConfig.SaveAccessTokenToDB ? YouZanAccessToken.GetData(_cacheKey, GetNewTokenData) : Cache.GetT(_cacheKey, GetNewTokenData);
             }
-
-
+            
             return tokenData;
         }
 
-        internal TokenData GetNewTokenData()
+        private TokenData GetNewTokenData()
         {
             TokenData tokenData = null;
             IDictionary<string, object> tokenParams = new ConcurrentDictionary<string, object>();
-            tokenParams.Add("client_id", _ClientId);
-            tokenParams.Add("client_secret", _ClientSecret);
+            tokenParams.Add("client_id", ClientId);
+            tokenParams.Add("client_secret", ClientSecret);
             tokenParams.Add("authorize_type", "silent");
-            tokenParams.Add("grant_id", _GrantId);
-            DefaultHttpClient defaultHttpClient = new DefaultHttpClient();
-            string result = defaultHttpClient.Send(this.GetTokenUrl(), tokenParams, null, null);
-            OauthToken oAuthToken = JsonConvert.DeserializeObject<OauthToken>(result);
+            tokenParams.Add("grant_id", _grantId);
+            var defaultHttpClient = new DefaultHttpClient();
+            var result = defaultHttpClient.Send(ApiConst.TOKEN_URL, tokenParams, null, null);
+            var oAuthToken = JsonConvert.DeserializeObject<OauthToken>(result);
             if (oAuthToken.Data == null)
             {
                 tokenData = new TokenData
@@ -76,27 +71,26 @@ namespace YouZan.Open.TokenEx
                 };
                 return tokenData;
             }
-            string data = oAuthToken.Data.ToString();
+            var data = oAuthToken.Data.ToString();
             tokenData = JsonConvert.DeserializeObject<TokenData>(data);
 
             // Token添加缓存
-            if (!YouZanConfig.SaveAccessTokenToDB) {
-                if (cache.Contains(this._CacheKey))
-                    cache.Remove(this._CacheKey);
-                cache.Add(this._CacheKey, tokenData, tokenData.ExpiresTime.AddMinutes(-5));
-            }
+            if (YouZanConfig.SaveAccessTokenToDB) return tokenData;
+            if (Cache.Contains(_cacheKey))
+                Cache.Remove(_cacheKey);
+            Cache.Add(_cacheKey, tokenData, tokenData.ExpiresTime.AddMinutes(-5));
 
             return tokenData;
         }
 
         internal TokenData GetNewTokenData(bool create = true)
         {
-            var token = this.GetNewTokenData();
+            var token = GetNewTokenData();
             Task.Run(() =>
             {
                 var yzToken = new YouZanAccessToken
                 {
-                    Key = this._CacheKey,
+                    Key = _cacheKey,
                     TokenData = JsonConvert.SerializeObject(token),
                     AddTime = DateTime.Now,
                     UpdateTime = null

@@ -7,15 +7,15 @@ namespace YouZan.Open.Api
     /// <summary>
     /// Api抽象类
     /// </summary>
-    public abstract class AbstractApi : IApi
+    public abstract class AbstractApi
     {
-        protected IApiParams ApiParams;
+        public IApiParams ApiParams { get; set; }
 
         protected string Gateway = "https://open.youzanyun.com";
 
-        protected string Version;
+        public string Version { get; set; }
 
-        protected readonly IDictionary<string, string> Headers = new ConcurrentDictionary<string, string>();
+        public readonly IDictionary<string, string> Headers = new ConcurrentDictionary<string, string>();
 
         public void AddHeader(string headerName, string headerValue)
         {
@@ -48,11 +48,11 @@ namespace YouZan.Open.Api
         }
 
        
-        public abstract string GetGateway();
-        public abstract OAuthEnum GetOAuthType();
-        public abstract string GetHttpMethod();
-        public abstract string GetName();
-        public abstract string GetClientId();
-        public abstract string GetGrantId();
+        // public abstract string GetGateway();
+        // public abstract OAuthEnum GetOAuthType();
+        // public abstract string GetHttpMethod();
+        // public abstract string GetName();
+        // public abstract string GetClientId();
+        // public abstract string GetGrantId();
     }
 }

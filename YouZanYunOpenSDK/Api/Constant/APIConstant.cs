@@ -10,6 +10,11 @@
         /// API请求域名
         /// </summary>
         internal const string HOST = "https://open.youzanyun.com";
+        
+        /// <summary>
+        /// TOKEN请求地址
+        /// </summary>
+        internal const string TOKEN_URL = "https://open.youzanyun.com/auth/token";
 
         #region METHOD
 

@@ -99,7 +99,7 @@ namespace UnitTest
         public void TestItemsOnsaleGet()
         {
             var request = new YouZanRequest();
-            var response = api.ItemsOnsaleGet(request);
+            var response = api.ItemsOnSaleGet(request);
             Debug.WriteLine(JsonConvert.SerializeObject(response));
         }
 

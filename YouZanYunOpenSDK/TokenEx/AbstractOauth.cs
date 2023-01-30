@@ -7,30 +7,17 @@ namespace YouZan.Open.TokenEx
 {
     public abstract class AbstractOauth : IOauth
     {
-        private  string _TokenUrl = "https://open.youzanyun.com/auth/token";
+        protected readonly string ClientId;
 
-        protected string _ClientId;
+        protected readonly string ClientSecret;
 
-        protected string _ClientSecret;
-
-        protected YouZanCache cache = new YouZanCache();
+        protected readonly YouZanCache Cache = new YouZanCache();
 
         protected AbstractOauth(string clientId, string clientSecret)
         {
             CheckUtils.CheckParams(clientId, clientSecret);
-            this._ClientId = clientId;
-            this._ClientSecret = clientSecret;
-        }
-
-        public void SetTokenUrl(string tokenUrl) {
-
-            this._TokenUrl = tokenUrl;
-        }
-
-
-        public string GetTokenUrl()
-        {
-            return _TokenUrl;
+            ClientId = clientId;
+            ClientSecret = clientSecret;
         }
 
         public abstract TokenData GetToken(bool getNew = false);
