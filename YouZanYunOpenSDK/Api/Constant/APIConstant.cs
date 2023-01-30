@@ -252,6 +252,11 @@ namespace YouZan.Open.Api.Constant
         /// <see cref="https://doc.youzanyun.com/detail/API/0/3050"/>
         internal const string CRM_CUSTOMER_POINTS_OPERATE_INCREASE_WITH_EXPIRE = "youzan.crm.customer.points.operate.increasewithexpire";
         /// <summary>
+        /// 通过用户权益卡号获取会员信息
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/93"/>
+        internal const string SCRM_CUSTOMER_INFO_GET = "youzan.scrm.customer.info.get";
+        /// <summary>
         /// 给客户打标
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/17"/>
