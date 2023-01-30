@@ -5,6 +5,7 @@ using YouZan.Open.Api.Constant;
 using YouZan.Open.Api.Entry.Request;
 using YouZan.Open.Api.Entry.Response;
 using YouZan.Open.Api.Entry.Response.Customer;
+using static System.Net.WebRequestMethods;
 
 namespace YouZan.Open.Api
 {
@@ -288,6 +289,20 @@ namespace YouZan.Open.Api
             return ApiInvoke<SuccessResponse>(
                 request,
                 ApiConst.CRM_CUSTOMER_POINTS_SYNC,
+                ApiConst.VERSION_4_0_0);
+        }
+
+        /// <summary>
+        /// 增加用户积分接口（有效期积分）
+        /// </summary>
+        /// <param name="request"></param>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/3050"/>
+        /// <returns></returns>
+        public YouZanResponse<SuccessResponse> CrmCustomerPointsOperateIncreaseWithExpire(YouZanRequest request)
+        {
+            return ApiInvoke<SuccessResponse>(
+                request,
+                ApiConst.CRM_CUSTOMER_POINTS_OPERATE_INCREASE_WITH_EXPIRE,
                 ApiConst.VERSION_4_0_0);
         }
 

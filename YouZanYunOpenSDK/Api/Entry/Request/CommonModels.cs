@@ -37,4 +37,30 @@ namespace YouZan.Open.Api.Entry.Request
         [ApiField("account_id")]
         public string AccountId { get; set; }
     }
+
+    /// <summary>
+    /// 共用参数实体类-1
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public abstract class ParamRequest<T> : YouZanRequest
+    {
+        /// <summary>
+        /// 请求参数
+        /// </summary>
+        [ApiField("param")]
+        public T Param { get; set; }
+    }
+
+    /// <summary>
+    /// 共用参数实体类-1
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public abstract class ParamsRequest<T> : YouZanRequest
+    {
+        /// <summary>
+        /// 请求参数
+        /// </summary>
+        [ApiField("params")]
+        public T Params { get; set; }
+    }
 }

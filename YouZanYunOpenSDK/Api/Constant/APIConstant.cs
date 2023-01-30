@@ -1,4 +1,6 @@
-﻿namespace YouZan.Open.Api.Constant
+﻿using static System.Net.WebRequestMethods;
+
+namespace YouZan.Open.Api.Constant
 {
     /// <summary>
     /// 常量定义
@@ -244,6 +246,11 @@
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/883"/>
         internal const string CRM_CUSTOMER_POINTS_SYNC = "youzan.crm.customer.points.sync";
+        /// <summary>
+        /// 增加有效期积分
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/3050"/>
+        internal const string CRM_CUSTOMER_POINTS_OPERATE_INCREASE_WITH_EXPIRE = "youzan.crm.customer.points.operate.increasewithexpire";
         /// <summary>
         /// 给客户打标
         /// </summary>
