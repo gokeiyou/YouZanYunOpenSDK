@@ -22,6 +22,11 @@ namespace YouZan.Open.Api.Entry.Request
     public abstract class ParamUser : YouZanRequest
     {
         /// <summary>
+        /// 操作人名字，可选字段
+        /// </summary>
+        [ApiField("operator_name")]
+        public string OperatorName { get; set; }
+        /// <summary>
         /// 帐号类型（支持的用户账号类型) ;
         /// 2-手机号;
         /// 3-三方帐号(原open_user_id:三方App用户ID，该参数仅限购买App开店插件的商家使用) ;

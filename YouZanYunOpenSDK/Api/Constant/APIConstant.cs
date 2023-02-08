@@ -409,6 +409,12 @@ namespace YouZan.Open.Api.Constant
         internal const string CRM_CUSTOMER_POINTS_INCREASE = "youzan.crm.customer.points.increase";
 
         /// <summary>
+        /// 解冻用户积分
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/2673"/>
+        internal const string SCRM_CUSTOMER_POINTS_OPERATE_UNFREEZE = "youzan.scrm.customer.points.operate.unfreeze";
+
+        /// <summary>
         /// 给用户加成长值，帐号类型(与帐户ID配合使用: 1:粉丝(原fansId),2:手机号,3:三方帐号(原open_user_id),4:UnionID,5:OpenID
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/863"/>

@@ -334,6 +334,19 @@ namespace YouZan.Open.Api
         }
 
         /// <summary>
+        /// 解冻用户积分
+        /// </summary>
+        /// <param name="request"></param>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/2673"/>
+        /// <returns></returns>
+        public YouZanResponse<SuccessResponse<string>> ScrmCustomerPointsOperateUnfreeze(YouZanRequest request)
+        {
+            return ApiInvoke<SuccessResponse<string>>(request,
+                ApiConst.SCRM_CUSTOMER_POINTS_OPERATE_UNFREEZE,
+                ApiConst.VERSION_1_0_0);
+        }
+
+        /// <summary>
         /// 给客户加成长值，帐号类型(与帐户ID配合使用: 1:粉丝(原fansId),2:手机号,3:三方帐号(原open_user_id),4:UnionID,5:有赞客户唯一id即yz_open_id
         /// </summary>
         /// <param name="request"></param>
