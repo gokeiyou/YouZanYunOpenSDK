@@ -237,6 +237,19 @@ namespace YouZan.Open.Api
         }
 
         /// <summary>
+        /// 查询标签组详情
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public YouZanResponse<ScrmTagCategoryGetResponse> ScrmTagCategoryGet(YouZanRequest request)
+        {
+            return ApiInvoke<ScrmTagCategoryGetResponse>(
+                request,
+                ApiConst.SCRM_TAG_CATEGORY_GET,
+                ApiConst.VERSION_1_0_0);
+        }
+
+        /// <summary>
         /// 获取客户账号下权益卡列表
         /// 获取用户的权益卡列表（列表不返回卡模板禁用的卡、未激活的卡和过期的卡）
         /// 支持的用户账号类型

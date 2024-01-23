@@ -7,12 +7,11 @@ namespace YouZan.Open.Api.Constant
     /// </summary>
     public struct ApiConst
     {
-
         /// <summary>
         /// API请求域名
         /// </summary>
         internal const string HOST = "https://open.youzanyun.com";
-        
+
         /// <summary>
         /// TOKEN请求地址
         /// </summary>
@@ -24,6 +23,7 @@ namespace YouZan.Open.Api.Constant
         /// GET
         /// </summary>
         public const string HTTP_GET = "get";
+
         /// <summary>
         /// POST
         /// </summary>
@@ -77,7 +77,6 @@ namespace YouZan.Open.Api.Constant
         /// 版本号：4.0.2
         /// </summary>
         public const string VERSION_4_0_2 = "4.0.2";
-
 
         #endregion
 
@@ -175,103 +174,131 @@ namespace YouZan.Open.Api.Constant
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/2107"/>
         internal const string SCRM_CUSTOMER_GET_RECORD = "youzan.scrm.customer.get.record";
+
         /// <summary>
         /// 删除积分商城的积分商品信息
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/1068"/>
         internal const string CRM_CUSTOMER_POINTGOODS_DELETE = "youzan.crm.customer.pointgoods.delete";
+
         /// <summary>
         /// 查询用户积分日志
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/3410"/>
         internal const string CRM_CUSTOMER_POINTS_CHANGELOG_SEARCH = "youzan.crm.customer.points.changelog.search";
+
         /// <summary>
         /// 获取C端用户等级
         /// </summary>
-        internal const string SCRM_LEVEL_GET_USER_LEVEL = "youzan.scrm.level.get.userlevel"; 
+        internal const string SCRM_LEVEL_GET_USER_LEVEL = "youzan.scrm.level.get.userlevel";
+
         /// <summary>
         /// 获取C端用户等级
         /// </summary>
         internal const string SCRM_CUSTOMER_CARD_DELETE = "youzan.scrm.customer.card.delete";
+
         /// <summary>
         /// 查询权益卡下对应的会员列表
         /// </summary>
         internal const string SCRM_CUSTOMER_SEARCH = "youzan.scrm.customer.search";
+
         /// <summary>
         /// 给客户减成长值
         /// </summary>
         internal const string CRM_CUSTOMER_GROWTH_DECREASE = "youzan.crm.customer.growth.decrease";
+
         /// <summary>
         /// 批量获取客户成长值
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/861"/>
         internal const string CRM_CUSTOMER_GROWTH_LIST = "youzan.crm.customer.growth.list";
+
         /// <summary>
         /// 查询客户标签列表
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/4106"/>
         internal const string SCRM_TAG_RELATION_QUERY = "youzan.scrm.tagrelation.query";
+
         /// <summary>
         /// 查询付费权益卡商品id
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/3280"/>
         internal const string SCRM_CARD_GET_GOODS_INFO = "youzan.scrm.card.get.goodsinfo";
-        /// <summary>
-        /// 根据手机号批量查询客户信息
-        /// </summary>
-        /// <see cref="https://doc.youzanyun.com/detail/API/0/3220"/>
-        internal const string SCRM_CUSTOMER_LIST_PHONE = "youzan.scrm.customer.list.phone";
-        /// <summary>
-        /// 冻结&消费用户积分
-        /// </summary>
-        /// <see cref="https://doc.youzanyun.com/detail/API/0/3048"/>
-        internal const string CRM_CUSTOMER_POINTS_OPERATE_FREEZE_CONSUME = "youzan.crm.customer.points.operate.freezeandconsume";
-        /// <summary>
-        /// 删除客户标签
-        /// </summary>
-        /// <see cref="https://doc.youzanyun.com/detail/API/0/18"/>
-        internal const string SCRM_TAG_RELATION_DELETE = "youzan.scrm.tag.relation.delete";
-        /// <summary>
-        /// 获取客户账号下权益卡列表
-        /// </summary>
-        /// <see cref="https://doc.youzanyun.com/detail/API/0/869"/>
-        internal const string SCRM_CUSTOMER_CARD_LIST = "youzan.scrm.customer.card.list";
-        /// <summary>
-        /// 查询用户当前积分
-        /// </summary>
-        /// <see cref="https://doc.youzanyun.com/detail/API/0/884"/>
-        internal const string CRM_CUSTOMER_POINTS_GET = "youzan.crm.customer.points.get";
-        /// <summary>
-        /// 给用户减积分
-        /// </summary>
-        /// <see cref="https://doc.youzanyun.com/detail/API/0/873"/>
-        internal const string CRM_CUSTOMER_POINTS_DECREASE = "youzan.crm.customer.points.decrease";
-        /// <summary>
-        /// 同步客户积分
-        /// </summary>
-        /// <see cref="https://doc.youzanyun.com/detail/API/0/883"/>
-        internal const string CRM_CUSTOMER_POINTS_SYNC = "youzan.crm.customer.points.sync";
-        /// <summary>
-        /// 增加有效期积分
-        /// </summary>
-        /// <see cref="https://doc.youzanyun.com/detail/API/0/3050"/>
-        internal const string CRM_CUSTOMER_POINTS_OPERATE_INCREASE_WITH_EXPIRE = "youzan.crm.customer.points.operate.increasewithexpire";
-        /// <summary>
-        /// 通过用户权益卡号获取会员信息
-        /// </summary>
-        /// <see cref="https://doc.youzanyun.com/detail/API/0/93"/>
-        internal const string SCRM_CUSTOMER_INFO_GET = "youzan.scrm.customer.info.get";
+
         /// <summary>
         /// 给客户打标
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/17"/>
         internal const string SCRM_TAG_RELATION_ADD = "youzan.scrm.tag.relation.add";
+
+        /// <summary>
+        /// 根据手机号批量查询客户信息
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/3220"/>
+        internal const string SCRM_CUSTOMER_LIST_PHONE = "youzan.scrm.customer.list.phone";
+
+        /// <summary>
+        /// 冻结&消费用户积分
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/3048"/>
+        internal const string CRM_CUSTOMER_POINTS_OPERATE_FREEZE_CONSUME =
+            "youzan.crm.customer.points.operate.freezeandconsume";
+
         /// <summary>
         /// 创建客户
         /// 手机号和{"name":"丽丽"}必填
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/92"/>
         internal const string SCRM_CUSTOMER_CREATE = "youzan.scrm.customer.create";
+
+        /// <summary>
+        /// 删除客户标签
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/18"/>
+        internal const string SCRM_TAG_RELATION_DELETE = "youzan.scrm.tag.relation.delete";
+
+        /// <summary>
+        /// 查询标签组详情
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/4221"/>
+        internal const string SCRM_TAG_CATEGORY_GET = "youzan.scrm.tag.category.get";
+
+        /// <summary>
+        /// 获取客户账号下权益卡列表
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/869"/>
+        internal const string SCRM_CUSTOMER_CARD_LIST = "youzan.scrm.customer.card.list";
+
+        /// <summary>
+        /// 查询用户当前积分
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/884"/>
+        internal const string CRM_CUSTOMER_POINTS_GET = "youzan.crm.customer.points.get";
+
+        /// <summary>
+        /// 给用户减积分
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/873"/>
+        internal const string CRM_CUSTOMER_POINTS_DECREASE = "youzan.crm.customer.points.decrease";
+
+        /// <summary>
+        /// 同步客户积分
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/883"/>
+        internal const string CRM_CUSTOMER_POINTS_SYNC = "youzan.crm.customer.points.sync";
+
+        /// <summary>
+        /// 增加有效期积分
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/3050"/>
+        internal const string CRM_CUSTOMER_POINTS_OPERATE_INCREASE_WITH_EXPIRE =
+            "youzan.crm.customer.points.operate.increasewithexpire";
+
+        /// <summary>
+        /// 通过用户权益卡号获取会员信息
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/93"/>
+        internal const string SCRM_CUSTOMER_INFO_GET = "youzan.scrm.customer.info.get";
 
         #endregion
 
@@ -282,36 +309,43 @@ namespace YouZan.Open.Api.Constant
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/67"/>
         internal const string SALESMAN_ACCOUNT_GET = "youzan.salesman.account.get";
+
         /// <summary>
         /// 设置用户成为分销员
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/41"/>
         internal const string SALESMAN_ACCOUNT_ADD = "youzan.salesman.account.add";
+
         /// <summary>
         /// 更新分销员信息,客户已经是分销员才可以更新
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/42"/>
         internal const string SALESMAN_ACCOUNT_UPDATE = "youzan.salesman.account.update";
+
         /// <summary>
         /// 清退分销员，客户必须是分销员才能清退
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/345"/>
         internal const string SALESMAN_ACCOUNT_FIRE = "youzan.salesman.account.fire";
+
         /// <summary>
         /// 获取推广订单列表
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/74"/>
         internal const string SALESMAN_TRADES_GET = "youzan.salesman.trades.get";
+
         /// <summary>
         /// 获取商品推广链接
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/43"/>
         internal const string SALESMAN_ITEM_SHARE_GET = "youzan.salesman.item.share.get";
+
         /// <summary>
         /// 获取分销员业绩统计
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/37"/>
         internal const string SALESMAN_ACCOUNT_SCORE_SEARCH = "youzan.salesman.account.score.search";
+
         /// <summary>
         /// 批量获取商品提成比例信息
         /// </summary>
@@ -353,7 +387,7 @@ namespace YouZan.Open.Api.Constant
         /// （fans_id和fans_type组成一个唯一的有赞用户标识。）
         /// </summary>
         internal const string UMP_VOUCHER_QUERY = "youzan.ump.voucher.query";
-        
+
         #endregion
 
         #region 商品API
@@ -404,9 +438,9 @@ namespace YouZan.Open.Api.Constant
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/120"/>
         internal const string TRADE_GET = "youzan.trade.get";
-        
+
         #endregion
-        
+
         /// <summary>
         /// 给用户加积分，帐号类型(与帐户ID配合使用: 1:粉丝(原fansId),2:手机号,3:三方帐号(原open_user_id),4:UnionID,5:OpenID
         /// </summary>
