@@ -207,6 +207,11 @@ namespace YouZan.Open.Api.Constant
         /// <see cref="https://doc.youzanyun.com/detail/API/0/861"/>
         internal const string CRM_CUSTOMER_GROWTH_LIST = "youzan.crm.customer.growth.list";
         /// <summary>
+        /// 查询客户标签列表
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/4106"/>
+        internal const string SCRM_TAG_RELATION_QUERY = "youzan.scrm.tagrelation.query";
+        /// <summary>
         /// 查询付费权益卡商品id
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/3280"/>

@@ -15,7 +15,6 @@ namespace YouZan.Open.Api
     /// <see cref="https://doc.youzanyun.com/list/API/1288"/>
     public partial class ApiHelper
     {
-
         /// <summary>
         /// 根据卡号获取用户购卡记录
         /// </summary>
@@ -50,7 +49,8 @@ namespace YouZan.Open.Api
         /// <param name="request">请求参数</param>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/3410"/>
         /// <returns></returns>
-        public YouZanResponse<CrmCustomerPointsChangeLogSearchResponse> CrmCustomerPointsChangeLogSearch(YouZanRequest request)
+        public YouZanResponse<CrmCustomerPointsChangeLogSearchResponse> CrmCustomerPointsChangeLogSearch(
+            YouZanRequest request)
         {
             return ApiInvoke<CrmCustomerPointsChangeLogSearchResponse>(
                 request,
@@ -64,7 +64,8 @@ namespace YouZan.Open.Api
         /// <param name="request"></param>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/3134"/>
         /// <returns></returns>
-        public YouZanResponse<ScrmLevelGetUserLevelResponse> ScrmLevelGetUserLevel(YouZanRequest request) {
+        public YouZanResponse<ScrmLevelGetUserLevelResponse> ScrmLevelGetUserLevel(YouZanRequest request)
+        {
             return ApiInvoke<ScrmLevelGetUserLevelResponse>(
                 request,
                 ApiConst.SCRM_LEVEL_GET_USER_LEVEL,
@@ -83,7 +84,8 @@ namespace YouZan.Open.Api
         /// <param name="request"></param>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/870"/>
         /// <returns></returns>
-        public YouZanResponse<SuccessResponse> ScrmCustomerCardDelete(YouZanRequest request) {
+        public YouZanResponse<SuccessResponse> ScrmCustomerCardDelete(YouZanRequest request)
+        {
             return ApiInvoke<SuccessResponse>(
                 request,
                 ApiConst.SCRM_CUSTOMER_CARD_DELETE,
@@ -96,7 +98,8 @@ namespace YouZan.Open.Api
         /// <param name="request"></param>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/94"/>
         /// <returns></returns>
-        public YouZanResponse<ScrmCustomerSearchResponse> ScrmCustomerSearch(YouZanRequest request) {
+        public YouZanResponse<ScrmCustomerSearchResponse> ScrmCustomerSearch(YouZanRequest request)
+        {
             return ApiInvoke<ScrmCustomerSearchResponse>(
                 request,
                 ApiConst.SCRM_CUSTOMER_SEARCH,
@@ -110,7 +113,8 @@ namespace YouZan.Open.Api
         /// <param name="request"></param>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/864"/>
         /// <returns></returns>
-        public YouZanResponse<SuccessResponse> CrmCustomerGrowthDecrease(YouZanRequest request) {
+        public YouZanResponse<SuccessResponse> CrmCustomerGrowthDecrease(YouZanRequest request)
+        {
             return ApiInvoke<SuccessResponse>(
                 request,
                 ApiConst.CRM_CUSTOMER_GROWTH_DECREASE,
@@ -129,6 +133,21 @@ namespace YouZan.Open.Api
                 request,
                 ApiConst.CRM_CUSTOMER_GROWTH_LIST,
                 ApiConst.VERSION_2_0_0);
+        }
+
+        /// <summary>
+        /// 查询客户标签列表
+        /// </summary>
+        /// <param name="request"></param>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/4106"/>
+        /// <returns></returns>
+        public YouZanResponse<ScrmTagRelationQueryResponse> ScrmTagRelationQuery(YouZanRequest request)
+        {
+            return ApiInvoke<ScrmTagRelationQueryResponse>(
+                request,
+                ApiConst.SCRM_TAG_RELATION_QUERY,
+                ApiConst.VERSION_1_0_0
+            );
         }
 
         /// <summary>
@@ -201,7 +220,7 @@ namespace YouZan.Open.Api
                 ApiConst.SCRM_CUSTOMER_CREATE,
                 ApiConst.VERSION_3_0_0);
         }
-        
+
         /// <summary>
         /// 删除客户标签
         /// 1.删除指定客户身上的指定标签，标签不存在或客户身上没这个标签不会返回错误。 2.最大支持一次请求删除20个标签。
@@ -358,6 +377,5 @@ namespace YouZan.Open.Api
                 ApiConst.CRM_CUSTOMER_GROWTH_INCREASE,
                 ApiConst.VERSION_2_0_0);
         }
-
     }
 }

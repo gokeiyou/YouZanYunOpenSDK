@@ -1,5 +1,4 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <RootNamespace>YouZan.Open</RootNamespace>
     <AssemblyName>YouZanYunOpenSDK</AssemblyName>
@@ -24,5 +23,4 @@
     <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="2.19.180" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
   </ItemGroup>
-
 </Project>
