@@ -176,6 +176,12 @@ namespace YouZan.Open.Api.Constant
         internal const string SCRM_CARD_DELETE = "youzan.scrm.card.delete";
 
         /// <summary>
+        /// 给多个客户批量打标签接口
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/552"/>
+        internal const string SCRM_TAG_ADD_FOR_MANY = "youzan.scrm.tag.addformany";
+
+        /// <summary>
         /// 根据卡号获取用户购卡记录
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/2107"/>

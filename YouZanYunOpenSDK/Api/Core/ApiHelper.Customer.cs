@@ -30,6 +30,20 @@ namespace YouZan.Open.Api
         }
 
         /// <summary>
+        /// 给多个客户批量打标签接口
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/552"/>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public YouZanResponse<bool> ScrmTagAddForMany(YouZanRequest request)
+        {
+            return ApiInvoke<bool>(
+                request,
+                ApiConst.SCRM_TAG_ADD_FOR_MANY,
+                ApiConst.VERSION_1_0_0);
+        }
+
+        /// <summary>
         /// 根据卡号获取用户购卡记录
         /// </summary>
         /// <param name="request">请求参数</param>
