@@ -16,6 +16,20 @@ namespace YouZan.Open.Api
     public partial class ApiHelper
     {
         /// <summary>
+        /// 商家删除权益卡
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/293"/>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public YouZanResponse<SuccessResponse> ScrmCardDelete(YouZanRequest request)
+        {
+            return ApiInvoke<SuccessResponse>(
+                request,
+                ApiConst.SCRM_CARD_DELETE,
+                ApiConst.VERSION_3_0_0);
+        }
+
+        /// <summary>
         /// 根据卡号获取用户购卡记录
         /// </summary>
         /// <param name="request">请求参数</param>

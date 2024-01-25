@@ -167,7 +167,13 @@ namespace YouZan.Open.Api.Constant
 
         #endregion
 
-        #region 客户API
+        #region 会员API
+
+        /// <summary>
+        /// 商家删除权益卡
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/293"/>
+        internal const string SCRM_CARD_DELETE = "youzan.scrm.card.delete";
 
         /// <summary>
         /// 根据卡号获取用户购卡记录
