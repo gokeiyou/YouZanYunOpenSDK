@@ -188,6 +188,12 @@ namespace YouZan.Open.Api.Constant
         internal const string SCRM_SOUGOU_MEMBER_JOIN_LINK = "youzan.scrm.sougou.member.join.link";
 
         /// <summary>
+        /// 积分商城兑换商品查询接口
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/695"/>
+        internal const string CRM_CUSTOMER_POINT_STORE_LIST_GOODS = "youzan.crm.customer.pointstore.list.goods";
+
+        /// <summary>
         /// 根据卡号获取用户购卡记录
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/2107"/>

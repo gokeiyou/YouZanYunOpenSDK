@@ -58,6 +58,19 @@ namespace YouZan.Open.Api
         }
 
         /// <summary>
+        /// 积分商城兑换商品查询接口(仅微商城使用)(计费)
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/695"/>
+        /// <param name="request"></param>
+        public YouZanResponse<CrmCustomerPointStoreListGoodsResponse> CrmCustomerPointStoreListGoods(YouZanRequest request)
+        {
+            return ApiInvoke<CrmCustomerPointStoreListGoodsResponse>(
+                request,
+                ApiConst.CRM_CUSTOMER_POINT_STORE_LIST_GOODS,
+                ApiConst.VERSION_1_0_0);
+        }
+
+        /// <summary>
         /// 根据卡号获取用户购卡记录
         /// </summary>
         /// <param name="request">请求参数</param>
