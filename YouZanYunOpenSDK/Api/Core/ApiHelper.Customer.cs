@@ -44,6 +44,20 @@ namespace YouZan.Open.Api
         }
 
         /// <summary>
+        /// 获取店铺的办理会员页面链接(计费API)
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/762"/>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public YouZanResponse<ScrmSouGouMemberJoinLinkResponse> ScrmSouGouMemberJoinLink(YouZanRequest request)
+        {
+            return ApiInvoke<ScrmSouGouMemberJoinLinkResponse>(
+                request,
+                ApiConst.SCRM_SOUGOU_MEMBER_JOIN_LINK,
+                ApiConst.VERSION_1_0_0);
+        }
+
+        /// <summary>
         /// 根据卡号获取用户购卡记录
         /// </summary>
         /// <param name="request">请求参数</param>

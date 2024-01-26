@@ -133,12 +133,16 @@ namespace YouZan.Open.Api
             // generalApi.SetHttpMethod(method);
             // generalApi.SetOAuthType(OAuthEnum.TOKEN);
 
-            var apiParams = new GeneralApiParams();
-            apiParams.AddParam(GenericParameter(request));
+            var dicParam = GenericParameter(request);
+            if (dicParam.Count > 0)
+            {
+                var apiParams = new GeneralApiParams();
+                apiParams.AddParam(dicParam);
 
-            // generalApi.SetAPIParams(apiParams);
-            generalApi.ApiParams = apiParams;
-
+                // generalApi.SetAPIParams(apiParams);
+                generalApi.ApiParams = apiParams;
+            }
+            
             var resp = GetResponse<T>(generalApi, new Token(_oAuthToken.Token), headers, files);
 
             // 当Token失效或Token不存在时，强制刷新AccessToken并且重新请求

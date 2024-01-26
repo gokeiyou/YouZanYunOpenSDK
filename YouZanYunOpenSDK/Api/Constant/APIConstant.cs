@@ -182,6 +182,12 @@ namespace YouZan.Open.Api.Constant
         internal const string SCRM_TAG_ADD_FOR_MANY = "youzan.scrm.tag.addformany";
 
         /// <summary>
+        /// 获取店铺的办理会员页面链接
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/762"/>
+        internal const string SCRM_SOUGOU_MEMBER_JOIN_LINK = "youzan.scrm.sougou.member.join.link";
+
+        /// <summary>
         /// 根据卡号获取用户购卡记录
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/2107"/>
