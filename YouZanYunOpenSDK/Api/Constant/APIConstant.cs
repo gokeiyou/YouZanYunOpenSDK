@@ -234,6 +234,18 @@ namespace YouZan.Open.Api.Constant
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/292"/>
         internal const string SCRM_CARD_CREATE = "youzan.scrm.card.create";
+        
+        /// <summary>
+        /// 给用户加成长值，帐号类型(与帐户ID配合使用: 1:粉丝(原fansId),2:手机号,3:三方帐号(原open_user_id),4:UnionID,5:OpenID
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/863"/>
+        internal const string CRM_CUSTOMER_GROWTH_INCREASE = "youzan.crm.customer.growth.increase";
+
+        /// <summary>
+        /// 获取该商家的会员等级模版列表
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/765"/>
+        internal const string SCRM_LEVEL_LIST = "youzan.scrm.level.list";
 
         /// <summary>
         /// 根据卡号获取用户购卡记录
@@ -502,12 +514,6 @@ namespace YouZan.Open.Api.Constant
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/2673"/>
         internal const string SCRM_CUSTOMER_POINTS_OPERATE_UNFREEZE = "youzan.scrm.customer.points.operate.unfreeze";
-
-        /// <summary>
-        /// 给用户加成长值，帐号类型(与帐户ID配合使用: 1:粉丝(原fansId),2:手机号,3:三方帐号(原open_user_id),4:UnionID,5:OpenID
-        /// </summary>
-        /// <see cref="https://doc.youzanyun.com/detail/API/0/863"/>
-        internal const string CRM_CUSTOMER_GROWTH_INCREASE = "youzan.crm.customer.growth.increase";
 
         #endregion
     }

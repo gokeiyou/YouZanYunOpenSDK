@@ -154,9 +154,7 @@ namespace YouZan.Open.Api
                 ApiConst.CRM_CUSTOMER_GROWTH_LIST,
                 ApiConst.VERSION_2_0_0);
         }
-
-        // 方法，引用常量：SCRM_CARD_CREATE
-
+        
         /// <summary>
         /// 商家创建会员卡（计费）
         /// </summary>
@@ -169,7 +167,35 @@ namespace YouZan.Open.Api
                 ApiConst.SCRM_CARD_CREATE,
                 ApiConst.VERSION_3_0_0);
         }
-
+        
+        /// <summary>
+        /// 给客户加成长值，帐号类型(与帐户ID配合使用: 1:粉丝(原fansId),2:手机号,3:三方帐号(原open_user_id),4:UnionID,5:有赞客户唯一id即yz_open_id
+        /// </summary>
+        /// <param name="request"></param>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/863"/>
+        /// <returns></returns>
+        public YouZanResponse<SuccessResponse> CrmCustomerGrowthIncrease(YouZanRequest request)
+        {
+            return ApiInvoke<SuccessResponse>(request,
+                ApiConst.CRM_CUSTOMER_GROWTH_INCREASE,
+                ApiConst.VERSION_2_0_0);
+        }
+        
+        // 
+        /// <summary>
+        /// 获取该商家的会员等级模版列表(计费)
+        /// </summary>
+        /// <param name="request"></param>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/765"/>
+        /// <returns></returns>
+        public YouZanResponse<ScrmLevelListResponse> ScrmLevelList(YouZanRequest request)
+        {
+            return ApiInvoke<ScrmLevelListResponse>(request,
+                ApiConst.SCRM_LEVEL_LIST,
+                ApiConst.VERSION_3_0_0);
+        }
+        
+        
         /// <summary>
         /// 根据卡号获取用户购卡记录
         /// </summary>
@@ -484,17 +510,5 @@ namespace YouZan.Open.Api
                 ApiConst.VERSION_1_0_0);
         }
 
-        /// <summary>
-        /// 给客户加成长值，帐号类型(与帐户ID配合使用: 1:粉丝(原fansId),2:手机号,3:三方帐号(原open_user_id),4:UnionID,5:有赞客户唯一id即yz_open_id
-        /// </summary>
-        /// <param name="request"></param>
-        /// <see cref="https://doc.youzanyun.com/detail/API/0/863"/>
-        /// <returns></returns>
-        public YouZanResponse<SuccessResponse> CrmCustomerGrowthIncrease(YouZanRequest request)
-        {
-            return ApiInvoke<SuccessResponse>(request,
-                ApiConst.CRM_CUSTOMER_GROWTH_INCREASE,
-                ApiConst.VERSION_2_0_0);
-        }
     }
 }
