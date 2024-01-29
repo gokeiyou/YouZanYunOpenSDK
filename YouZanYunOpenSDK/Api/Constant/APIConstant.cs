@@ -199,6 +199,12 @@ namespace YouZan.Open.Api.Constant
         /// <see cref="https://doc.youzanyun.com/detail/API/0/886"/>
         internal const string CRM_CUSTOMER_POINT_STORE_EXCHANGE_RECORDS =
             "youzan.crm.customer.pointstore.exchange.records";
+        
+        /// <summary>
+        /// 任务中心-C端任务更新（任务完成调用）
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/363"/>
+        internal const string SCRM_MISSION_UPDATE = "youzan.scrm.mission.update";
 
         /// <summary>
         /// 根据卡号获取用户购卡记录

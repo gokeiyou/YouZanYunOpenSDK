@@ -84,6 +84,19 @@ namespace YouZan.Open.Api
         }
 
         /// <summary>
+        /// 任务中心-C端任务更新（任务完成调用）(计费)
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/363"/>
+        /// <param name="request"></param>
+        public YouZanResponse<bool> ScrmMissionUpdate(YouZanRequest request)
+        {
+            return ApiInvoke<bool>(
+                request,
+                ApiConst.SCRM_MISSION_UPDATE,
+                ApiConst.VERSION_1_0_0);
+        }
+
+        /// <summary>
         /// 根据卡号获取用户购卡记录
         /// </summary>
         /// <param name="request">请求参数</param>
