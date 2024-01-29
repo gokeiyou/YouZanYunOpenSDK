@@ -194,6 +194,13 @@ namespace YouZan.Open.Api.Constant
         internal const string CRM_CUSTOMER_POINT_STORE_LIST_GOODS = "youzan.crm.customer.pointstore.list.goods";
 
         /// <summary>
+        /// 获取用户积分兑换记录
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/886"/>
+        internal const string CRM_CUSTOMER_POINT_STORE_EXCHANGE_RECORDS =
+            "youzan.crm.customer.pointstore.exchange.records";
+
+        /// <summary>
         /// 根据卡号获取用户购卡记录
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/2107"/>

@@ -71,6 +71,19 @@ namespace YouZan.Open.Api
         }
 
         /// <summary>
+        /// 获取用户积分兑换记录(计费)
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/886"/>
+        /// <param name="request"></param>
+        public YouZanResponse<CrmCustomerPointStoreExchangeRecordsResponse> CrmCustomerPointStoreExchangeRecords(YouZanRequest request)
+        {
+            return ApiInvoke<CrmCustomerPointStoreExchangeRecordsResponse>(
+                request,
+                ApiConst.CRM_CUSTOMER_POINT_STORE_EXCHANGE_RECORDS,
+                ApiConst.VERSION_2_0_0);
+        }
+
+        /// <summary>
         /// 根据卡号获取用户购卡记录
         /// </summary>
         /// <param name="request">请求参数</param>

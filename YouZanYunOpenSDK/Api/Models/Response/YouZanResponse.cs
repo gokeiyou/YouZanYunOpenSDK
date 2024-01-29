@@ -33,6 +33,12 @@ namespace YouZan.Open.Api.Entry.Response
         /// </summary>
         [JsonProperty("gw_err_resp")]
         public ErrorResponse ErrorResponse { get; set; }
+        
+        /// <summary>
+        /// 分页
+        /// </summary>
+        [JsonProperty("Paginator")]
+        public Paginator Paginator { get; set; }
     }
 
     /// <summary>
@@ -52,6 +58,12 @@ namespace YouZan.Open.Api.Entry.Response
         /// </summary>
         [JsonProperty("response")]
         public T Response { get; set; }
+        
+        /// <summary>
+        /// 列表
+        /// </summary>
+        [JsonProperty("items")]
+        public List<T> DataList { get; set; }
     }
 
     public class ErrorResponse
@@ -60,5 +72,29 @@ namespace YouZan.Open.Api.Entry.Response
         public string ErrorMessage { get; set; }
         [JsonProperty("err_code")]
         public int ErrorCode { get; set; }
+    }
+
+    /// <summary>
+    /// 分页
+    /// </summary>
+    public class Paginator
+    {
+        /// <summary>
+        /// 总条数
+        /// </summary>
+        [JsonProperty("total_count")]
+        public int TotalCount { get; set; }
+
+        /// <summary>
+        /// 分页大小
+        /// </summary>
+        [JsonProperty("page_size")]
+        public int PageSize { get; set; }
+
+        /// <summary>
+        /// 分页数
+        /// </summary>
+        [JsonProperty("page")]
+        public int Page { get; set; }
     }
 }
