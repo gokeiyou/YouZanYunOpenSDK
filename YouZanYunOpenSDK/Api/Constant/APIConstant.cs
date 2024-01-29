@@ -248,6 +248,12 @@ namespace YouZan.Open.Api.Constant
         internal const string SCRM_LEVEL_LIST = "youzan.scrm.level.list";
 
         /// <summary>
+        /// 获取客户成长值
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/862"/>
+        internal const string CRM_CUSTOMER_GROWTH_GET = "youzan.crm.customer.growth.get";
+
+        /// <summary>
         /// 根据卡号获取用户购卡记录
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/2107"/>

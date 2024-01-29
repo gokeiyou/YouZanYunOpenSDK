@@ -194,8 +194,21 @@ namespace YouZan.Open.Api
                 ApiConst.SCRM_LEVEL_LIST,
                 ApiConst.VERSION_3_0_0);
         }
-        
-        
+
+        /// <summary>
+        /// 获取客户成长值
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/862"/>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public YouZanResponse<CrmCustomerGrowthGetResponse> CrmCustomerGrowthGet(YouZanRequest request)
+        {
+            return ApiInvoke<CrmCustomerGrowthGetResponse>(
+                request,
+                ApiConst.CRM_CUSTOMER_GROWTH_GET,
+                ApiConst.VERSION_2_0_0);
+        }
+
         /// <summary>
         /// 根据卡号获取用户购卡记录
         /// </summary>
