@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <RootNamespace>YouZan.Open</RootNamespace>
     <AssemblyName>YouZanYunOpenSDK</AssemblyName>
@@ -13,7 +13,6 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>xml\YouZanYunOpenSDK.xml</DocumentationFile>
   </PropertyGroup>

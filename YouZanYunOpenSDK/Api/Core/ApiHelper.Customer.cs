@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using YouZan.Open.Api.Constant;
+﻿using YouZan.Open.Api.Constant;
 using YouZan.Open.Api.Entry.Request;
 using YouZan.Open.Api.Entry.Response;
 using YouZan.Open.Api.Entry.Response.Customer;
-using static System.Net.WebRequestMethods;
+using YouZan.Open.Api.Models.Response.Customer;
 
 namespace YouZan.Open.Api
 {
@@ -97,6 +94,83 @@ namespace YouZan.Open.Api
         }
 
         /// <summary>
+        /// 删除用户的权益卡
+        /// 1、删除用户的权益卡支持的用户账号类型
+        ///     1）有赞粉丝id(有赞不同的合作渠道会生成不同渠道对应在有赞平台下的fans_id) ;
+        ///     2）手机号;
+        ///     3）三方帐号(原open_user_id:三方App用户ID，该参数仅限购买App开店插件的商家使用) ;
+        ///     5）有赞用户id，用户在有赞的唯一id。推荐使用）
+        /// 2、仅支持零售连锁总部调用
+        /// </summary>
+        /// <param name="request"></param>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/870"/>
+        /// <returns></returns>
+        public YouZanResponse<SuccessResponse> ScrmCustomerCardDelete(YouZanRequest request)
+        {
+            return ApiInvoke<SuccessResponse>(
+                request,
+                ApiConst.SCRM_CUSTOMER_CARD_DELETE,
+                ApiConst.VERSION_4_0_0);
+        }
+
+        /// <summary>
+        /// 给客户减成长值
+        /// 给客户减成长值，帐号类型(与帐户ID配合使用: 1:粉丝(原fansId),2:手机号,3:三方帐号(原open_user_id),4:UnionID,5:有赞客户唯一id即yz_open_id
+        /// </summary>
+        /// <param name="request"></param>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/864"/>
+        /// <returns></returns>
+        public YouZanResponse<SuccessResponse> CrmCustomerGrowthDecrease(YouZanRequest request)
+        {
+            return ApiInvoke<SuccessResponse>(
+                request,
+                ApiConst.CRM_CUSTOMER_GROWTH_DECREASE,
+                ApiConst.VERSION_2_0_0);
+        }
+
+        /// <summary>
+        /// 更新会员卡
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/291"/>
+        /// <returns></returns>
+        public YouZanResponse<SuccessResponse> ScrmCardUpdate(YouZanRequest request)
+        {
+            return ApiInvoke<SuccessResponse>(
+                request,
+                ApiConst.SCRM_CARD_UPDATE,
+                ApiConst.VERSION_3_0_0);
+        }
+
+        /// <summary>
+        /// 批量获取客户成长值，只支持根据手机号和yz_open_id有赞客户唯一id查询，最大支持一次查询50条客户信息
+        /// </summary>
+        /// <param name="request"></param>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/861"/>
+        /// <returns></returns>
+        public YouZanResponse<CrmCustomerGrowthListResponse> CrmCustomerGrowthList(YouZanRequest request)
+        {
+            return ApiInvoke<CrmCustomerGrowthListResponse>(
+                request,
+                ApiConst.CRM_CUSTOMER_GROWTH_LIST,
+                ApiConst.VERSION_2_0_0);
+        }
+
+        // 方法，引用常量：SCRM_CARD_CREATE
+
+        /// <summary>
+        /// 商家创建会员卡（计费）
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/292"/>
+        /// <returns></returns>
+        public YouZanResponse<ScrmCardCreateResponse> ScrmCardCreate(YouZanRequest request)
+        {
+            return ApiInvoke<ScrmCardCreateResponse>(
+                request,
+                ApiConst.SCRM_CARD_CREATE,
+                ApiConst.VERSION_3_0_0);
+        }
+
+        /// <summary>
         /// 根据卡号获取用户购卡记录
         /// </summary>
         /// <param name="request">请求参数</param>
@@ -154,26 +228,6 @@ namespace YouZan.Open.Api
         }
 
         /// <summary>
-        /// 删除用户的权益卡
-        /// 1、删除用户的权益卡支持的用户账号类型
-        ///     1）有赞粉丝id(有赞不同的合作渠道会生成不同渠道对应在有赞平台下的fans_id) ;
-        ///     2）手机号;
-        ///     3）三方帐号(原open_user_id:三方App用户ID，该参数仅限购买App开店插件的商家使用) ;
-        ///     5）有赞用户id，用户在有赞的唯一id。推荐使用）
-        /// 2、仅支持零售连锁总部调用
-        /// </summary>
-        /// <param name="request"></param>
-        /// <see cref="https://doc.youzanyun.com/detail/API/0/870"/>
-        /// <returns></returns>
-        public YouZanResponse<SuccessResponse> ScrmCustomerCardDelete(YouZanRequest request)
-        {
-            return ApiInvoke<SuccessResponse>(
-                request,
-                ApiConst.SCRM_CUSTOMER_CARD_DELETE,
-                ApiConst.VERSION_4_0_0);
-        }
-
-        /// <summary>
         /// 查询权益卡下对应的会员列表
         /// </summary>
         /// <param name="request"></param>
@@ -185,35 +239,6 @@ namespace YouZan.Open.Api
                 request,
                 ApiConst.SCRM_CUSTOMER_SEARCH,
                 ApiConst.VERSION_3_0_0);
-        }
-
-        /// <summary>
-        /// 给客户减成长值
-        /// 给客户减成长值，帐号类型(与帐户ID配合使用: 1:粉丝(原fansId),2:手机号,3:三方帐号(原open_user_id),4:UnionID,5:有赞客户唯一id即yz_open_id
-        /// </summary>
-        /// <param name="request"></param>
-        /// <see cref="https://doc.youzanyun.com/detail/API/0/864"/>
-        /// <returns></returns>
-        public YouZanResponse<SuccessResponse> CrmCustomerGrowthDecrease(YouZanRequest request)
-        {
-            return ApiInvoke<SuccessResponse>(
-                request,
-                ApiConst.CRM_CUSTOMER_GROWTH_DECREASE,
-                ApiConst.VERSION_2_0_0);
-        }
-
-        /// <summary>
-        /// 批量获取客户成长值，只支持根据手机号和yz_open_id有赞客户唯一id查询，最大支持一次查询50条客户信息
-        /// </summary>
-        /// <param name="request"></param>
-        /// <see cref="https://doc.youzanyun.com/detail/API/0/861"/>
-        /// <returns></returns>
-        public YouZanResponse<CrmCustomerGrowthListResponse> CrmCustomerGrowthList(YouZanRequest request)
-        {
-            return ApiInvoke<CrmCustomerGrowthListResponse>(
-                request,
-                ApiConst.CRM_CUSTOMER_GROWTH_LIST,
-                ApiConst.VERSION_2_0_0);
         }
 
         /// <summary>

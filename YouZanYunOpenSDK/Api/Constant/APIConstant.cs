@@ -207,6 +207,35 @@ namespace YouZan.Open.Api.Constant
         internal const string SCRM_MISSION_UPDATE = "youzan.scrm.mission.update";
 
         /// <summary>
+        /// 获取C端用户等级
+        /// </summary>
+        internal const string SCRM_CUSTOMER_CARD_DELETE = "youzan.scrm.customer.card.delete";
+
+        /// <summary>
+        /// 给客户减成长值
+        /// </summary>
+        internal const string CRM_CUSTOMER_GROWTH_DECREASE = "youzan.crm.customer.growth.decrease";
+
+        /// <summary>
+        /// 更新会员卡
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/291"/>
+        internal const string SCRM_CARD_UPDATE = "youzan.scrm.card.update";
+
+        /// <summary>
+        /// 批量获取客户成长值
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/861"/>
+        internal const string CRM_CUSTOMER_GROWTH_LIST = "youzan.crm.customer.growth.list";
+
+        // 常量，值：youzan.scrm.card.create
+        /// <summary>
+        /// 创建会员卡
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/292"/>
+        internal const string SCRM_CARD_CREATE = "youzan.scrm.card.create";
+
+        /// <summary>
         /// 根据卡号获取用户购卡记录
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/2107"/>
@@ -230,25 +259,9 @@ namespace YouZan.Open.Api.Constant
         internal const string SCRM_LEVEL_GET_USER_LEVEL = "youzan.scrm.level.get.userlevel";
 
         /// <summary>
-        /// 获取C端用户等级
-        /// </summary>
-        internal const string SCRM_CUSTOMER_CARD_DELETE = "youzan.scrm.customer.card.delete";
-
-        /// <summary>
         /// 查询权益卡下对应的会员列表
         /// </summary>
         internal const string SCRM_CUSTOMER_SEARCH = "youzan.scrm.customer.search";
-
-        /// <summary>
-        /// 给客户减成长值
-        /// </summary>
-        internal const string CRM_CUSTOMER_GROWTH_DECREASE = "youzan.crm.customer.growth.decrease";
-
-        /// <summary>
-        /// 批量获取客户成长值
-        /// </summary>
-        /// <see cref="https://doc.youzanyun.com/detail/API/0/861"/>
-        internal const string CRM_CUSTOMER_GROWTH_LIST = "youzan.crm.customer.growth.list";
 
         /// <summary>
         /// 查询客户标签列表

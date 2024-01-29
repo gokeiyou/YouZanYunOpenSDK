@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using YouZan.Open.Common.Extensions.Attributes;
 
 namespace YouZan.Open.Api.Entry.Request.Customer
 {
@@ -7,7 +7,7 @@ namespace YouZan.Open.Api.Entry.Request.Customer
         /// <summary>
         /// 查询标签组详情
         /// </summary>
-        [JsonProperty("tag_category_id")]
+        [ApiField("tag_category_id")]
         public long TagCategoryId { get; set; }
     }
 }

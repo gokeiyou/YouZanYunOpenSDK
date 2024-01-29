@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using YouZan.Open.Api.Constant;
+﻿using YouZan.Open.Api.Constant;
 using YouZan.Open.Api.Entry.Request;
 using YouZan.Open.Api.Entry.Response;
 using YouZan.Open.Api.Entry.Response.Items;

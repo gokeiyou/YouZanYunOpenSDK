@@ -1,7 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using YouZan.Open.Common.Extensions.Attributes;
 
 namespace YouZan.Open.Api.Entry.Request.Customer
 {
@@ -14,7 +11,7 @@ namespace YouZan.Open.Api.Entry.Request.Customer
         /// 会员卡号，可通过查询用户下会员卡列表接口youzan.scrm.customer.card.list获得
         /// </summary>
         /// <example>306248981525655685</example>
-        [JsonProperty("card_no")]
+        [ApiField("card_no")]
         public string CardNo { get; set; }
     }
 }
