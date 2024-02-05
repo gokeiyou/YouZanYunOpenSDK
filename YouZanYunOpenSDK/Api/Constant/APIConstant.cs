@@ -266,6 +266,12 @@ namespace YouZan.Open.Api.Constant
         internal const string CRM_CUSTOMER_POINT_STORE_GET_GOODS = "youzan.crm.customer.pointstore.get.goods";
 
         /// <summary>
+        /// 给用户发放权益卡
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/871"/>
+        internal const string SCRM_CUSTOMER_CARD_GRANT = "youzan.scrm.customer.card.grant";
+
+        /// <summary>
         /// 根据卡号获取用户购卡记录
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/2107"/>

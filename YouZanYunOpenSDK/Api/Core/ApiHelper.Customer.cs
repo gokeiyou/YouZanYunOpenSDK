@@ -247,6 +247,20 @@ namespace YouZan.Open.Api
         }
 
         /// <summary>
+        /// 给用户发放权益卡
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/871"/>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public YouZanResponse<ScrmCustomerCardGrantResponse> ScrmCustomerCardGrant(YouZanRequest request)
+        {
+            return ApiInvoke<ScrmCustomerCardGrantResponse>(
+                request,
+                ApiConst.SCRM_CUSTOMER_CARD_GRANT,
+                ApiConst.VERSION_4_0_0);
+        }
+
+        /// <summary>
         /// 根据卡号获取用户购卡记录
         /// </summary>
         /// <param name="request">请求参数</param>
