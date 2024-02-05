@@ -210,6 +210,43 @@ namespace YouZan.Open.Api
         }
 
         /// <summary>
+        /// 获取客户账号下权益卡列表
+        /// 获取用户的权益卡列表（列表不返回卡模板禁用的卡、未激活的卡和过期的卡）
+        /// 支持的用户账号类型
+        /// 1-有赞粉丝id(有赞不同的合作渠道会生成不同渠道对应在有赞平台下的fans_id) ;
+        /// 2-手机号;
+        /// 3-三方帐号(原open_user_id:三方App用户ID，该参数仅限购买App开店插件的商家使用) ;
+        /// 5-有赞用户id，用户在有赞的唯一id。推荐使用）
+        /// </summary>
+        /// <remarks>
+        /// 已支持：微商城单店、零售单店、有赞连锁D-总部、有赞连锁D-网店、有赞连锁D-合伙人、教育多校区-总部
+        /// </remarks>
+        /// <param name="request"></param>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/869"/>
+        /// <returns></returns>
+        public YouZanResponse<PageResponse<ScrmCustomerCardListResponse>> ScrmCustomerCardList(YouZanRequest request)
+        {
+            return ApiInvoke<PageResponse<ScrmCustomerCardListResponse>>(
+                request,
+                ApiConst.SCRM_CUSTOMER_CARD_LIST,
+                ApiConst.VERSION_4_0_0);
+        }
+
+        /// <summary>
+        /// 获取积分商城商品信息(计费)
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/938"/>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public YouZanResponse CrmCustomerPointStoreGetGoods(YouZanRequest request)
+        {
+            return Invoke<CrmCustomerPointStoreGetGoodsResponse>(
+                request,
+                ApiConst.CRM_CUSTOMER_POINT_STORE_GET_GOODS,
+                ApiConst.VERSION_1_0_0);
+        }
+
+        /// <summary>
         /// 根据卡号获取用户购卡记录
         /// </summary>
         /// <param name="request">请求参数</param>
@@ -392,29 +429,6 @@ namespace YouZan.Open.Api
                 request,
                 ApiConst.SCRM_TAG_CATEGORY_GET,
                 ApiConst.VERSION_1_0_0);
-        }
-
-        /// <summary>
-        /// 获取客户账号下权益卡列表
-        /// 获取用户的权益卡列表（列表不返回卡模板禁用的卡、未激活的卡和过期的卡）
-        /// 支持的用户账号类型
-        /// 1-有赞粉丝id(有赞不同的合作渠道会生成不同渠道对应在有赞平台下的fans_id) ;
-        /// 2-手机号;
-        /// 3-三方帐号(原open_user_id:三方App用户ID，该参数仅限购买App开店插件的商家使用) ;
-        /// 5-有赞用户id，用户在有赞的唯一id。推荐使用）
-        /// </summary>
-        /// <remarks>
-        /// 已支持：微商城单店、零售单店、有赞连锁D-总部、有赞连锁D-网店、有赞连锁D-合伙人、教育多校区-总部
-        /// </remarks>
-        /// <param name="request"></param>
-        /// <see cref="https://doc.youzanyun.com/detail/API/0/869"/>
-        /// <returns></returns>
-        public YouZanResponse<PageResponse<ScrmCustomerCardListResponse>> ScrmCustomerCardList(YouZanRequest request)
-        {
-            return ApiInvoke<PageResponse<ScrmCustomerCardListResponse>>(
-                request,
-                ApiConst.SCRM_CUSTOMER_CARD_LIST,
-                ApiConst.VERSION_4_0_0);
         }
 
         /// <summary>

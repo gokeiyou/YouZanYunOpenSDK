@@ -37,7 +37,7 @@ namespace YouZan.Open.Api.Entry.Response
         /// <summary>
         /// 分页
         /// </summary>
-        [JsonProperty("Paginator")]
+        [JsonProperty("paginator")]
         public Paginator Paginator { get; set; }
     }
 

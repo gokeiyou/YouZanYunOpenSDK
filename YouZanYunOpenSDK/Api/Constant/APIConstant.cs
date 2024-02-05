@@ -254,6 +254,18 @@ namespace YouZan.Open.Api.Constant
         internal const string CRM_CUSTOMER_GROWTH_GET = "youzan.crm.customer.growth.get";
 
         /// <summary>
+        /// 获取客户账号下权益卡列表
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/869"/>
+        internal const string SCRM_CUSTOMER_CARD_LIST = "youzan.scrm.customer.card.list";
+
+        /// <summary>
+        /// 获取积分商城商品信息
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/938"/>
+        internal const string CRM_CUSTOMER_POINT_STORE_GET_GOODS = "youzan.crm.customer.pointstore.get.goods";
+
+        /// <summary>
         /// 根据卡号获取用户购卡记录
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/2107"/>
@@ -330,12 +342,6 @@ namespace YouZan.Open.Api.Constant
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/4221"/>
         internal const string SCRM_TAG_CATEGORY_GET = "youzan.scrm.tag.category.get";
-
-        /// <summary>
-        /// 获取客户账号下权益卡列表
-        /// </summary>
-        /// <see cref="https://doc.youzanyun.com/detail/API/0/869"/>
-        internal const string SCRM_CUSTOMER_CARD_LIST = "youzan.scrm.customer.card.list";
 
         /// <summary>
         /// 查询用户当前积分
