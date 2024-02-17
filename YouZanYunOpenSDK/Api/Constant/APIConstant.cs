@@ -272,6 +272,12 @@ namespace YouZan.Open.Api.Constant
         internal const string SCRM_CUSTOMER_CARD_GRANT = "youzan.scrm.customer.card.grant";
 
         /// <summary>
+        /// 设置用户会员等级（计费）
+        /// </summary>
+        /// <see cref="https://doc.youzanyun.com/detail/API/0/877"/>
+        internal const string SCRM_CUSTOMER_LEVEL_SET = "youzan.scrm.customer.level.set";
+
+        /// <summary>
         /// 根据卡号获取用户购卡记录
         /// </summary>
         /// <see cref="https://doc.youzanyun.com/detail/API/0/2107"/>
